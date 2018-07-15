@@ -1,15 +1,18 @@
 # client-node
 SMART client for NodeJS
 
-- [Usage with Express](https://github.com/smart-on-fhir/client-node/blob/master/docs/express.md#using-the-smart-client-with-express)
-- [Usage with HAPI](https://github.com/smart-on-fhir/client-node/blob/master/docs/express.md#using-the-smart-client-with-express)
-- [Usage with pure NodeJS](https://github.com/smart-on-fhir/client-node/blob/master/docs/express.md#using-the-smart-client-with-express)
-- Configuration Options
-- The storage interface
+- [Configuration Options](#configuration-options)
+- High-level API
+    - [Usage with Express](https://github.com/smart-on-fhir/client-node/blob/master/docs/express.md#using-the-smart-client-with-express)
+    - [Usage with HAPI](https://github.com/smart-on-fhir/client-node/blob/master/docs/express.md#using-the-smart-client-with-express)
+    - [Usage with pure NodeJS](https://github.com/smart-on-fhir/client-node/blob/master/docs/express.md#using-the-smart-client-with-express)
 
-# API
+- [Low-level API](#low-level-api)
+- [The storage interface](docs/storage.md)
 
-## Options
+
+## Configuration Options
+The following options are supported:
 - `clientId    ` - *string, **required*** - The Client ID that you were given after registering your app with the authorization server.
 - `redirectUri ` - *string, **required*** - The location to redirect to, once the user have authorized the launch.
 - `serverUrl   ` - *string, **optional*** - The base URL of the Fhir server. If you specify this in your options you will be able to call your launchUri endpoint without any parameters and it will initiate a standalone launch sequence against this server. You can also pass a `fhirServiceUrl` query parameter to your launchUri endpoint which will take precedence over the config option value. Finally, if your launch endpoint is called with `iss` and `launch` parameters (which will happen when launched from EHR), `iss` will become the used server and the `fhirServiceUrl` url parameter (if any) and the `serverUrl` option (if any) will be ignored.
@@ -17,8 +20,46 @@ SMART client for NodeJS
 - `clientSecret` - *string, **optional*** If you registered your app as confidential client you should have been given a **clientSecret** that you have to set here.
 - `getStorage(request)` - *function, **optional*** A function that will return a custom storage object. See *The storage interface* below for details.
 
+Use these options while creating a SMART api:
+```js
+const smart = require("../lib/express")({
+    scope      : "openid profile offline_access",
+    redirectUri: "/",
+    clientId   : "my-client-id"
+});
+// ...
+```
+or you just pass them to functions if you prefer the low-level api:
+```js
+const options = {
+    scope      : "openid profile offline_access",
+    redirectUri: "/",
+    clientId   : "my-client-id"
+};
+smart.authorize(req, res, options, storage)
+// ...
+```
+## High-level API
+In this mode you create a framework-specific API that is easier to use. Currently,
+we have adapters for Express and HAPI. Pull requests are welcome for other frameworks.
+Here is how to use that:
+```js
+const smart = require("../lib/express")({
+    scope      : "openid profile offline_access",
+    redirectUri: "/",
+    clientId   : "my-client-id"
+});
+```
+Then just use `smart.authorize` or the other methods as described in their manuals:
+- [Express](https://github.com/smart-on-fhir/client-node/blob/master/docs/express.md#using-the-smart-client-with-express)
+- [HAPI](https://github.com/smart-on-fhir/client-node/blob/master/docs/express.md#using-the-smart-client-with-express)
+
 
 ## Low-level API
+
+In this mode you start by creating one configuration (`options`) object and one
+`storage` object (that implements [The storage interface](docs/storage.md))
+and pass those as parameters for the functions described below.
 
 ### `authorize(request, response, options, storage)`
 This function should be called when you have a request to an URL with
@@ -65,56 +106,3 @@ app.get("/fhir/:path", async (req, res) => {
 });
 ```
 
-### The storage interface
-By default this module has a built-in storage adapter that uses sessions for
-storing SMART data. You can also create your own storage object. This object must
-implement the following very simple interface:
-```ts
-/**
- * Sets (adds or updates) a value at the given key
- * @param {String} key 
- * @param {any} value 
- * @returns {Promise<any>} A promise resolved with the stored value
- */
-set(key: string, value: any): Promise<any>
-
-/**
- * Reads the value at the given key
- * @param {String} key 
- * @returns {Promise<any>} A promise resolved with the stored value or undefined
- */
-get(key: string): Promise<any>
-
-/**
- * Deletes the value at the given key (if one exists)
- * @param {String} key 
- * @returns {Promise<Boolean>} A promise resolved with true if the value
- * was removed or with false otherwise
- */
-unset(key: string) Promise<boolean>
-```
-Then you can use the getStorage option to pass a function that will be called 
-with the request object (that is the framework-specific request object that
-the route handlers have received). This function must return an instance of your
-storage. for example here is the default implementation of that function for
-express app with express-session:
-```js
-function getStorage(request) {
-    return {
-       set(key, value) {
-            request.session[key] = value
-            return Promise.resolve(value)
-        },
-        get(key) {
-            return Promise.resolve(request.session[key])
-        },
-        unset(key) {
-            if (request.session.hasOwnProperty(key)) {
-                delete request.session[key];
-                return Promise.resolve(true)
-            }
-            return Promise.resolve(false)
-        }
-    };
-}
-```
