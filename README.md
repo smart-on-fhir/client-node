@@ -1,6 +1,11 @@
 # client-node
 SMART client for NodeJS
- 
+
+- [Usage with Express](https://github.com/smart-on-fhir/client-node/blob/master/docs/express.md#using-the-smart-client-with-express)
+- [Usage with HAPI](https://github.com/smart-on-fhir/client-node/blob/master/docs/express.md#using-the-smart-client-with-express)
+- [Usage with pure NodeJS](https://github.com/smart-on-fhir/client-node/blob/master/docs/express.md#using-the-smart-client-with-express)
+- Configuration Options
+- The storage interface
 
 # API
 
