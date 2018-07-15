@@ -3,7 +3,7 @@
 **IMPORTANT!** This module assumes that you use `express-session` in your app.
 However, it does not matter how you configure the session and what storage mechanism
 you are using for that. If you are not using `express-session`, then you will have to
-create a custom storage. See *The storage interface* below for details.
+create a custom storage. See [The storage interface](https://github.com/smart-on-fhir/client-node/blob/master/README.md#the-storage-interface) below for details.
 
 #### `authorizeSmart(req, res, next)`
 This is typically used as handler for your launchUri:
