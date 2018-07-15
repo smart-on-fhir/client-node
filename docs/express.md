@@ -1,4 +1,4 @@
-# Using the SMART client Express
+# Using the SMART client with Express
 
 **IMPORTANT!** This module assumes that you use `express-session` in your app.
 However, it does not matter how you configure the session and what storage mechanism
