@@ -5,11 +5,11 @@
 **IMPORTANT!** This module assumes that you use `hapi-server-session` in your app.
 However, it does not matter how you configure the session and what storage mechanism
 you are using for that. If you are not using `hapi-server-session`, then you will
-have to create a custom storage. See [The storage interface](storage.md) below for
+have to create a custom storage. See [The storage interface](storage.md) for
 details.
 
 #### `authorize(request, h)`
-This is typically used as handler for your launchUri:
+This is typically used as handler for your `launchUri`:
 ```js
 const Hapi = require("hapi");
 const smart = require("../lib/hapi")({
@@ -48,10 +48,9 @@ parameter instead of `iss` and `launch` (or you can use options.serverUrl)
 which will initiate a standalone launch sequence.
 
 If there is something wrong with the query parameters the `authorize` function
-will not redirect the user for authorization and return `h.continue` instead.
-You can add another
-function to the chain to handle such cases. This example this will give the user
-a chance to re-try with the entered FHIR Server URL:
+will not redirect the user for authorization but will return `h.continue` instead.
+The following example this will give the user a chance to re-try with the entered
+FHIR Server URL:
 ```js
 server.route({ method: "GET", path: "/launch", handler(request, h) => {
     if (!request.query.fhirServiceUrl) {
