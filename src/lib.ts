@@ -2,7 +2,7 @@ import request     from "axios"
 import * as Crypto from "crypto"
 import * as Url    from "url"
 import * as qs     from "querystring"
-import _debug      from "debug"
+import * as _debug from "debug"
 import errors      from "./errors"
 import Client      from "./client"
 import { SMART }   from "../"
@@ -37,7 +37,7 @@ export function getPath(obj: object|any[], path: string = ""): any
 export function base64encode(str: string): string
 {
     return Buffer.from(str).toString("base64");
-};
+}
 
 /**
  * Simplified version of printf. Just replaces all the occurrences of "%s" with
@@ -50,7 +50,7 @@ export function base64encode(str: string): string
 export function printf(s: string, ...args: any[]): string
 {
     let l = args.length, i = 0;
-    return String(s || "").replace(/(%s)/g, a => i >= l ? "" : args[i++]);
+    return String(s || "").replace(/(%s)/g, () => i >= l ? "" : args[i++]);
 }
 
 /**

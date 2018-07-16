@@ -28,6 +28,7 @@
   "devDependencies": {
     "@types/debug": "0.0.30",
     "@types/node": "^10.5.2",
+    "eslint": "^5.1.0",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "hapi": "^17.5.2",
