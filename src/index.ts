@@ -1,5 +1,5 @@
-import * as lib              from "./lib"
-import { default as client } from "./client"
+import * as lib              from "./lib";
+import { default as client } from "./client";
 
 export const {
     authorize,

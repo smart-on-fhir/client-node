@@ -11,4 +11,4 @@ export default {
                                "and 'iss' parameters. For standalone launch pass " +
                                "'fhirServiceUrl' parameter or set it as 'serverUrl'" +
                                "in your configuration."
-}
+};

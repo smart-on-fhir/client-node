@@ -1,16 +1,14 @@
-import request     from "axios"
-import * as Crypto from "crypto"
-import * as Url    from "url"
-import * as qs     from "querystring"
-import * as _debug from "debug"
-import errors      from "./errors"
-import Client      from "./client"
-import { SMART }   from "../"
+import request     from "axios";
+import * as Crypto from "crypto";
+import * as Url    from "url";
+import * as qs     from "querystring";
+import * as _debug from "debug";
+import errors      from "./errors";
+import Client      from "./client";
+import { SMART }   from "../";
 import { IncomingMessage, ServerResponse } from "http";
 
-
-const debug = _debug('smart');
-
+const debug = _debug("smart");
 
 /**
  * Walks thru an object (or array) and returns the value found at the
@@ -21,8 +19,7 @@ const debug = _debug('smart');
  * @param {String} path The path (eg. "a.b.4.c")
  * @returns {*} Whatever is found in the path or undefined
  */
-export function getPath(obj: object|any[], path: string = ""): any
-{
+export function getPath(obj: object|any[], path: string = ""): any {
     path = path.trim();
     if (!path) {
         return obj;
@@ -31,11 +28,10 @@ export function getPath(obj: object|any[], path: string = ""): any
 }
 
 /**
- * Encodes the given input 
+ * Encodes the given input
  * @param str The string to encode
  */
-export function base64encode(str: string): string
-{
+export function base64encode(str: string): string {
     return Buffer.from(str).toString("base64");
 }
 
@@ -47,9 +43,8 @@ export function base64encode(str: string): string
  * @param {*} ... The rest of the arguments are used for the replacements
  * @return {String}
  */
-export function printf(s: string, ...args: any[]): string
-{
-    let l = args.length, i = 0;
+export function printf(s: string, ...args: any[]): string {
+    const l = args.length; let i = 0;
     return String(s || "").replace(/(%s)/g, () => i >= l ? "" : args[i++]);
 }
 
@@ -59,20 +54,18 @@ export function printf(s: string, ...args: any[]): string
  * @param name The error name
  * @param rest Any other arguments passed to printf
  */
-export function getErrorText(name:string, ...rest: any[])
-{
+export function getErrorText(name: string, ...rest: any[]) {
     return printf((errors as SMART.objectLiteral)[name], ...rest);
 }
 
 /**
  * For custom error objects that also have an httpCode property
  */
-export class HttpError extends Error
-{
+export class HttpError extends Error {
     public httpCode: number;
 
     constructor(name: string, httpCode = 500, ...params: any[]) {
-        super(getErrorText(name, ...params))
+        super(getErrorText(name, ...params));
         this.httpCode = httpCode;
     }
 }
@@ -81,22 +74,22 @@ export class HttpError extends Error
  * Given a fhir server returns an object with it's Oauth security endpoints
  * @param baseUrl Fhir server base URL
  */
-export async function getSecurityExtensions(baseUrl: string): Promise<SMART.OAuthSecurityExtensions>
-{
+export async function getSecurityExtensions(baseUrl: string): Promise<SMART.OAuthSecurityExtensions> {
     const url = String(baseUrl || "").replace(/\/*$/, "/") + "metadata";
     const metadata = await request(url);
+    const nsUri = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris";
     const extensions = (getPath(metadata, "data.rest.0.security.extension") || [])
-        .filter((e:SMART.objectLiteral) => e.url === "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris")
-        .map((o:SMART.objectLiteral) => o.extension)[0];
-        
-    let out: SMART.OAuthSecurityExtensions = {
+        .filter((e: SMART.objectLiteral) => e.url === nsUri)
+        .map((o: SMART.objectLiteral) => o.extension)[0];
+
+    const out: SMART.OAuthSecurityExtensions = {
         registrationUri : "",
         authorizeUri    : "",
         tokenUri        : ""
     };
 
     if (extensions) {
-        extensions.forEach((ext:SMART.objectLiteral) => {
+        extensions.forEach((ext: SMART.objectLiteral) => {
             if (ext.url === "register") {
                 out.registrationUri = ext.valueUri;
             } else if (ext.url === "authorize") {
@@ -106,8 +99,7 @@ export async function getSecurityExtensions(baseUrl: string): Promise<SMART.OAut
             }
         });
     }
-    return Promise.resolve(out)
-    // return out
+    return Promise.resolve(out);
 }
 
 /**
@@ -115,10 +107,9 @@ export async function getSecurityExtensions(baseUrl: string): Promise<SMART.OAut
  * @param req The http request object
  * @param url The url to convert
  */
-export function resolveUrl(req: IncomingMessage, url: string)
-{
-    let protocol = (req.connection as SMART.objectLiteral).encrypted ? 'https' : 'http';
-    return Url.resolve(protocol + "://" + req.headers.host, url)
+export function resolveUrl(req: IncomingMessage, url: string) {
+    const protocol = (req.connection as SMART.objectLiteral).encrypted ? "https" : "http";
+    return Url.resolve(protocol + "://" + req.headers.host, url);
 }
 
 /**
@@ -127,23 +118,23 @@ export function resolveUrl(req: IncomingMessage, url: string)
  * For open server that URL is the options.redirectUri so that we can skip the
  * authorization part.
  */
-export async function buildAuthorizeUrl(req: IncomingMessage, options: SMART.ClientOptions, storage: SMART.SmartStorage): Promise<string>
-{
-    // If this is raw request (not an augmented express.Request object)
-    // extract the query manually
+export async function buildAuthorizeUrl(
+    req: IncomingMessage,
+    options: SMART.ClientOptions,
+    storage: SMART.SmartStorage): Promise<string> {
     const url = Url.parse(req.url as string, true);
-    
     const { launch, iss, fhirServiceUrl } = url.query;
     const serverUrl = iss || fhirServiceUrl || options.serverUrl || "";
 
     if (!serverUrl) {
-        debug(`No serverUrl found. It must be specified as query.iss or query.fhirServiceUrl or options.serverUrl (in that order)`)
+        debug("No serverUrl found. It must be specified as query.iss or " +
+            "query.fhirServiceUrl or options.serverUrl (in that order)");
         return Promise.reject(new Error(getErrorText("no_server_url_provided")));
     }
-    // debugger
-    debug(`Looking up the authorization endpoint for "${serverUrl}"`)
+
+    debug(`Looking up the authorization endpoint for "${serverUrl}"`);
     const extensions = await getSecurityExtensions(serverUrl as string);
-    debug(`Found security extensions: `, extensions)
+    debug(`Found security extensions: `, extensions);
 
     // Prepare the object that will be stored in the session
     const state: any = {
@@ -155,7 +146,7 @@ export async function buildAuthorizeUrl(req: IncomingMessage, options: SMART.Cli
     };
 
     if (options.clientSecret) {
-        debug(`Adding clientSecret to the state`)
+        debug(`Adding clientSecret to the state`);
         state.clientSecret = options.clientSecret;
     }
 
@@ -165,17 +156,17 @@ export async function buildAuthorizeUrl(req: IncomingMessage, options: SMART.Cli
     const id = "smart-" + Crypto.randomBytes(8).toString("hex");
     const oldId = await storage.get("smartId");
     if (oldId) {
-        debug(`Deleting previous state by id ("${oldId}")`)
+        debug(`Deleting previous state by id ("${oldId}")`);
         await storage.unset(id);
     }
-    debug(`Saving new state by id ("${id}")`)
+    debug(`Saving new state by id ("${id}")`);
     await storage.set(id, state);
     await storage.set("smartId", id);
 
     let redirectUrl = state.redirectUri;
 
     if (state.authorizeUri) {
-        debug(`authorizeUri: ${state.authorizeUri}`)
+        debug(`authorizeUri: ${state.authorizeUri}`);
         const params = [
             "response_type=code",
             "client_id="    + encodeURIComponent(state.clientId),
@@ -187,12 +178,12 @@ export async function buildAuthorizeUrl(req: IncomingMessage, options: SMART.Cli
 
         // also pass this in case of EHR launch
         if (launch) {
-            params.push("launch=" + encodeURIComponent(launch as string))
+            params.push("launch=" + encodeURIComponent(launch as string));
         }
 
         redirectUrl = state.authorizeUri + "?" + params.join("&");
     }
-    debug(`Making authorize redirect to ${redirectUrl}`)
+    debug(`Making authorize redirect to ${redirectUrl}`);
     return redirectUrl;
 }
 
@@ -200,13 +191,16 @@ export async function buildAuthorizeUrl(req: IncomingMessage, options: SMART.Cli
  * Calls the buildAuthorizeUrl function to construct the redirect URL and then
  * just redirects to it.
  */
-export async function authorize(req: IncomingMessage, res: ServerResponse, options: SMART.ClientOptions, storage: SMART.SmartStorage)
-{
-    debug(`Authorizing...`)
-    const url = await buildAuthorizeUrl(req, options, storage)
-    debug(`Making authorize redirect to ${url}`)
-    res.writeHead(303, { Location: url })
-    res.end()
+export async function authorize(
+    req: IncomingMessage,
+    res: ServerResponse,
+    options: SMART.ClientOptions,
+    storage: SMART.SmartStorage) {
+    debug(`Authorizing...`);
+    const url = await buildAuthorizeUrl(req, options, storage);
+    debug(`Making authorize redirect to ${url}`);
+    res.writeHead(303, { Location: url });
+    res.end();
 }
 
 /**
@@ -214,9 +208,8 @@ export async function authorize(req: IncomingMessage, res: ServerResponse, optio
  * Use this function to exchange that code for an access token and complete the
  * authorization flow.
  */
-export async function completeAuth(req: IncomingMessage, storage: SMART.SmartStorage): Promise<Client>
-{
-    debug("Completing the code flow")
+export async function completeAuth(req: IncomingMessage, storage: SMART.SmartStorage): Promise<Client> {
+    debug("Completing the code flow");
 
     // If this is raw request (not an augmented express.Request object)
     // extract the query manually
@@ -228,22 +221,22 @@ export async function completeAuth(req: IncomingMessage, storage: SMART.SmartSto
 
     // First make sure we have such state and it contains everything we need
     if (!cached) {
-        debug(`No state found by the given id (${state})`)
+        debug(`No state found by the given id (${state})`);
         throw new HttpError("missing_state_by_id", 400, state);
     }
 
     if (!cached.redirectUri) {
-        debug(`Missing state.redirectUri`)
+        debug(`Missing state.redirectUri`);
         throw new HttpError("missing_state_redirectUri", 400);
     }
 
     if (!cached.tokenUri) {
-        debug(`Missing state.tokenUri`)
+        debug(`Missing state.tokenUri`);
         throw new HttpError("missing_state_tokenUri", 400);
     }
 
     if (!cached.clientId) {
-        debug(`Missing state.clientId`)
+        debug(`Missing state.clientId`);
         throw new HttpError("missing_state_clientId", 400);
     }
 
@@ -268,39 +261,40 @@ export async function completeAuth(req: IncomingMessage, storage: SMART.SmartSto
     if (cached.clientSecret) {
         requestOptions.headers = {
             Authorization: "Basic " + base64encode(
-                cached.clientId + ':' + cached.clientSecret
+                cached.clientId + ":" + cached.clientSecret
             )
         };
-        debug(`Using state.clientSecret to construct the authorization header: "${requestOptions.headers.Authorization}"`)
-    }
-    else {
-        debug(`No clientSecret found in state. Adding client_id to the POST body`)
+        debug(
+            `Using state.clientSecret to construct the authorization header: "${requestOptions.headers.Authorization}"`
+        );
+    } else {
+        debug(`No clientSecret found in state. Adding client_id to the POST body`);
         requestOptions.data.client_id = cached.clientId;
     }
 
     requestOptions.data = qs.stringify(requestOptions.data);
-    
+
     // The EHR authorization server SHALL return a JSON structure that
     // includes an access token or a message indicating that the
     // authorization request has been denied.
     // debug("Exchanging the code for an access token...");
-    debug(`Exchanging the code ("${code}) for access token...`)
+    debug(`Exchanging the code ("${code}) for access token...`);
     return request(requestOptions)
         .then(({ data }) => {
-            debug(`Received tokenResponse. Saving it to the state...`)
-            cached.tokenResponse = data
+            debug(`Received tokenResponse. Saving it to the state...`);
+            cached.tokenResponse = data;
             return storage.set(state as string, cached);
         })
         .then(() => new Client(cached))
         .catch(result => {
-            let msg = result.message
+            let msg = result.message;
             if (result.response && result.response.data && result.response.data.error) {
-                msg += "\n" + result.response.data.error
+                msg += "\n" + result.response.data.error;
                 if (result.response.data.error_description) {
-                    msg += ": " + result.response.data.error_description
+                    msg += ": " + result.response.data.error_description;
                 }
             }
             debug(result.stack);
-            return Promise.reject(new HttpError(msg, result.status))
-        })   
+            return Promise.reject(new HttpError(msg, result.status));
+        });
 }
