@@ -3,9 +3,9 @@ SMART client for NodeJS
 
 - [Configuration Options](#configuration-options)
 - High-level API
-    - [Usage with Express](https://github.com/smart-on-fhir/client-node/blob/master/docs/express.md#using-the-smart-client-with-express)
-    - [Usage with HAPI](https://github.com/smart-on-fhir/client-node/blob/master/docs/express.md#using-the-smart-client-with-express)
-    - [Usage with pure NodeJS](https://github.com/smart-on-fhir/client-node/blob/master/docs/express.md#using-the-smart-client-with-express)
+    - [Usage with Express](docs/express.md)
+    - [Usage with HAPI](docs/hapi.md)
+    - [Usage with pure NodeJS](docs/express.md)
 
 - [Low-level API](#low-level-api)
 - [The storage interface](docs/storage.md)
