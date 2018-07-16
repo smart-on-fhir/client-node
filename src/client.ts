@@ -1,7 +1,7 @@
 
 import request, { AxiosRequestConfig } from "axios"
 import * as querystring                from "querystring"
-import * as _debug                     from "debug"
+import _debug                          from "debug"
 import { SMART }                       from ".."
 import { getPath, getErrorText }       from "./lib"
 
@@ -68,9 +68,7 @@ export default class Client
                             return this.refresh().then(() => this.request(options));
                         }
                     }
-                    // console.log(error.response.data);
-                    // console.log(error.response.status);
-                    // console.log(error.response.headers);
+                    
                     let body = error.response.data;
                     if (body &&
                         typeof body == "object" &&
@@ -88,7 +86,6 @@ export default class Client
                 // The request was made but no response was received
                 // "error.request" is an instance of http.ClientRequest
                 else if (error.request) {
-                    // console.log(error.request);
                     return Promise.reject(new Error(getErrorText("no_fhir_response")));
                 }
 
@@ -96,7 +93,6 @@ export default class Client
                 else {
                     console.log('Error', error.message);
                 }
-                // console.log(error.config);
 
                 return Promise.reject(error);
             });
