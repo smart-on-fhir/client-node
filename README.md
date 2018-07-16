@@ -73,7 +73,7 @@ app.get("/launch", (req, res) => smart.authorize(req, res, options, storage));
 ```
 
 
-### `completeAuth(request, response, options, storage)`
+### `completeAuth(request, storage)`
 The login function above will redirect the browser to the authorization endpoint
 of the SMART server. Depending on the requested scopes, the user might be asked
 to select a patient or practitioner, authorize the app and so on. Eventually, the
@@ -82,27 +82,10 @@ point you should have received a code that needs to be exchanged for an access
 token. To do so, you can use the `completeAuth` like so (express example):
 ```js
 app.get("/redirect", (req, res) => {
-    smart.completeAuth(req, res, options, storage)
+    smart.completeAuth(req, storage)
         .then(client => client.request("/Patient"))
-        .then(
-            result => res.json(result.data),
-            error => res.status(500).send(error.stack);
-        )
+        .then(result => res.json(result.data))
+        .catch(error => res.status(500).send(error.stack));
 })
-```
-
-Express example using express-session:
-```js
-app.get("/fhir/:path", async (req, res) => {
-    try {
-        const state = req.session[req.session.smartId];
-        const fhirClient = new smart.Client(state);
-        const result = await fhirClient.request(req.params.path);
-        res.json(result.data);
-    }
-    catch (error) {
-        res.end(error.stack);
-    }
-});
 ```
 
