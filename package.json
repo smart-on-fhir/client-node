@@ -30,6 +30,8 @@
     "@types/node": "^10.5.2",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "hapi": "^17.5.2",
+    "hapi-server-session": "^4.2.1",
     "typescript": "^2.9.2"
   }
 }
