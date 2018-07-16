@@ -2,10 +2,10 @@
 SMART client for NodeJS
 
 - [Configuration Options](#configuration-options)
-- High-level API
+- [High-level API](#high-level-api)
     - [Usage with Express](docs/express.md)
     - [Usage with HAPI](docs/hapi.md)
-    - [Usage with pure NodeJS](docs/express.md)
+    - [Usage with pure NodeJS](examples/node-patients-list.js)
 
 - [Low-level API](#low-level-api)
 - [The storage interface](docs/storage.md)
