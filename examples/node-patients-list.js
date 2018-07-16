@@ -1,6 +1,5 @@
 const http   = require('http');
-const smart  = require('../lib/lib');
-const Client = require('../lib/client').default;
+const smart  = require('../lib');
 const Url    = require("url");
 
 const smartOnFhirOptions = {
@@ -54,7 +53,7 @@ const server = http.createServer((req, res) => {
                 return res.end();
             }
 
-            const client = new Client(state);
+            const client = new smart.Client(state);
 
             client.request("/Patient").then(result => {
                 res.setHeader("Content-type", "text/html");
