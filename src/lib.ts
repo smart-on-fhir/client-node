@@ -10,6 +10,10 @@ import { IncomingMessage, ServerResponse } from "http";
 
 const debug = _debug("smart");
 
+interface IObjectLiteral {
+    [key: string]: any;
+}
+
 /**
  * Walks thru an object (or array) and returns the value found at the
  * provided path. This function is very simple so it intentionally does not
@@ -55,7 +59,7 @@ export function printf(s: string, ...args: any[]): string {
  * @param rest Any other arguments passed to printf
  */
 export function getErrorText(name: string = "", ...rest: any[]) {
-    return printf((errors as SMART.objectLiteral)[name], ...rest);
+    return printf((errors as IObjectLiteral)[name], ...rest);
 }
 
 /**
@@ -80,8 +84,8 @@ export async function getSecurityExtensions(baseUrl: string): Promise<SMART.OAut
     try { metadata = await request(url); } catch (ex) { metadata = {}; }
     const nsUri = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris";
     const extensions = (getPath(metadata, "data.rest.0.security.extension") || [])
-        .filter((e: SMART.objectLiteral) => e.url === nsUri)
-        .map((o: SMART.objectLiteral) => o.extension)[0];
+        .filter((e: IObjectLiteral) => e.url === nsUri)
+        .map((o: IObjectLiteral) => o.extension)[0];
 
     const out: SMART.OAuthSecurityExtensions = {
         registrationUri : "",
@@ -90,7 +94,7 @@ export async function getSecurityExtensions(baseUrl: string): Promise<SMART.OAut
     };
 
     if (extensions) {
-        extensions.forEach((ext: SMART.objectLiteral) => {
+        extensions.forEach((ext: IObjectLiteral) => {
             if (ext.url === "register") {
                 out.registrationUri = ext.valueUri;
             }
@@ -111,7 +115,7 @@ export async function getSecurityExtensions(baseUrl: string): Promise<SMART.OAut
  * @param url The url to convert
  */
 export function resolveUrl(req: IncomingMessage, url: string) {
-    const protocol = (req.connection as SMART.objectLiteral).encrypted ? "https" : "http";
+    const protocol = (req.connection as IObjectLiteral).encrypted ? "https" : "http";
     return Url.resolve(protocol + "://" + req.headers.host, url);
 }
 
@@ -145,8 +149,8 @@ export async function buildAuthorizeUrl(
     debug(`Found security extensions: `, extensions);
 
     // Prepare the object that will be stored in the session
-    const state: any = {
-        serverUrl,
+    const state: SMART.ClientState = {
+        serverUrl  : serverUrl as string,
         clientId   : options.clientId,
         redirectUri: resolveUrl(req, options.redirectUri),
         scope      : options.scope || "",
@@ -323,4 +327,48 @@ export async function completeAuth(req: IncomingMessage, storage: SMART.SmartSto
             return Promise.reject(handleTokenError(result));
             // throw handleTokenError(result);
         });
+}
+
+/**
+ * The default storage factory assumes that the request object has a session
+ * property which is an object that we are free to manipulate. This happens to
+ * be the case for Express using `express-session` and for Hapi using
+ * hapi-server-session`.
+ */
+export function getSessionStorage(req: SMART.HttpRequestWithSession): SMART.SmartStorage {
+    return {
+        /**
+         * Sets (adds or updates) a value at the given key
+         * @param {String} key
+         * @param {any} value
+         * @returns {Promise<any>} A promise resolved with the stored value
+         */
+        set(key: string, value: any): Promise<any> {
+            req.session[key] = value;
+            return Promise.resolve(value);
+        },
+
+        /**
+         * Reads the value at the given key
+         * @param {String} key
+         * @returns {Promise<any>} A promise resolved with the stored value or undefined
+         */
+        get(key: string): Promise<any> {
+            return Promise.resolve(req.session[key]);
+        },
+
+        /**
+         * Deletes the value at the given key (if one exists)
+         * @param {String} key
+         * @returns {Promise<Boolean>} A promise resolved with true if the value
+         * was removed or with false otherwise
+         */
+        unset(key: string): Promise<boolean> {
+            if (req.session.hasOwnProperty(key)) {
+                delete req.session[key];
+                return Promise.resolve(true);
+            }
+            return Promise.resolve(false);
+        }
+    };
 }
