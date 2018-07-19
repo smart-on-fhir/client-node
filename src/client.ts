@@ -38,7 +38,7 @@ export default class Client
      *   JavaScript Error objects with which the resulting promises are rejected
      * @param {object|string} options URL or axios request options
      */
-    public async request(options: AxiosRequestConfig | string): Promise<any>
+    public async request(options: AxiosRequestConfig | string = {}): Promise<any>
     {
         if (typeof options == "string") {
             options = { url: options };
@@ -69,32 +69,21 @@ export default class Client
                         }
                     }
 
+                    const resourceType = getPath(error, "response.data.resourceType");
+                    const issues = getPath(error, "response.data.issue");
                     const body = error.response.data;
-                    if (body &&
-                        typeof body == "object" &&
-                        body.resourceType == "OperationOutcome" &&
-                        Array.isArray(body.issue) &&
-                        body.issue.length
-                    ) {
+                    if (resourceType == "OperationOutcome" && issues.length) {
                         debug("OperationOutcome error response detected");
-                        const errors = body.issue.map((o: any) => `${o.severity} ${o.code} ${o.diagnostics || ""}`);
+                        const errors = body.issue.map((o: any) => `${o.severity} ${o.code} ${o.diagnostics}`);
                         return Promise.reject(new Error(errors.join("\n")));
                     }
+
                     return Promise.reject(error);
                 }
 
                 // The request was made but no response was received
                 // "error.request" is an instance of http.ClientRequest
-                else if (error.request) {
-                    return Promise.reject(new Error(getErrorText("no_fhir_response")));
-                }
-
-                // Something happened in setting up the request that triggered an Error
-                else {
-                    console.log("Error", error.message);
-                }
-
-                return Promise.reject(error);
+                throw new Error(getErrorText("no_fhir_response"));
             });
     }
 
@@ -103,10 +92,10 @@ export default class Client
      * If the refresh token is expired it will be deleted from the state, so
      * that we don't enter into loops trying to re-authorize.
      */
-    public refresh()
+    public async refresh()
     {
         if (!this.state.tokenResponse || !this.state.tokenResponse.refresh_token) {
-            return Promise.reject(new Error("Trying to refresh but there is no refresh token"));
+            throw new Error("Trying to refresh but there is no refresh token");
         }
         const refreshToken = getPath(this.state, "tokenResponse.refresh_token");
 
@@ -127,12 +116,10 @@ export default class Client
         .catch(error => {
             if (error.response && error.response.status == 401) {
                 debug("401 received - refresh token expired or invalid");
-                if (this.state.tokenResponse) {
-                    debug("Deleting the expired or invalid refresh token");
-                    delete this.state.tokenResponse.refresh_token;
-                }
+                debug("Deleting the expired or invalid refresh token");
+                delete (this.state as SMART.ActiveClientState).tokenResponse.refresh_token;
             }
-            return error;
+            throw error;
         });
     }
 }

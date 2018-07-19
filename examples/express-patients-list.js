@@ -22,11 +22,11 @@ app.get("/", smart.completeAuth, async (req, res) => {
     const client = await smart.getClient(req);
 
     // Perhaps the server was restarted or lost it's session for some other reason
-    if (!client) { 
+    if (!client) {
         console.log("No client found in session");
         return res.redirect("/demo")
     }
-    
+
     const result = await client.request("/Patient");
     res.type('html').end(
         '<a href="/logout">Logout</a>' +
@@ -56,4 +56,21 @@ app.get("/logout", (req, res) => {
     });
 });
 
-app.listen(3000);
+app.get("/refresh", async (req, res) => {
+    const client = await smart.getClient(req);
+
+    // Perhaps the server was restarted or lost it's session for some other reason
+    if (!client) {
+        console.log("No client found in session");
+        return res.redirect("/demo")
+    }
+
+    await client.refresh();
+    res.json(client.state);
+});
+
+if (!module.parent) {
+    app.listen(3000);
+}
+
+module.exports = app;

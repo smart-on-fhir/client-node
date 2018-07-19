@@ -6,6 +6,7 @@ export default {
     missing_state_redirectUri: "Missing state.redirectUri",
     missing_state_tokenUri   : "Missing state.tokenUri",
     missing_state_clientId   : "Missing state.clientId",
+    no_fhir_response         : "No response received from the FHIR server",
     no_server_url_provided   : "Cannot detect which FHIR server to launch against. " +
                                "For EHR launch call your endpoint with 'launch' " +
                                "and 'iss' parameters. For standalone launch pass " +

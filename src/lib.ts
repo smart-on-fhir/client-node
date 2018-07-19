@@ -54,7 +54,7 @@ export function printf(s: string, ...args: any[]): string {
  * @param name The error name
  * @param rest Any other arguments passed to printf
  */
-export function getErrorText(name: string, ...rest: any[]) {
+export function getErrorText(name: string = "", ...rest: any[]) {
     return printf((errors as SMART.objectLiteral)[name], ...rest);
 }
 
@@ -64,8 +64,8 @@ export function getErrorText(name: string, ...rest: any[]) {
 export class HttpError extends Error {
     public httpCode: number;
 
-    constructor(name: string, httpCode = 500, ...params: any[]) {
-        super(getErrorText(name, ...params));
+    constructor(name: string = "", httpCode = 500, ...params: any[]) {
+        super(getErrorText(name, ...params) || name);
         this.httpCode = httpCode;
     }
 }
@@ -76,7 +76,8 @@ export class HttpError extends Error {
  */
 export async function getSecurityExtensions(baseUrl: string): Promise<SMART.OAuthSecurityExtensions> {
     const url = String(baseUrl || "").replace(/\/*$/, "/") + "metadata";
-    const metadata = await request(url);
+    let metadata;
+    try { metadata = await request(url); } catch (ex) { metadata = {}; }
     const nsUri = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris";
     const extensions = (getPath(metadata, "data.rest.0.security.extension") || [])
         .filter((e: SMART.objectLiteral) => e.url === nsUri)
@@ -92,9 +93,11 @@ export async function getSecurityExtensions(baseUrl: string): Promise<SMART.OAut
         extensions.forEach((ext: SMART.objectLiteral) => {
             if (ext.url === "register") {
                 out.registrationUri = ext.valueUri;
-            } else if (ext.url === "authorize") {
+            }
+            if (ext.url === "authorize") {
                 out.authorizeUri = ext.valueUri;
-            } else if (ext.url === "token") {
+            }
+            if (ext.url === "token") {
                 out.tokenUri = ext.valueUri;
             }
         });
@@ -121,10 +124,15 @@ export function resolveUrl(req: IncomingMessage, url: string) {
 export async function buildAuthorizeUrl(
     req: IncomingMessage,
     options: SMART.ClientOptions,
-    storage: SMART.SmartStorage): Promise<string> {
+    storage: SMART.SmartStorage
+): Promise<string> {
     const url = Url.parse(req.url as string, true);
     const { launch, iss, fhirServiceUrl } = url.query;
     const serverUrl = iss || fhirServiceUrl || options.serverUrl || "";
+
+    if (iss && !launch) {
+        return Promise.reject(new Error(getErrorText("missing_url_parameter", "launch")));
+    }
 
     if (!serverUrl) {
         debug("No serverUrl found. It must be specified as query.iss or " +
@@ -157,7 +165,7 @@ export async function buildAuthorizeUrl(
     const oldId = await storage.get("smartId");
     if (oldId) {
         debug(`Deleting previous state by id ("${oldId}")`);
-        await storage.unset(id);
+        await storage.unset(oldId);
     }
     debug(`Saving new state by id ("${id}")`);
     await storage.set(id, state);
@@ -195,7 +203,8 @@ export async function authorize(
     req: IncomingMessage,
     res: ServerResponse,
     options: SMART.ClientOptions,
-    storage: SMART.SmartStorage) {
+    storage: SMART.SmartStorage
+) {
     debug(`Authorizing...`);
     const url = await buildAuthorizeUrl(req, options, storage);
     debug(`Making authorize redirect to ${url}`);
@@ -203,19 +212,9 @@ export async function authorize(
     res.end();
 }
 
-/**
- * After successful authorization we have received a code and state parameters.
- * Use this function to exchange that code for an access token and complete the
- * authorization flow.
- */
-export async function completeAuth(req: IncomingMessage, storage: SMART.SmartStorage): Promise<Client> {
-    debug("Completing the code flow");
+export async function buildTokenRequest(req: IncomingMessage, storage: SMART.SmartStorage): Promise<any> {
 
-    // If this is raw request (not an augmented express.Request object)
-    // extract the query manually
-    const query = Url.parse(req.url as string, true).query;
-
-    const { state, code } = query;
+    const { state, code } = Url.parse(req.url as string, true).query;
 
     const cached = await storage.get(state as string);
 
@@ -259,42 +258,69 @@ export async function completeAuth(req: IncomingMessage, storage: SMART.SmartSto
     // authentication is required, where the username is the app’s client_id
     // and the password is the app’s client_secret
     if (cached.clientSecret) {
-        requestOptions.headers = {
-            Authorization: "Basic " + base64encode(
+        requestOptions.headers.Authorization = "Basic " + base64encode(
                 cached.clientId + ":" + cached.clientSecret
-            )
-        };
+        );
         debug(
-            `Using state.clientSecret to construct the authorization header: "${requestOptions.headers.Authorization}"`
+            `Using state.clientSecret to construct the authorization header: "${
+                requestOptions.headers.Authorization}"`
         );
     } else {
         debug(`No clientSecret found in state. Adding client_id to the POST body`);
         requestOptions.data.client_id = cached.clientId;
     }
 
+    // requestOptions.data = qs.stringify(requestOptions.data);
+    return requestOptions;
+}
+
+export function handleTokenError(result: any): HttpError {
+    let msg = result.message;
+
+    // Some auth servers will respond with a payload that contains "error" and
+    // optionally an "error_description" properties
+    const body = getPath(result, "response.data");
+
+    if (body) {
+        if (body.error) {
+            msg += "\n" + body.error;
+            if (body.error_description) {
+                msg += ": " + body.error_description;
+            }
+        }
+        else {
+            msg += "\n" + body;
+        }
+    }
+
+    debug(msg + " - " + result.stack);
+    return new HttpError(msg, result.status);
+}
+
+/**
+ * After successful authorization we have received a code and state parameters.
+ * Use this function to exchange that code for an access token and complete the
+ * authorization flow.
+ */
+export async function completeAuth(req: IncomingMessage, storage: SMART.SmartStorage): Promise<Client> {
+    debug("Completing the code flow");
+    const { state } = Url.parse(req.url as string, true).query;
+    const cached = await storage.get(state as string);
+    const requestOptions = await buildTokenRequest(req, storage);
     requestOptions.data = qs.stringify(requestOptions.data);
 
     // The EHR authorization server SHALL return a JSON structure that
     // includes an access token or a message indicating that the
     // authorization request has been denied.
-    // debug("Exchanging the code for an access token...");
-    debug(`Exchanging the code ("${code}) for access token...`);
     return request(requestOptions)
-        .then(({ data }) => {
+        .then(async ({ data }) => {
             debug(`Received tokenResponse. Saving it to the state...`);
             cached.tokenResponse = data;
             return storage.set(state as string, cached);
         })
         .then(() => new Client(cached))
         .catch(result => {
-            let msg = result.message;
-            if (result.response && result.response.data && result.response.data.error) {
-                msg += "\n" + result.response.data.error;
-                if (result.response.data.error_description) {
-                    msg += ": " + result.response.data.error_description;
-                }
-            }
-            debug(result.stack);
-            return Promise.reject(new HttpError(msg, result.status));
+            return Promise.reject(handleTokenError(result));
+            // throw handleTokenError(result);
         });
 }

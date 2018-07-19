@@ -19,7 +19,7 @@ const storage = {
         return Promise.resolve(__SESSION[key]);
     },
     unset(key) {
-        if (request.session.hasOwnProperty(key)) {
+        if (__SESSION.hasOwnProperty(key)) {
             delete __SESSION[key];
             return Promise.resolve(true);
         }
@@ -31,9 +31,9 @@ const storage = {
 const server = http.createServer((req, res) => {
     const url = Url.parse(req.url, true);
     switch (url.pathname) {
-        
+
         // The redirectURI -----------------------------------------------------
-        case "/":
+        case "/": {
 
             if (url.query.code && url.query.state) {
                 return smart.completeAuth(req, storage).then(() => {
@@ -64,7 +64,8 @@ const server = http.createServer((req, res) => {
                         .replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</pre>'
                 );
             });
-            break;
+        }
+        break;
 
         // The launchURI -------------------------------------------------------
         case "/demo":
@@ -79,22 +80,23 @@ const server = http.createServer((req, res) => {
                 );
             }
             smart.authorize(req, res, smartOnFhirOptions, storage);
-            break;
+        break;
 
         // logout --------------------------------------------------------------
-        case "/logout":
+        case "/logout": {
             for (let id in __SESSION) {
                 delete __SESSION[id]
             }
             res.writeHead(303, { Location: "/demo" });
             res.end()
-            break;
+        }
+        break;
 
         // Anything else is 404 ------------------------------------------------
         default:
             res.writeHead(404);
             res.end("Cannot get " + url.pathname);
-            break;
+        break;
     }
 });
 

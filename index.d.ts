@@ -25,6 +25,11 @@ export namespace SMART {
         tokenResponse?: TokenResponse;
     }
 
+    export interface ActiveClientState extends ClientState {
+        access_token : string;
+        tokenResponse: TokenResponse;
+    }
+
     export interface TokenResponse extends objectLiteral {
         need_patient_banner ?: boolean;
         smart_style_url     ?: string;
