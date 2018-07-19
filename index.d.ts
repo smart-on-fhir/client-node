@@ -1,41 +1,154 @@
+import { IncomingMessage } from "http";
 
 export namespace SMART {
-    export interface objectLiteral {
-        [key: string]: any;
+    
+    /**
+     * Describes the options that one can/should pass to the functions that
+     * accept configuration argument
+     */
+    interface ClientOptions extends OAuthSecurityExtensions {
+        /**
+         * The base URL of the Fhir server. If provided in the options, the app
+         * will be launch-able byy simply accessing your launch URI without
+         * requiring any parameters.
+         */
+        serverUrl?: string;
+
+        /**
+         * The client_id that you should have obtained while registering your
+         * app with the auth server or EHR.
+         */
+        clientId: string;
+
+        /**
+         * The URI to redirect to after successful authorization. This must be
+         * absolute path, relative to your site root, i.e. must begin with "/"
+         */
+        redirectUri: string;
+
+        /**
+         * The access scopes that you need.
+         * @see http://docs.smarthealthit.org/authorization/scopes-and-launch-context/
+         */
+        scope?: string;
+
+        /**
+         * Your client secret if you have one (for confidential clients)
+         */
+        clientSecret?: string;
     }
 
-    export interface ClientOptions extends OAuthSecurityExtensions {
-        serverUrl    ?: string;
-        clientId      : string;
-        redirectUri   : string;
-        launchUri     : string;
-        scope        ?: string;
-        clientSecret ?: string;
-        // access_token ?: string;
-    }
+    /**
+     * Describes the state that should be passed to the Client constructor
+     */
+    interface ClientState extends OAuthSecurityExtensions {
+        /**
+         * The base URL of the Fhir server. The library should have detected it
+         * at authorization time from request query params of from config options.
+         */
+        serverUrl: string;
 
-    export interface ClientState extends OAuthSecurityExtensions {
-        serverUrl     : string;
-        clientId      : string;
-        launchUri     : string;
-        redirectUri   : string;
-        scope         : string;
-        clientSecret ?: string;
-        access_token ?: string;
+        /**
+         * The client_id that you should have obtained while registering your
+         * app with the auth server or EHR (as set in the configuration options)
+         */
+        clientId: string;
+
+        /**
+         * The URI to redirect to after successful authorization, as set in the
+         * configuration options.
+         */
+        redirectUri: string;
+
+        /**
+         * The access scopes that you requested in your options (or an empty string).
+         * @see http://docs.smarthealthit.org/authorization/scopes-and-launch-context/
+         */
+        scope: string;
+
+        /**
+         * Your client secret if you have one (for confidential clients)
+         */
+        clientSecret?: string;
+
+        /**
+         * The (encrypted) access token, in case you have completed the auth flow
+         * already.
+         */
+        access_token?: string;
+
+        /**
+         * The response object received from the token endpoint while trying to
+         * exchange the auth code for an access token (if you have reached that point).
+         */
         tokenResponse?: TokenResponse;
     }
 
-    export interface ActiveClientState extends ClientState {
+    /**
+     * Describes the state that you should for an active session (after auth).
+     * The difference with ClientState is that `access_token` and
+     * `TokenResponse` **must** be present (even if they happen to be expired).
+     */
+    interface ActiveClientState extends ClientState {
+        
+        /**
+         * The (encrypted) access token
+         */
         access_token : string;
+
+        /**
+         * The response object received from the token endpoint while trying to
+         * exchange the auth code for an access token.
+         */
         tokenResponse: TokenResponse;
     }
 
-    export interface TokenResponse extends objectLiteral {
-        need_patient_banner ?: boolean;
-        smart_style_url     ?: string;
-        patient             ?: string;
-        encounter           ?: string;
-        client_id           ?: string;
+    /**
+     * The response object received from the token endpoint while trying to
+     * exchange the auth code for an access token. This object has a well-known
+     * base structure but the auth servers are free to augment it with
+     * additional properties.
+     * @see http://docs.smarthealthit.org/authorization/
+     */
+    interface TokenResponse {
+
+        /**
+         * If present, this tells the app that it is being rendered within an
+         * EHR frame and the UI outside that frame already displays the selected
+         * patient's name, age, gender etc. The app can decide to hide those
+         * details to prevent the UI from duplicated information.
+         */
+        need_patient_banner?: boolean;
+
+        /**
+         * This could be a public location of some style settings that the EHR
+         * would like to suggest. The app might look it up and optionally decide
+         * to apply some or all of it.
+         * @see https://launch.smarthealthit.org/smart-style.json
+         */
+        smart_style_url?: string;
+
+        /**
+         * If you have requested that require it (like `launch` or `launch/patient`)
+         * the selected patient ID will be available here.
+         */
+        patient?: string;
+
+        /**
+         * If you have requested that require it (like `launch` or `launch/encounter`)
+         * the selected encounter ID will be available here.
+         * **NOTE:** This is not widely supported as of 2018. 
+         */
+        encounter?: string;
+
+        /**
+         * If you have requested `openid` and `profile` scopes the profile of
+         * the active user will be available as `client_id`.
+         * **NOTE:** Regardless of it's name, this property does not store an ID
+         * but a token that also suggests the user type like `Patient/123`,
+         * `Practitioner/xyz` etc.
+         */
+        client_id?: string;
 
         /**
          * Fixed value: bearer
@@ -69,31 +182,64 @@ export namespace SMART {
          * subset of the original authorization grants
          */
         refresh_token ?: string;
+
+        /**
+         * Other properties might be passed by the server
+         */
+        [key: string]: any;
     }
 
-    export interface OAuthSecurityExtensions {
-        registrationUri : string;
-        authorizeUri    : string;
-        tokenUri        : string;
+    interface OAuthSecurityExtensions {
+
+        /**
+         * You could register new SMART client at this endpoint (if the server
+         * supports dynamic client registration)
+         */
+        registrationUri: string;
+
+        /**
+         * You must call this endpoint to ask for authorization code
+         */
+        authorizeUri: string;
+
+        /**
+         * You must call this endpoint to exchange your authorization code
+         * for an access token.
+         */
+        tokenUri: string;
     }
 
-    export interface HttpRequest {
-        url: string;
-        query?: objectLiteral;
-        headers: objectLiteral;
-        protocol: "http" | "https";
-    }
-
-    export interface HttpResponse {
-        writeHead: (code: number, headers: objectLiteral) => void;
-        end: (body?: string, encoding?: string) => void;
-        send: (body: string) => HttpResponse;
-        status: (code: number) => HttpResponse;
-    }
-
-    export interface SmartStorage {
+    /**
+     * Simple key/value storage interface
+     */
+    interface SmartStorage {
+        
+        /**
+         * Sets the `value` on `key` and returns a promise that will be resolved
+         * with the value that was set.
+         */
         set: (key: string, value: any) => Promise<any>;
+        
+        /**
+         * Gets the value at `key`. Returns a promise that will be resolved
+         * with that value (or undefined for missing keys).
+         */
         get: (key: string) => Promise<any>;
-        unset: (key: string) => Promise<any>;
+
+        /**
+         * Deletes the value at `key`. Returns a promise that will be resolved
+         * with true if the key was deleted or with false if it was not (eg. if
+         * did not exist).
+         */
+        unset: (key: string) => Promise<boolean>;
+    }
+
+    /**
+     * HTTP Request object that have been augmented with a session
+     */
+    interface HttpRequestWithSession extends IncomingMessage {
+        session: {
+            [key: string]: any;
+        };
     }
 }
