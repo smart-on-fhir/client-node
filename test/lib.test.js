@@ -346,7 +346,7 @@ describe("lib", () => {
             return lib.authorize(request, res, options, storage).then(
                 () => {
                     expect(res.ended).to.equal(true)
-                    expect(res.code).to.equal(303)
+                    expect(res.code).to.equal(302)
                     const url = Url.parse(res.headers.location, true)
                     expect(url.hostname).to.equal('launch.smarthealthit.org')
                     expect(url.pathname).to.equal('/v/r3/sim/eyJhIjoiMSJ9/auth/authorize')

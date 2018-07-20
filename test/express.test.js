@@ -108,7 +108,7 @@ describe("express adapter", () => {
             await adapter.authorize(req, res, next)
             expect(nextCalls).to.equal(0)
             expect(result.ended).to.equal(true)
-            expect(result.code).to.equal(303)
+            expect(result.code).to.equal(302)
             expect(result.headers.location).to.equal("http://whatever/")
         });
 
@@ -156,7 +156,7 @@ describe("express adapter", () => {
             await adapter.authorize(req, res, next)
             expect(nextCalls).to.equal(0)
             expect(result.ended).to.equal(true)
-            expect(result.code).to.equal(303)
+            expect(result.code).to.equal(302)
             expect(result.headers.location).to.startWith(
                 "http://launch.smarthealthit.org/v/r3/sim/eyJhIjoiMSJ9/auth/authorize?"
             )
@@ -207,7 +207,7 @@ describe("express adapter", () => {
             await adapter.authorize(req, res, next)
             expect(nextCalls).to.equal(0)
             expect(result.ended).to.equal(true)
-            expect(result.code).to.equal(303)
+            expect(result.code).to.equal(302)
             expect(result.headers.location).to.equal("http://whatever/")
         });
 
@@ -256,7 +256,7 @@ describe("express adapter", () => {
             await adapter.authorize(req, res, next)
             expect(nextCalls).to.equal(0)
             expect(result.ended).to.equal(true)
-            expect(result.code).to.equal(303)
+            expect(result.code).to.equal(302)
             expect(result.headers.location).to.startWith(
                 "http://launch.smarthealthit.org/v/r3/sim/eyJhIjoiMSJ9/auth/authorize?"
             )
@@ -309,7 +309,7 @@ describe("express adapter", () => {
             await adapter.authorize(req, res, next)
             expect(nextCalls).to.equal(0)
             expect(result.ended).to.equal(true)
-            expect(result.code).to.equal(303)
+            expect(result.code).to.equal(302)
             expect(result.headers.location).to.equal("http://whatever/")
         });
 
@@ -360,7 +360,7 @@ describe("express adapter", () => {
             await adapter.authorize(req, res, next)
             expect(nextCalls).to.equal(0)
             expect(result.ended).to.equal(true)
-            expect(result.code).to.equal(303)
+            expect(result.code).to.equal(302)
             expect(result.headers.location).to.startWith(
                 "http://launch.smarthealthit.org/v/r3/sim/eyJhIjoiMSJ9/auth/authorize?"
             )
@@ -684,7 +684,6 @@ describe("express adapter", () => {
             expect(nextCalls).to.equal(0)
             expect(result.ended).to.equal(true)
             expect(result.body).to.equal("No smart state found in session. Please re-authorize your app.")
-            // expect(result.code).to.equal(303)
         });
 
         it ("handles errors", async () => {
@@ -726,7 +725,6 @@ describe("express adapter", () => {
             expect(nextCalls).to.equal(0)
             expect(result.ended).to.equal(true)
             expect(result.body).to.equal("Trying to refresh but there is no refresh token")
-            // expect(result.code).to.equal(303)
         })
     });
 });

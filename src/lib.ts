@@ -200,7 +200,7 @@ export async function authorize(req: IncomingMessage, res: ServerResponse, optio
     debug(`Authorizing...`);
     const location = await buildAuthorizeUrl(req, options, storage);
     debug(`Making authorize redirect to ${location}`);
-    res.writeHead(303, { location });
+    res.writeHead(302, { location });
     res.end();
 }
 
