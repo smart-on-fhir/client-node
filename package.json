@@ -8,7 +8,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "lab -c -r console -o stdout -r html -o test/coverage.html -v"
+    "test": "lab -c -r console -o stdout -r html -o test/coverage.html -r lcov -o test/lcov.info -v"
   },
   "repository": {
     "type": "git",

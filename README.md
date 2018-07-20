@@ -1,6 +1,7 @@
 # SMART Client for NodeJS
 
 [![CircleCI](https://circleci.com/gh/smart-on-fhir/client-node.svg?style=svg)](https://circleci.com/gh/smart-on-fhir/client-node)
+[![codecov](https://codecov.io/gh/smart-on-fhir/client-node/branch/master/graph/badge.svg)](https://codecov.io/gh/smart-on-fhir/client-node)
 
 ### High-level API
 In this mode you create a framework-specific API that is easier to use. Currently,
