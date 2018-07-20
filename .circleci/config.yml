@@ -35,3 +35,12 @@ jobs:
         
       # run tests!
       - run: npm test
+
+      - run:
+          name: upload coverage report
+          command: |
+            if [[ "$UPLOAD_COVERAGE" != 0 ]]; then
+                PATH=$HOME/.local/bin:$PATH
+                pip install --user codecov
+                ~/.local/bin/codecov -f test/lcov.info --flags test
+            fi
