@@ -45,12 +45,6 @@ describe("lib", () => {
         })
     });
 
-    describe("base64encode", () => {
-        it("works as expected", () => {
-            expect(lib.base64encode("abcdefg")).to.equal("YWJjZGVmZw==");
-        });
-    });
-
     describe("printf", () => {
         it ("works as expected", () => {
             expect(lib.printf("aaaa")).to.equal("aaaa");
@@ -353,7 +347,7 @@ describe("lib", () => {
                 () => {
                     expect(res.ended).to.equal(true)
                     expect(res.code).to.equal(303)
-                    const url = Url.parse(res.headers.Location, true)
+                    const url = Url.parse(res.headers.location, true)
                     expect(url.hostname).to.equal('launch.smarthealthit.org')
                     expect(url.pathname).to.equal('/v/r3/sim/eyJhIjoiMSJ9/auth/authorize')
                     expect(url.query.response_type).to.equal("code")

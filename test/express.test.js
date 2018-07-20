@@ -28,43 +28,7 @@ function getDummyStorage(initialState = {}) {
     };
 }
 
-// function completeFlow() {
-    // let cookie;
-//     return axios("http://localhost:9999/demo")
-//         .then(
-//             result => {
-//                 expect(result.data).to.contain('<button type="submit">Go</button>')
-//             }
-//         )
-//         .then(() => axios({
-//             url: "http://localhost:9999/demo?fhirServiceUrl=" +
-//                 encodeURIComponent("http://launch.smarthealthit.org/v/r3/sim/eyJhIjoiMSJ9/fhir"),
-//             maxRedirects: 0
-//         }))
-//         .catch(result => {
-//             const location = result.response.headers.location;
-//             cookie = result.response.headers['set-cookie'][0].split(";").shift();
-
-//             return axios({
-//                 url: location,
-//                 maxRedirects: 0,
-//                 headers: { cookie }
-//             })
-//         })
-//         .catch(result => {
-//             const location = result.response.headers.location;
-//             return axios({
-//                 url: location,
-//                 maxRedirects: 1,
-//                 headers: { cookie }
-//             })
-//         })
-//         .then(result => ({ result, cookie }))
-// }
-
 describe("express adapter", () => {
-
-    // app.listen(9999)
 
     describe("getStorage", () => {
         it("returns null if session is empty", async () => {
@@ -97,19 +61,6 @@ describe("express adapter", () => {
             });
             expect(client.state.a).to.equal("b")
         });
-
-        // if ("can delete values from the storage", () => {
-        //     let adapter = createAdapter({});
-        //     let client = await adapter.getClient({
-        //         session: {
-        //             smartId: "x",
-        //             x: {
-        //                 a: "b"
-        //             }
-        //         }
-        //     });
-        //     expect(client.state.a).to.equal("b")
-        // });
     });
 
     describe("authorize", () => {
@@ -158,7 +109,7 @@ describe("express adapter", () => {
             expect(nextCalls).to.equal(0)
             expect(result.ended).to.equal(true)
             expect(result.code).to.equal(303)
-            expect(result.headers.Location).to.equal("http://whatever/")
+            expect(result.headers.location).to.equal("http://whatever/")
         });
 
         it("using options.serverUrl and an protected server", async () => {
@@ -206,7 +157,7 @@ describe("express adapter", () => {
             expect(nextCalls).to.equal(0)
             expect(result.ended).to.equal(true)
             expect(result.code).to.equal(303)
-            expect(result.headers.Location).to.startWith(
+            expect(result.headers.location).to.startWith(
                 "http://launch.smarthealthit.org/v/r3/sim/eyJhIjoiMSJ9/auth/authorize?"
             )
         });
@@ -257,7 +208,7 @@ describe("express adapter", () => {
             expect(nextCalls).to.equal(0)
             expect(result.ended).to.equal(true)
             expect(result.code).to.equal(303)
-            expect(result.headers.Location).to.equal("http://whatever/")
+            expect(result.headers.location).to.equal("http://whatever/")
         });
 
         it("using query.serverUrl and an protected server", async () => {
@@ -306,7 +257,7 @@ describe("express adapter", () => {
             expect(nextCalls).to.equal(0)
             expect(result.ended).to.equal(true)
             expect(result.code).to.equal(303)
-            expect(result.headers.Location).to.startWith(
+            expect(result.headers.location).to.startWith(
                 "http://launch.smarthealthit.org/v/r3/sim/eyJhIjoiMSJ9/auth/authorize?"
             )
         });
@@ -359,7 +310,7 @@ describe("express adapter", () => {
             expect(nextCalls).to.equal(0)
             expect(result.ended).to.equal(true)
             expect(result.code).to.equal(303)
-            expect(result.headers.Location).to.equal("http://whatever/")
+            expect(result.headers.location).to.equal("http://whatever/")
         });
 
         it("using query.iss and query.launch and protected server", async () => {
@@ -410,7 +361,7 @@ describe("express adapter", () => {
             expect(nextCalls).to.equal(0)
             expect(result.ended).to.equal(true)
             expect(result.code).to.equal(303)
-            expect(result.headers.Location).to.startWith(
+            expect(result.headers.location).to.startWith(
                 "http://launch.smarthealthit.org/v/r3/sim/eyJhIjoiMSJ9/auth/authorize?"
             )
         });
@@ -459,7 +410,7 @@ describe("express adapter", () => {
             await adapter.authorize(req, res, next)
             expect(nextCalls).to.equal(1)
             expect(result.ended).to.equal(false)
-            expect(result.headers.Location).to.not.exist()
+            expect(result.headers.location).to.not.exist()
         });
     });
 
@@ -673,7 +624,7 @@ describe("express adapter", () => {
             await adapter.authorize(req, res);
 
             return axios({
-                url: result.headers.Location,
+                url: result.headers.location,
                 maxRedirects: 0
             })
             .catch(x => {

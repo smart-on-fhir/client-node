@@ -54,37 +54,36 @@ export default class Client
             };
         }
 
-        return request(options)
-            .catch(error => {
+        return request(options).catch(error => {
 
-                // The request was made and the server responded with a
-                // status code that falls out of the range of 2xx
-                if (error.response) {
+            // The request was made and the server responded with a
+            // status code that falls out of the range of 2xx
+            if (error.response) {
 
-                    if (error.response.status == 401) {
-                        debug("401 received");
-                        if (getPath(this.state, "tokenResponse.refresh_token")) {
-                            debug("Refreshing using the refresh token");
-                            return this.refresh().then(() => this.request(options));
-                        }
+                if (error.response.status == 401) {
+                    debug("401 received");
+                    if (getPath(this.state, "tokenResponse.refresh_token")) {
+                        debug("Refreshing using the refresh token");
+                        return this.refresh().then(() => this.request(options));
                     }
-
-                    const resourceType = getPath(error, "response.data.resourceType");
-                    const issues = getPath(error, "response.data.issue");
-                    const body = error.response.data;
-                    if (resourceType == "OperationOutcome" && issues.length) {
-                        debug("OperationOutcome error response detected");
-                        const errors = body.issue.map((o: any) => `${o.severity} ${o.code} ${o.diagnostics}`);
-                        return Promise.reject(new Error(errors.join("\n")));
-                    }
-
-                    return Promise.reject(error);
                 }
 
-                // The request was made but no response was received
-                // "error.request" is an instance of http.ClientRequest
-                throw new Error(getErrorText("no_fhir_response"));
-            });
+                const resourceType = getPath(error, "response.data.resourceType");
+                const issues = getPath(error, "response.data.issue");
+                const body = error.response.data;
+                if (resourceType == "OperationOutcome" && issues.length) {
+                    debug("OperationOutcome error response detected");
+                    const errors = body.issue.map((o: any) => `${o.severity} ${o.code} ${o.diagnostics}`);
+                    throw new Error(errors.join("\n"));
+                }
+
+                throw error;
+            }
+
+            // The request was made but no response was received
+            // "error.request" is an instance of http.ClientRequest
+            throw new Error(getErrorText("no_fhir_response"));
+        });
     }
 
     /**

@@ -189,6 +189,10 @@ export namespace SMART {
         [key: string]: any;
     }
 
+    /**
+     * The three security endpoints that SMART servers might declare in the
+     * conformance statement
+     */
     interface OAuthSecurityExtensions {
 
         /**
@@ -212,7 +216,7 @@ export namespace SMART {
     /**
      * Simple key/value storage interface
      */
-    interface SmartStorage {
+    interface Storage {
         
         /**
          * Sets the `value` on `key` and returns a promise that will be resolved
