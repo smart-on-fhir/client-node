@@ -75,6 +75,7 @@ const smart = require("../lib/express")({
 ```
 or you just pass them to functions if you prefer the low-level api:
 ```js
+const smart = require("../lib");
 const options = {
     scope      : "openid profile offline_access",
     redirectUri: "/",
