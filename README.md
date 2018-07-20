@@ -1,15 +1,6 @@
-# client-node
-SMART client for NodeJS
+# SMART Client for NodeJS
 
-- [Configuration Options](#configuration-options)
-- [High-level API](#high-level-api)
-    - [Usage with Express](docs/express.md)
-    - [Usage with HAPI](docs/hapi.md)
-- [Low-level API](#low-level-api)
-- [The storage interface](docs/storage.md)
-
-
-## High-level API
+### High-level API
 In this mode you create a framework-specific API that is easier to use. Currently,
 we have adapters for Express and HAPI. Pull requests are welcome for other frameworks.
 Here is how to use that:
@@ -23,13 +14,13 @@ Then just use the `smart.authorize` or other methods as described in their manua
 - [HAPI](docs/hapi.md)
 
 
-## Low-level API
+### Low-level API
 
 In this mode you start by creating one configuration (`options`) object and one
 `storage` object (that implements [The storage interface](docs/storage.md))
 and pass those as parameters for the functions as shown below.
 
-### `authorize(request, response, options, storage)`
+#### `authorize(request, response, options, storage)`
 This function should be called when you have a request to an URL with
 `launch` and `iss` parameters or alternatively a `fhirServiceUrl` parameter.
 When you launch your app from outside (from an EHR or a test launcher like
@@ -43,7 +34,7 @@ app.get("/launch", (req, res) => smart.authorize(req, res, options, storage));
 ```
 
 
-### `completeAuth(request, storage)`
+#### `completeAuth(request, storage)`
 The login function above will redirect the browser to the authorization endpoint
 of the SMART server. Depending on the requested scopes, the user might be asked
 to select a patient or practitioner, authorize the app and so on. Eventually, the
@@ -62,7 +53,7 @@ app.get("/redirect", (req, res) => {
 ```
 
 
-## Configuration Options
+### Configuration Options
 The following options are supported:
 - **`clientId`** - *string, **required*** - The Client ID that you were given after registering your app with the authorization server.
 - **`redirectUri`** - *string, **required*** - The location to redirect to, once the user have authorized the launch.
