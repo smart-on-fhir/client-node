@@ -12,4 +12,4 @@ Then open http://localhost:3000 to try it.
 
 NOTE: This sample app works with the SMART Dev Sandbox and HSPC. If you want to
 try this against other servers you might have to register it there, obtain a
-`clientId` and set it [here](index.js#L15) before starting the app.
+`clientId` and set it [here](index.js#L13) before starting the app.
