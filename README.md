@@ -1,5 +1,7 @@
 # SMART Client for NodeJS
 
+[![CircleCI](https://circleci.com/gh/smart-on-fhir/client-node.svg?style=svg)](https://circleci.com/gh/smart-on-fhir/client-node)
+
 ### High-level API
 In this mode you create a framework-specific API that is easier to use. Currently,
 we have adapters for Express and HAPI. Pull requests are welcome for other frameworks.
