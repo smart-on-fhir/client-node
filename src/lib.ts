@@ -169,9 +169,6 @@ export async function buildAuthorizeUrl(req: IncomingMessage, options: SMART.Cli
     await storage.set("smartId", id);
 
     let redirectUrl = state.redirectUri;
-    if (0) { // test
-        console.log(id);
-    }
 
     if (state.authorizeUri) {
         debug(`authorizeUri: ${state.authorizeUri}`);
