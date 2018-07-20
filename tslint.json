@@ -14,7 +14,8 @@
         "object-literal-key-quotes": false,
         "one-line": false,
         "triple-equals": false,
-        "no-console": false
+        "no-console": false,
+        "max-line-length": [true, 150]
     },
     "rulesDirectory": []
 }

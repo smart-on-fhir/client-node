@@ -1,0 +1,20 @@
+{
+  "name": "client-node-hapi-example",
+  "version": "1.0.0",
+  "description": "This is an example of how the SMART Client can be used with HAPI 17",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Vladimir Ignatov <vlad.ignatov@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smart-on-fhir/client-node.git"
+  },
+  "dependencies": {
+    "hapi": "^17.5.2",
+    "hapi-server-session": "^4.2.1"
+  }
+}

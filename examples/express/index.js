@@ -1,7 +1,11 @@
+/**
+ * This is an example of how the SMART Client can be used with Express 4
+ * @author Vladimir Ignatov <vlad.ignatov@gmail.com>
+ */
 const express = require("express");
 const session = require("express-session");
 const app = express();
-const smart = require("../lib/express")({
+const smart = require("../../lib/express")({
     scope      : "openid profile offline_access",
     redirectUri: "/",
 
@@ -29,24 +33,16 @@ app.get("/", smart.completeAuth, async (req, res) => {
 
     const result = await client.request("/Patient");
     res.type('html').end(
-        '<a href="/logout">Logout</a>' +
-        '<hr/>' +
-        '<pre>' + JSON.stringify(result.data, null, 4)
-            .replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</pre>'
+        '<a href="/logout">Logout</a><hr/><pre>' +
+        JSON.stringify(result.data, null, 4).replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;") + '</pre>'
     );
 });
 
 // This is the launchUri endpoint
 app.get("/demo",  smart.authorize, (req, res) => {
-    // this is ONLY invoked if smart.authorizeSmart did not redirect due to
-    // missing parameters
-    return res.type('html').end(
-        '<form>' +
-        '<label>Fhir Server URL: </label>' +
-        '<input value="http://launch.smarthealthit.org/v/r3/sim/eyJhIjoiMSJ9/fhir" name="fhirServiceUrl" size="100">' +
-        '<button type="submit">Go</button>' +
-        '</form>'
-    );
+    // this is ONLY invoked if smart.authorizeSmart did not redirect due to missing parameters
+    return res.sendFile("form.html", { root: __dirname + '/../' });
 });
 
 // Clear the session and start over

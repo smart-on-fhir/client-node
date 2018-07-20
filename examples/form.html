@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+    <head>
+        <title>SMART Client Example</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+        <style>
+        .input-group {
+            width: 100%;
+        }
+        .input-group-addon {
+            width: 17em;
+            text-align: left;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        input.form-control[readonly] {
+            background-color: #F6F6F6;
+            color: #666;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <br/>
+        <form class="container">
+            <h1>SMART Client Example</h1>
+            <hr>
+            <h4>Fhir Server Base URL: </h4>
+            <div class="form-group">
+                <div class="input-group">
+                    <label class="input-group-addon">
+                        <input type="radio" checked name="fhirServiceUrl" value="http://launch.smarthealthit.org/v/r3/sim/eyJhIjoiMSJ9/fhir"> &nbsp; SMART Dev Sandbox
+                    </label>
+                    <input readonly value="http://launch.smarthealthit.org/v/r3/sim/eyJhIjoiMSJ9/fhir" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <label class="input-group-addon">
+                        <input type="radio" name="fhirServiceUrl" value="https://r3.smarthealthit.org"> &nbsp; SMART Dev Open Sandbox
+                    </label>
+                    <input readonly value="https://r3.smarthealthit.org" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <label class="input-group-addon">
+                        <input type="radio" name="fhirServiceUrl" value="https://api-stu3.hspconsortium.org/STU301withSynthea/data"> &nbsp; HSPC Sandbox
+                    </label>
+                    <input readonly value="https://api-stu3.hspconsortium.org/STU301withSynthea/data" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <label class="input-group-addon">
+                        <input type="radio" name="fhirServiceUrl" id="custom-url-radio"> &nbsp; Custom
+                    </label>
+                    <input placeholder="Fhir Server Base URL" class="form-control" id="custom-url-text">
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg" style="width:10em">Go</button>
+            </div>
+            <br>
+            <div class="alert alert-warning">
+                The app might fail to launch against a custom Fhir URL if it is not registered on that server.
+                This example is registered in HSPC and the SMART Dev Sandbox accepts any client ID.
+                For other protected servers you might have to modify the source code and specify your
+                correct <code>clientId</code> first.
+            </div>
+        </form>
+        <script>
+            var txt = document.getElementById("custom-url-text");
+            var rad = document.getElementById("custom-url-radio");
+            txt.oninput = txt.onchange = txt.onpaste = txt.onkeyup = function() {
+                rad.value = this.value;
+                rad.checked = true
+            };
+        </script>
+    </body>
+</html>

@@ -14,6 +14,8 @@ interface IObjectLiteral {
     [key: string]: any;
 }
 
+export { Client };
+
 /**
  * Walks thru an object (or array) and returns the value found at the
  * provided path. This function is very simple so it intentionally does not
@@ -120,11 +122,7 @@ export function resolveUrl(req: IncomingMessage, url: string): string {
  * For open server that URL is the options.redirectUri so that we can skip the
  * authorization part.
  */
-export async function buildAuthorizeUrl(
-    req: IncomingMessage,
-    options: SMART.ClientOptions,
-    storage: SMART.Storage
-): Promise<string> {
+export async function buildAuthorizeUrl(req: IncomingMessage, options: SMART.ClientOptions, storage: SMART.Storage): Promise<string> {
     const url = Url.parse(req.url as string, true);
     const { launch, iss, fhirServiceUrl } = url.query;
     const serverUrl = iss || fhirServiceUrl || options.serverUrl || "";
@@ -198,12 +196,7 @@ export async function buildAuthorizeUrl(
  * Calls the buildAuthorizeUrl function to construct the redirect URL and then
  * just redirects to it.
  */
-export async function authorize(
-    req: IncomingMessage,
-    res: ServerResponse,
-    options: SMART.ClientOptions,
-    storage: SMART.Storage
-) {
+export async function authorize(req: IncomingMessage, res: ServerResponse, options: SMART.ClientOptions, storage: SMART.Storage): Promise<any> {
     debug(`Authorizing...`);
     const location = await buildAuthorizeUrl(req, options, storage);
     debug(`Making authorize redirect to ${location}`);
@@ -211,6 +204,14 @@ export async function authorize(
     res.end();
 }
 
+/**
+ * Builds the token request options for axios. Does not make the request, just
+ * creates it's configuration and returns it in a Promise.
+ * NOTE that this function has side effects because it modifies the storage
+ * contents.
+ * @param req
+ * @param storage
+ */
 export async function buildTokenRequest(req: IncomingMessage, storage: SMART.Storage): Promise<any> {
 
     const { state, code } = Url.parse(req.url as string, true).query;
@@ -272,6 +273,10 @@ export async function buildTokenRequest(req: IncomingMessage, storage: SMART.Sto
     return requestOptions;
 }
 
+/**
+ * Creates and returns an HttpError that should explain why the token request
+ * have failed
+ */
 export function handleTokenError(result: any): HttpError {
     let msg = result.message;
 

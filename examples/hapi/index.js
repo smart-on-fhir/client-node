@@ -1,5 +1,10 @@
+/**
+ * This is an example of how the SMART Client can be used with HAPI 17.
+ * @author Vladimir Ignatov <vlad.ignatov@gmail.com>
+ */
 const Hapi  = require("hapi");
-const smart = require("../lib/hapi")({
+const fs    = require("fs");
+const smart = require("../../lib/hapi")({
     scope      : "openid profile offline_access",
     clientId   : "31488081-2a0f-467d-8888-ef53a3d5fe24",
     redirectUri: "/"
@@ -9,13 +14,7 @@ const server = Hapi.server({ port: 3000 });
 
 server.route({ method: "GET", path: "/demo", handler(request, h) {
     if (!request.query.fhirServiceUrl) {
-        return (
-            '<form>' +
-            '<label>Fhir Server URL: </label>' +
-            '<input value="http://launch.smarthealthit.org/v/r3/sim/eyJhIjoiMSJ9/fhir" name="fhirServiceUrl" size="100">' +
-            '<button type="submit">Go</button>' +
-            '</form>'
-        );
+        return fs.readFileSync("../form.html", "utf8");
     }
     return smart.authorize(request, h)
 }});
@@ -39,10 +38,9 @@ server.route({ method: "GET", path: "/", async handler(request, h) {
     }
 
     return client.request("/Patient").then(result => (
-        '<a href="/logout">Logout</a>' +
-        '<hr/>' +
-        '<pre>' + JSON.stringify(result.data, null, 4)
-            .replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</pre>'
+        '<a href="/logout">Logout</a><hr/><pre>' +
+        JSON.stringify(result.data, null, 4).replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;") + '</pre>'
     ));
 }});
 
@@ -62,6 +60,6 @@ async function start() {
     }
 
     console.log('Server running at:', server.info.uri);
-};
+}
 
 start();

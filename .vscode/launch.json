@@ -6,10 +6,10 @@
     "configurations": [
         {
             "type": "node",
+            "name": "Express Patients List",
             "request": "launch",
-            "name": "Launch Program - express-patients-list.js",
-            "program": "${workspaceFolder}/examples/express-patients-list.js",
-            "cwd": "${workspaceFolder}/examples",
+            "program": "${workspaceFolder}/examples/express/index.js",
+            "cwd": "${workspaceFolder}/examples/express/",
             "outFiles": [
                 "${workspaceFolder}/lib/*.js"
             ],
@@ -20,9 +20,9 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program - node-patients-list.js",
-            "program": "${workspaceFolder}/examples/node-patients-list.js",
-            "cwd": "${workspaceFolder}/examples",
+            "name": "Node Patients List.js",
+            "program": "${workspaceFolder}/examples/node/index.js",
+            "cwd": "${workspaceFolder}/examples/node/",
             "outFiles": [
                 "${workspaceFolder}/lib/*.js"
             ],
@@ -33,9 +33,9 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program - hapi-patients-list.js",
-            "program": "${workspaceFolder}/examples/hapi-patients-list.js",
-            "cwd": "${workspaceFolder}/examples",
+            "name": "HAPI Patients List",
+            "program": "${workspaceFolder}/examples/hapi/index.js",
+            "cwd": "${workspaceFolder}/examples/hapi/",
             "outFiles": [
                 "${workspaceFolder}/lib/*.js"
             ],

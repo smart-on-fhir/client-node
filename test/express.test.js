@@ -506,7 +506,7 @@ describe("express adapter", () => {
                 body: ""
             };
             let res = {
-                writeHead(code, headers = {}) {
+                writeHead(code) {
                     result.code = code
                 },
                 end(str = "") {
