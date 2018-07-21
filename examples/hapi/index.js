@@ -33,7 +33,7 @@ server.route({ method: "GET", path: "/", async handler(request, h) {
     const client = await smart.getClient(request);
 
     // Perhaps the server was restarted or lost it's session for some other reason
-    if (!client) { 
+    if (!client) {
         return h.redirect("/demo" );
     }
 
