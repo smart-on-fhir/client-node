@@ -14,7 +14,7 @@ const server = Hapi.server({ port: 3000 });
 
 server.route({ method: "GET", path: "/demo", handler(request, h) {
     if (!request.query.fhirServiceUrl) {
-        return fs.readFileSync("../form.html", "utf8");
+        return fs.readFileSync(__dirname + "/../form.html", "utf8");
     }
     return smart.authorize(request, h)
 }});

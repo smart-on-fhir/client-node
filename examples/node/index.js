@@ -19,7 +19,7 @@ function handleLaunchUri(req, res) {
     res.setHeader("Set-Cookie", session.cookie);
     if (!req.query.fhirServiceUrl) {
         res.setHeader("Content-type", "text/html");
-        return res.end(fs.readFileSync("../form.html"));
+        return res.end(fs.readFileSync(__dirname + "/../form.html"));
     }
     smart.authorize(req, res, smartOnFhirOptions, session);
 }

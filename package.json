@@ -8,7 +8,13 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "lab -c -r console -o stdout -r html -o test/coverage.html -r lcov -o test/lcov.info -v"
+    "test": "lab -c -r console -o stdout -r html -o test/coverage.html -r lcov -o test/lcov.info -v",
+    "test:watch": "nodemon -x 'npm test'",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "start": "node examples/node",
+    "start:express": "node examples/express",
+    "start:hapi": "node examples/hapi"
   },
   "repository": {
     "type": "git",
