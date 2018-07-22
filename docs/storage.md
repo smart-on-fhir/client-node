@@ -34,19 +34,19 @@ express app with express-session:
 ```js
 function getStorage(request) {
     return {
-       set(key, value) {
+        async set(key, value) {
             request.session[key] = value
-            return Promise.resolve(value)
+            return value
         },
-        get(key) {
-            return Promise.resolve(request.session[key])
+        async get(key) {
+            return request.session[key]
         },
-        unset(key) {
+        async unset(key) {
             if (request.session.hasOwnProperty(key)) {
-                delete request.session[key];
-                return Promise.resolve(true)
+                delete request.session[key]
+                return true
             }
-            return Promise.resolve(false)
+            return false
         }
     };
 }

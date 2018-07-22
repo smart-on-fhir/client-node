@@ -341,9 +341,9 @@ export function getSessionStorage(req: SMART.HttpRequestWithSession): SMART.Stor
          * @param {any} value
          * @returns {Promise<any>} A promise resolved with the stored value
          */
-        set(key: string, value: any): Promise<any> {
+        async set(key: string, value: any): Promise<any> {
             req.session[key] = value;
-            return Promise.resolve(value);
+            return value;
         },
 
         /**
@@ -351,8 +351,8 @@ export function getSessionStorage(req: SMART.HttpRequestWithSession): SMART.Stor
          * @param {String} key
          * @returns {Promise<any>} A promise resolved with the stored value or undefined
          */
-        get(key: string): Promise<any> {
-            return Promise.resolve(req.session[key]);
+        async get(key: string): Promise<any> {
+            return req.session[key];
         },
 
         /**
@@ -361,12 +361,12 @@ export function getSessionStorage(req: SMART.HttpRequestWithSession): SMART.Stor
          * @returns {Promise<Boolean>} A promise resolved with true if the value
          * was removed or with false otherwise
          */
-        unset(key: string): Promise<boolean> {
+        async unset(key: string): Promise<boolean> {
             if (req.session.hasOwnProperty(key)) {
                 delete req.session[key];
-                return Promise.resolve(true);
+                return true;
             }
-            return Promise.resolve(false);
+            return false;
         }
     };
 }
