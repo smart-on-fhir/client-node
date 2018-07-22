@@ -85,3 +85,12 @@ const options = {
 smart.authorize(req, res, options, storage)
 // ...
 ```
+
+### Contribution and development
+This library is written in typescript and the framework adapters are written in pure JavaScript. For best development experience you might want to have a few terminals running (`cd` into the project folder first):
+- `npm run build:watch` - will watch TS files for changes and automatically re-build the JS versions in /lib.
+- `npm run test:watch` - will run tests on any change so that if you introduce an issue you will know immediately.
+- `npm start` - will run the node example on http://localhost:3000
+    - `npm run start:express` - will run the express example on http://localhost:3000. You will have to do `cd examples/express && npm i` when you run this for the first time.
+    - `npm run start:hapi` - will run the HAPI example on http://localhost:3000. You will have to do `cd examples/hapi && npm i` when you run this for the first time.
+- `npm run build` or `npm test` if you want to build or test on demand instead of in watch mode.
