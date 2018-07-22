@@ -488,7 +488,7 @@ describe("lib", () => {
     });
 
     describe("completeAuth", () => {
-        it ("handles errors", () => {
+        it ("handles errors", { timeout: 5000 }, () => {
             const storage = getDummyStorage({
                 abc: {
                     redirectUri: "/",
@@ -506,7 +506,7 @@ describe("lib", () => {
             )
         });
 
-        it ("works as expected", async () => {
+        it ("works as expected", { timeout: 5000 }, async () => {
             const storage = getDummyStorage();
 
             const request = {
