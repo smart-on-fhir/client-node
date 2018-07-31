@@ -28,7 +28,9 @@
   },
   "homepage": "https://github.com/smart-on-fhir/client-node#readme",
   "dependencies": {
+    "@types/jsonwebtoken": "^7.2.8",
     "axios": "^0.18.0",
+    "jsonwebtoken": "^8.3.0",
     "querystring": "^0.2.0"
   },
   "devDependencies": {
