@@ -3,6 +3,7 @@ const { it, describe } = exports.lab = require("lab").script();
 const lib = require("../lib/lib");
 const axios = require("axios");
 const Client = require("../lib/client").default;
+const jwt = require("jsonwebtoken");
 
 function getDummyStorage(initialState = {}) {
     const __SESSION = { ...initialState };
@@ -238,5 +239,80 @@ describe("Client", () => {
                 expect(client.state.tokenResponse.refresh_token).to.exist();
             })
         });
+    });
+    describe ("getIdToken", async () => {
+        it ("returns null if if the client is not authorized", async () => {
+            expect(new Client({}).getIdToken()).to.equal(null);
+        });
+        it ("returns null if if the profile is not available", async () => {
+            expect(new Client({ tokenResponse: {} }).getIdToken()).to.equal(null);
+        });
+        it ("returns null if if the client is not authorized yet", async () => {
+            expect(new Client({ authorizeUri: "whatever" }).getIdToken()).to.equal(null);
+        });
+        it ("returns null if if the client is authorized but has no id_token", async () => {
+            expect(new Client({ tokenResponse: {}, scope: "openid connect" }).getIdToken()).to.equal(null);
+        });
+        it ("returns null if if the client is authorized but has no openid scope", async () => {
+            expect(new Client({ tokenResponse: {}, scope: "connect" }).getIdToken()).to.equal(null);
+        });
+        it ("returns null if if the client is authorized but has no connect scope", async () => {
+            expect(new Client({ tokenResponse: {}, scope: "openid" }).getIdToken()).to.equal(null);
+        });
+        it ("works", async () => {
+            expect(new Client({
+                tokenResponse: {
+                    id_token: jwt.sign({ foo: 'bar' }, "secret")
+                }
+            }).getIdToken().foo).to.equal('bar');
+        });
+    });
+
+    describe ("getUserProfile", () => {
+        it ("returns null if if the client is not authorized", async () => {
+            expect(new Client({}).getUserProfile()).to.equal(null);
+        });
+        it ("returns null if if the profile is not available", async () => {
+            expect(new Client({ tokenResponse: {} }).getUserProfile()).to.equal(null);
+        });
+        it ("works as expected", async () => {
+            expect(new Client({
+                tokenResponse: {
+                    id_token: jwt.sign({ profile: 'Practitioner/CORE-PRACTITIONER-1' }, "secret")
+                }
+            }).getUserProfile()).to.equal('Practitioner/CORE-PRACTITIONER-1');
+        })
+    });
+
+    describe ("getUserId", () => {
+        it ("returns null if if the client is not authorized", async () => {
+            expect(new Client({}).getUserId()).to.equal(null);
+        });
+        it ("returns null if if the profile is not available", async () => {
+            expect(new Client({ tokenResponse: {} }).getUserId()).to.equal(null);
+        });
+        it ("works as expected", async () => {
+            expect(new Client({
+                tokenResponse: {
+                    id_token: jwt.sign({ profile: 'Practitioner/CORE-PRACTITIONER-1' }, "secret")
+                }
+            }).getUserId()).to.equal('CORE-PRACTITIONER-1');
+        })
+    });
+
+    describe ("getUserType", () => {
+        it ("returns null if if the client is not authorized", async () => {
+            expect(new Client({}).getUserType()).to.equal(null);
+        });
+        it ("returns null if if the profile is not available", async () => {
+            expect(new Client({ tokenResponse: {} }).getUserType()).to.equal(null);
+        });
+        it ("works as expected", async () => {
+            expect(new Client({
+                tokenResponse: {
+                    id_token: jwt.sign({ profile: 'Practitioner/CORE-PRACTITIONER-1' }, "secret")
+                }
+            }).getUserType()).to.equal('Practitioner');
+        })
     });
 });
