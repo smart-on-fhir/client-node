@@ -540,4 +540,13 @@ describe("lib", () => {
             })
         });
     });
+
+    describe("getBundleURL", () => {
+        it ("returns null if there are no links", () => {
+            expect(lib.getBundleURL({})).to.equal(null);
+        });
+        it ("returns null if there is no next link", () => {
+            expect(lib.getBundleURL({ link: [] })).to.equal(null);
+        });
+    });
 });

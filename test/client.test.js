@@ -240,6 +240,125 @@ describe("Client", () => {
             })
         });
     });
+
+    describe ("getPatientId", async () => {
+
+        it ("works as expected with launch/patient scope", async () => {
+
+            let client;
+
+            const storage = getDummyStorage();
+
+            const request = {
+                url: "/?fhirServiceUrl=http://launch.smarthealthit.org/v/r2/sim/eyJoIjoiMSIsImIiOiI1YzdmOGRhMy1iMjRkLTQ0YTMtYjE2YS01NjVhNDM1ZDE5ODQiLCJpIjoiMSIsImoiOiIxIiwiZSI6IkNPUkVQUkFDVElUSU9ORVIxIn0/fhir",
+                connection: {},
+                headers: { host : "whatever" }
+            };
+
+            const options = {
+                clientId   : "myTestApp",
+                redirectUri: "http://whatever",
+                scope      : "launch/patient"
+            };
+
+            const authUrl = await lib.buildAuthorizeUrl(request, options, storage);
+
+            return axios({
+                url: authUrl,
+                maxRedirects: 0
+            })
+            .then(
+                () => { throw new Error("This should have produced a redirect response") },
+                result => result.response.headers.location
+            )
+            .then(redirectUrl => {
+                const req = {
+                    url: redirectUrl
+                };
+                return lib.completeAuth(req, storage);
+            })
+            .then(_client => {
+                client = _client;
+                expect(client.state.tokenResponse.patient).to.equal("5c7f8da3-b24d-44a3-b16a-565a435d1984");
+                expect(client.getPatientId()).to.equal("5c7f8da3-b24d-44a3-b16a-565a435d1984");
+            })
+        });
+
+        it ("returns null if no launch or launch/patient scope is requested", async () => {
+
+            let client;
+            const storage = getDummyStorage();
+            const request = {
+                url: "/?fhirServiceUrl=http://launch.smarthealthit.org/v/r2/sim/eyJoIjoiMSIsImIiOiI1YzdmOGRhMy1iMjRkLTQ0YTMtYjE2YS01NjVhNDM1ZDE5ODQiLCJpIjoiMSIsImoiOiIxIiwiZSI6IkNPUkVQUkFDVElUSU9ORVIxIn0/fhir",
+                connection: {},
+                headers: { host : "whatever" }
+            };
+
+            const options = {
+                clientId   : "myTestApp",
+                redirectUri: "http://whatever",
+                scope      : ""
+            };
+
+            const authUrl = await lib.buildAuthorizeUrl(request, options, storage);
+
+            return axios({
+                url: authUrl,
+                maxRedirects: 0
+            })
+            .then(
+                () => { throw new Error("This should have produced a redirect response") },
+                result => result.response.headers.location
+            )
+            .then(redirectUrl => {
+                const req = {
+                    url: redirectUrl
+                };
+                return lib.completeAuth(req, storage);
+            })
+            .then(_client => {
+                client = _client;
+                expect(client.state.tokenResponse.patient).to.equal(undefined);
+                expect(client.getPatientId()).to.equal(null);
+            })
+        });
+
+        it ("returns null if if the client is not authorized", async () => {
+            expect(new Client({}).getPatientId()).to.equal(null);
+        });
+
+        it ("returns null if if the client is not authorized yet", async () => {
+            expect(new Client({
+                authorizeUri: "whatever"
+            }).getPatientId()).to.equal(null);
+        });
+
+        it ("returns null if if the client is authorized but has no patient", async () => {
+            expect(new Client({
+                tokenResponse: {},
+                scope: "launch"
+            }).getPatientId()).to.equal(null);
+        });
+    });
+
+    describe ("getEncounterId", async () => {
+        it ("returns null if if the client is not authorized", async () => {
+            expect(new Client({}).getEncounterId()).to.equal(null);
+        });
+        it ("returns null if if the encounter is not available", async () => {
+            expect(new Client({ tokenResponse: {} }).getEncounterId()).to.equal(null);
+        });
+        it ("returns null if if the client is not authorized yet", async () => {
+            expect(new Client({ authorizeUri: "whatever" }).getEncounterId()).to.equal(null);
+        });
+        it ("returns null if if the client is authorized but has no encounter", async () => {
+            expect(new Client({ tokenResponse: {}, scope: "launch" }).getEncounterId()).to.equal(null);
+        });
+        it ("works", async () => {
+            expect(new Client({ tokenResponse: { encounter: "x" } }).getEncounterId()).to.equal("x");
+        });
+    });
+
     describe ("getIdToken", async () => {
         it ("returns null if if the client is not authorized", async () => {
             expect(new Client({}).getIdToken()).to.equal(null);
@@ -314,5 +433,60 @@ describe("Client", () => {
                 }
             }).getUserType()).to.equal('Practitioner');
         })
+    });
+
+    describe("getPages", () => {
+
+        async function test(requestOptions, maxPages) {
+            const storage = getDummyStorage();
+
+            const request = {
+                url       : "/?fhirServiceUrl=http://launch.smarthealthit.org/v/r3/sim/eyJoIjoiMSIsImoiOiIxIn0/fhir",
+                connection: {},
+                headers   : { host : "whatever" }
+            };
+
+            const options = {
+                clientId   : "myTestApp",
+                redirectUri: "http://whatever",
+                scope      : "offline_access"
+            };
+
+            const authUrl = await lib.buildAuthorizeUrl(request, options, storage);
+
+            return axios({
+                url: authUrl,
+                maxRedirects: 0
+            })
+            .then(
+                () => { throw new Error("This should have produced a redirect response") },
+                result => result.response.headers.location
+            )
+            .then(redirectUrl => {
+                const req = { url: redirectUrl };
+                return lib.completeAuth(req, storage);
+            })
+            .then(client => client.getPages(requestOptions, maxPages));
+        }
+
+        // Choose a resource that does not have that many entries but still
+        // enough to spread on multiple pages
+        it ("works as expected", { timeout: 5000 }, () => {
+            return test("/Patient", 2).then(result => {
+                expect(Array.isArray(result)).to.equal(true);
+                expect(result.length).to.equal(100);
+            });
+        });
+
+        it ("works with zero results", { timeout: 5000 }, () => {
+            return test("/Patient?name=no-such-name", 2).then(result => {
+                expect(Array.isArray(result)).to.equal(true);
+                expect(result.length).to.equal(0);
+            });
+        });
+
+        // it ("ignores entries without fullUrl", { timeout: 5000 }, () => {
+
+        // });
     });
 });

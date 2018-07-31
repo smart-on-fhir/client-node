@@ -117,6 +117,22 @@ export function resolveUrl(req: IncomingMessage, url: string): string {
 }
 
 /**
+ * Given a fhir bundle fins it's link having the given rel attribute.
+ * @param {Object} bundle FHIR JSON Bundle object
+ * @param {String} rel The rel attribute to look for: prev|next|self... (see
+ * http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1)
+ * @returns {String|null} Returns the url of the link or null if the link was
+ *                        not found.
+ */
+export function getBundleURL(bundle: SMART.FhirBundle, rel: string): string | null {
+    if (bundle.link) {
+        const nextLink = bundle.link.find(l => l.relation === rel);
+        return nextLink && nextLink.url ? nextLink.url : null;
+    }
+    return null;
+}
+
+/**
  * First discovers the fhir server base URL from query.iis or query.fhirServiceUrl
  * or options.serverUrl. Then compiles the proper authorization URL for that server.
  * For open server that URL is the options.redirectUri so that we can skip the

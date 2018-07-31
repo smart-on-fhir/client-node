@@ -246,4 +246,31 @@ export namespace SMART {
             [key: string]: any;
         };
     }
+
+    interface IDToken {
+        profile: string;
+        aud: string;
+        sub: string;
+        iss: string;
+        iat: number;
+        exp: number;
+        [key: string]: any;
+    }
+
+    interface FhirBundle {
+        link: FhirBundleNavLink[];
+        entry?: FhirBundleEntry[];
+    }
+
+    interface FhirBundleNavLink {
+        relation: string;
+        url: string;
+    }
+
+    interface FhirBundleEntry {
+        fullUrl: string; // This is optional on POSTs
+        resource?: {
+            [key: string]: any;
+        }
+    }
 }

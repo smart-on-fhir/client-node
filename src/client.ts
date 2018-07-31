@@ -1,5 +1,10 @@
 
+import request, { AxiosRequestConfig }         from "axios";
+import * as querystring                        from "querystring";
+import * as _debug                             from "debug";
 import * as jwt                                from "jsonwebtoken";
+import { SMART }                               from "..";
+import { getPath, getErrorText, getBundleURL } from "./lib";
 
 const debug = _debug("smart");
 
@@ -117,6 +122,104 @@ export default class Client
             throw error;
         });
     }
+
+    /**
+     * Returns the ID of the selected patient or null. You should have requested
+     * "launch/patient" scope. Otherwise this will return null.
+     */
+    public getPatientId(): string | null
+    {
+        const tokenResponse = this.state.tokenResponse;
+        if (tokenResponse) {
+            // We have been authorized against this server but we don't know
+            // the patient. This should be a scope issue.
+            if (!tokenResponse.patient) {
+                if (!this.state.scope.match(/\blaunch(\/patient)?\b/)) {
+                    debug(
+                        "You are trying to get the ID of the selected patient " +
+                        "but you have not used the right scopes. Please add " +
+                        "'launch/patient' to the scopes you request and try again."
+                    );
+                }
+                else {
+                    // The server should have returned the patient!
+                    debug(
+                        "The ID of the selected patient is not available. " +
+                        "Please check if your server supports that."
+                    );
+                }
+                return null;
+            }
+            return tokenResponse.patient;
+        }
+
+        if (this.state.authorizeUri) {
+            debug(
+                "You are trying to get the ID of the selected patient " +
+                "but your app is not authorized yet."
+            );
+        }
+        else {
+            debug(
+                "You are trying to get the ID of the selected patient " +
+                "but your app needs to be authorized first. Please don't use " +
+                "open fhir servers if you need to access launch context items " +
+                "like the selected patient."
+            );
+        }
+        return null;
+    }
+
+    /**
+     * Returns the ID of the selected encounter or null. You should have
+     * requested "launch/encounter" scope. Otherwise this will return null.
+     * Note that not all servers support the "launch/encounter" scope so this
+     * will be null if they don't.
+     */
+    public getEncounterId(): string | null
+    {
+        const tokenResponse = this.state.tokenResponse;
+        if (tokenResponse) {
+            // We have been authorized against this server but we don't know
+            // the encounter. This should be a scope issue.
+            if (!tokenResponse.encounter) {
+                if (!this.state.scope.match(/\blaunch(\/encounter)?\b/)) {
+                    debug(
+                        "You are trying to get the ID of the selected encounter " +
+                        "but you have not used the right scopes. Please add " +
+                        "'launch/encounter' to the scopes you request and try again."
+                    );
+                }
+                else {
+                    // The server should have returned the patient!
+                    debug(
+                        "The ID of the selected encounter is not available. " +
+                        "Please check if your server supports that, and that " +
+                        "the selected patient has any recorded encounters."
+                    );
+                }
+                return null;
+            }
+            return tokenResponse.encounter;
+        }
+
+        if (this.state.authorizeUri) {
+            debug(
+                "You are trying to get the ID of the selected encounter " +
+                "but your app is not authorized yet."
+            );
+        }
+        else {
+            debug(
+                "You are trying to get the ID of the selected encounter " +
+                "but your app needs to be authorized first. Please don't use " +
+                "open fhir servers if you need to access launch context items " +
+                "like the selected encounter."
+            );
+        }
+        return null;
+    }
+
     /**
      * Returns the (decoded) id_token if any. You need to request "openid" and
      * "profile" scopes if you need to receive an id_token (if you need to know
@@ -202,5 +305,33 @@ export default class Client
             return profile.split("/")[0];
         }
         return null;
+    }
+
+    /**
+     * Gets multiple bundle entries from multiple pages and returns an array
+     * with all their entries. This can be used to walk a server and download
+     * all the resources from certain type for example
+     * @param options Request options
+     * @param maxPages Max number of pages to fetch. Defaults to 100.
+     */
+    public getPages(
+        options: AxiosRequestConfig | string,
+        maxPages: number = 100,
+        result: SMART.FhirBundleEntry[] = []
+    ): Promise<SMART.FhirBundleEntry[]> {
+        if (typeof options == "string") {
+            options = { url: options };
+        }
+        return this.request(options).then(res => {
+            const bundle = res.data as SMART.FhirBundle;
+            result.push.apply(result, bundle.entry || []);
+            if (--maxPages) {
+                const nextUrl = getBundleURL(bundle, "next");
+                if (nextUrl) {
+                    return this.getPages({ ...options as AxiosRequestConfig, url: nextUrl }, maxPages, result);
+                }
+            }
+            return result;
+        });
     }
 }

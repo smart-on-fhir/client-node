@@ -63,7 +63,7 @@ describe("express adapter", () => {
         });
     });
 
-    describe("authorize", () => {
+    describe("authorize", { timeout: 5000 }, () => {
         it("using options.serverUrl and an open server", async () => {
             let nextCalls = 0;
 
