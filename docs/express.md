@@ -78,11 +78,11 @@ app.get("/", smart.completeAuth, async (req, res) => {
 
 ### `getClient(req)`
 See the snippet above for usage example. Given a request object this function will
-return a Promise that will eventually be resolved with a Fhir Client object or with
+return a Promise that will eventually be resolved with a SMART Client object or with
 `null` if there is a problem. It will lookup the storage for stored SMART state.
-If such state is found, it will create and return a Fhir Client instance that knows
+If such state is found, it will create and return a SMART Client instance that knows
 how to use that (automatically authorize any requests made with `client.request`,
-use clientSecret and refresh tokens etc.).
+use clientSecret and refresh tokens etc.). See the [Client API](client.md) for details.
 
 ### `refreshAuth(req, res, next)`
 You don't typically need to use this because if ou have a refresh token (which
