@@ -5,8 +5,8 @@
 const express = require("express");
 const session = require("express-session");
 const app = express();
-const smart = require("../../lib/express")({
-    scope      : "openid profile offline_access",
+const smart = require("smart-client/adapters/express")({
+    scope      : "openid profile offline_access launch/patient",
     redirectUri: "/",
 
     // this is registered at https://auth.hspconsortium.org so that you can try
@@ -63,6 +63,64 @@ app.get("/refresh", async (req, res) => {
 
     await client.refresh();
     res.json(client.state);
+});
+
+app.get("/patient", async (req, res) => {
+    const client = await smart.getClient(req);
+
+    // Perhaps the server was restarted or lost it's session for some other reason
+    if (!client) {
+        console.log("No client found in session");
+        return res.redirect("/demo")
+    }
+
+    const result = await client.request("/Patient/" + client.getPatientId());
+    res.type('html').end(
+        '<a href="/logout">Logout</a><hr/><pre>' +
+        JSON.stringify(result.data, null, 4).replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;") + '</pre>'
+    );
+});
+
+app.get("/patients", async (req, res) => {
+    const client = await smart.getClient(req);
+
+    // Perhaps the server was restarted or lost it's session for some other reason
+    if (!client) {
+        console.log("No client found in session");
+        return res.redirect("/demo")
+    }
+
+    const result = await client.getPages("/Patient", 3);
+    res.type('html').end(
+        '<a href="/logout">Logout</a><hr/><pre>' +
+        JSON.stringify(result, null, 4).replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;") + '</pre>'
+    );
+});
+
+app.get("/dump", async (req, res) => {
+    const client = await smart.getClient(req);
+
+    // Perhaps the server was restarted or lost it's session for some other reason
+    if (!client) {
+        console.log("No client found in session");
+        return res.redirect("/demo")
+    }
+
+    res.type('html').end(
+        '<a href="/logout">Logout</a><hr/><pre>' +
+        JSON.stringify({
+            state         : client.state,
+            getPatientId  : client.getPatientId(),
+            getEncounterId: client.getEncounterId(),
+            getIdToken    : client.getIdToken(),
+            getUserProfile: client.getUserProfile(),
+            getUserId     : client.getUserId(),
+            getUserType   : client.getUserType()
+        }, null, 4).replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;") + '</pre>'
+    );
 });
 
 if (!module.parent) {

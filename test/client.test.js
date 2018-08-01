@@ -35,7 +35,7 @@ describe("Client", () => {
         });
     });
 
-    describe("request", () => {
+    describe("request", { timeout: 5000 }, () => {
         it ("the url defaults to the serverUrl", () => {
             return new Client({ serverUrl: "https://r3.smarthealthit.org" }).request().then(
                 () => {
@@ -139,7 +139,7 @@ describe("Client", () => {
         });
     });
 
-    describe("refresh", () => {
+    describe("refresh", { timeout: 5000 }, () => {
         it ("rejects with no state.tokenResponse", () => {
             return new Client({}).refresh().then(
                 () => { throw new Error("This should have failed!"); },
@@ -241,7 +241,7 @@ describe("Client", () => {
         });
     });
 
-    describe ("getPatientId", async () => {
+    describe ("getPatientId", { timeout: 5000 }, async () => {
 
         it ("works as expected with launch/patient scope", async () => {
 
@@ -341,7 +341,7 @@ describe("Client", () => {
         });
     });
 
-    describe ("getEncounterId", async () => {
+    describe ("getEncounterId", { timeout: 5000 }, async () => {
         it ("returns null if if the client is not authorized", async () => {
             expect(new Client({}).getEncounterId()).to.equal(null);
         });
@@ -359,7 +359,7 @@ describe("Client", () => {
         });
     });
 
-    describe ("getIdToken", async () => {
+    describe ("getIdToken", { timeout: 5000 }, async () => {
         it ("returns null if if the client is not authorized", async () => {
             expect(new Client({}).getIdToken()).to.equal(null);
         });
@@ -387,7 +387,7 @@ describe("Client", () => {
         });
     });
 
-    describe ("getUserProfile", () => {
+    describe ("getUserProfile", { timeout: 5000 }, () => {
         it ("returns null if if the client is not authorized", async () => {
             expect(new Client({}).getUserProfile()).to.equal(null);
         });
@@ -403,7 +403,7 @@ describe("Client", () => {
         })
     });
 
-    describe ("getUserId", () => {
+    describe ("getUserId", { timeout: 5000 }, () => {
         it ("returns null if if the client is not authorized", async () => {
             expect(new Client({}).getUserId()).to.equal(null);
         });
@@ -419,7 +419,7 @@ describe("Client", () => {
         })
     });
 
-    describe ("getUserType", () => {
+    describe ("getUserType", { timeout: 5000 }, () => {
         it ("returns null if if the client is not authorized", async () => {
             expect(new Client({}).getUserType()).to.equal(null);
         });
@@ -435,7 +435,7 @@ describe("Client", () => {
         })
     });
 
-    describe("getPages", () => {
+    describe("getPages", { timeout: 15000 }, () => {
 
         async function test(requestOptions, maxPages) {
             const storage = getDummyStorage();

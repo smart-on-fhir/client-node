@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "hapi": "^17.5.2",
-    "hapi-server-session": "^4.2.1"
+    "hapi-server-session": "^4.2.1",
+    "smart-client": "^1.0.0"
   }
 }

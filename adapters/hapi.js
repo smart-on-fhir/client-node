@@ -1,4 +1,4 @@
-const smart  = require("./lib");
+const smart  = require("../lib");
 
 
 module.exports = function(options) {

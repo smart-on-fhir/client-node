@@ -2,7 +2,7 @@ const { expect } = require("code");
 const { it, describe } = exports.lab = require("lab").script();
 const axios = require("axios");
 const Url = require("url");
-const createAdapter = require("../lib/hapi");
+const createAdapter = require("../adapters/hapi");
 
 function getDummyStorage(initialState = {}) {
     const __SESSION = { ...initialState };

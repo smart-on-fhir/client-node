@@ -537,6 +537,14 @@
         <li><a href="#coverage">Coverage Report</a></li>
         <li class="">
             <span class="cov high">100</span>
+            <a href="#adapters/express.js"><span class="dirname">adapters/</span><span class="basename">express.js</span></a>
+        </li>
+        <li class="">
+            <span class="cov high">100</span>
+            <a href="#adapters/hapi.js"><span class="dirname">adapters/</span><span class="basename">hapi.js</span></a>
+        </li>
+        <li class="">
+            <span class="cov high">100</span>
             <a href="#lib/client.js"><span class="dirname">lib/</span><span class="basename">client.js</span></a>
         </li>
         <li class="">
@@ -545,11 +553,7 @@
         </li>
         <li class="">
             <span class="cov high">100</span>
-            <a href="#lib/express.js"><span class="dirname">lib/</span><span class="basename">express.js</span></a>
-        </li>
-        <li class="">
-            <span class="cov high">100</span>
-            <a href="#lib/hapi.js"><span class="dirname">lib/</span><span class="basename">hapi.js</span></a>
+            <a href="#lib/index.js"><span class="dirname">lib/</span><span class="basename">index.js</span></a>
         </li>
         <li class="">
             <span class="cov high">100</span>
@@ -563,7 +567,7 @@
           <div class="failures">0</div>
           <div class="skipped">0</div>
           <div class="test-count">113</div>
-          <div class="duration">21409</div>
+          <div class="duration">21970</div>
       </div>
       <div id="filters">
           <input type="checkbox" checked="" onchange="filter(this)" value="success" id="show-success">
@@ -649,28 +653,28 @@
               <td class="test-title">Client request the url defaults to the serverUrl
                   
               </td>
-              <td class="test-duration">586</td>
+              <td class="test-duration">113</td>
           </tr>
           <tr class="show Client request success">
               <td class="test-id">3</td>
               <td class="test-title">Client request accepts url string
                   
               </td>
-              <td class="test-duration">301</td>
+              <td class="test-duration">236</td>
           </tr>
           <tr class="show Client request success">
               <td class="test-id">4</td>
               <td class="test-title">Client request accepts options object
                   
               </td>
-              <td class="test-duration">275</td>
+              <td class="test-duration">309</td>
           </tr>
           <tr class="show Client request success">
               <td class="test-id">5</td>
               <td class="test-title">Client request handles OperationOutcome errors
                   
               </td>
-              <td class="test-duration">90</td>
+              <td class="test-duration">51</td>
           </tr>
           <tr class="show Client request success">
               <td class="test-id">6</td>
@@ -684,21 +688,21 @@
               <td class="test-title">Client request rejects invalid access tokens
                   
               </td>
-              <td class="test-duration">101</td>
+              <td class="test-duration">49</td>
           </tr>
           <tr class="show Client request success">
               <td class="test-id">8</td>
               <td class="test-title">Client request tries to use the refresh token on 401
                   
               </td>
-              <td class="test-duration">139</td>
+              <td class="test-duration">80</td>
           </tr>
           <tr class="show Client refresh success">
               <td class="test-id">9</td>
               <td class="test-title">Client refresh rejects with no state.tokenResponse
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show Client refresh success">
               <td class="test-id">10</td>
@@ -712,7 +716,7 @@
               <td class="test-title">Client refresh deletes invalid refresh tokens
                   
               </td>
-              <td class="test-duration">68</td>
+              <td class="test-duration">88</td>
           </tr>
           <tr class="show Client refresh success">
               <td class="test-id">12</td>
@@ -726,21 +730,21 @@
               <td class="test-title">Client refresh works as expected
                   
               </td>
-              <td class="test-duration">589</td>
+              <td class="test-duration">1089</td>
           </tr>
           <tr class="show Client getPatientId success">
               <td class="test-id">14</td>
               <td class="test-title">Client getPatientId works as expected with launch/patient scope
                   
               </td>
-              <td class="test-duration">443</td>
+              <td class="test-duration">1523</td>
           </tr>
           <tr class="show Client getPatientId success">
               <td class="test-id">15</td>
               <td class="test-title">Client getPatientId returns null if no launch or launch/patient scope is requested
                   
               </td>
-              <td class="test-duration">435</td>
+              <td class="test-duration">1065</td>
           </tr>
           <tr class="show Client getPatientId success">
               <td class="test-id">16</td>
@@ -803,7 +807,7 @@
               <td class="test-title">Client getIdToken returns null if if the client is not authorized
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show Client getIdToken success">
               <td class="test-id">25</td>
@@ -838,7 +842,7 @@
               <td class="test-title">Client getIdToken returns null if if the client is authorized but has no connect scope
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show Client getIdToken success">
               <td class="test-id">30</td>
@@ -859,21 +863,21 @@
               <td class="test-title">Client getUserProfile returns null if if the profile is not available
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show Client getUserProfile success">
               <td class="test-id">33</td>
               <td class="test-title">Client getUserProfile works as expected
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show Client getUserId success">
               <td class="test-id">34</td>
               <td class="test-title">Client getUserId returns null if if the client is not authorized
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show Client getUserId success">
               <td class="test-id">35</td>
@@ -894,14 +898,14 @@
               <td class="test-title">Client getUserType returns null if if the client is not authorized
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show Client getUserType success">
               <td class="test-id">38</td>
               <td class="test-title">Client getUserType returns null if if the profile is not available
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show Client getUserType success">
               <td class="test-id">39</td>
@@ -915,14 +919,14 @@
               <td class="test-title">Client getPages works as expected
                   
               </td>
-              <td class="test-duration">1092</td>
+              <td class="test-duration">3054</td>
           </tr>
           <tr class="show Client getPages success">
               <td class="test-id">41</td>
               <td class="test-title">Client getPages works with zero results
                   
               </td>
-              <td class="test-duration">613</td>
+              <td class="test-duration">537</td>
           </tr>
           <tr class="show express_adapter getStorage success">
               <td class="test-id">42</td>
@@ -936,7 +940,7 @@
               <td class="test-title">express adapter getStorage can be set as option
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show express_adapter getStorage success">
               <td class="test-id">44</td>
@@ -950,70 +954,70 @@
               <td class="test-title">express adapter authorize using options.serverUrl and an open server
                   
               </td>
-              <td class="test-duration">303</td>
+              <td class="test-duration">323</td>
           </tr>
           <tr class="show express_adapter authorize success">
               <td class="test-id">46</td>
               <td class="test-title">express adapter authorize using options.serverUrl and an protected server
                   
               </td>
-              <td class="test-duration">342</td>
+              <td class="test-duration">419</td>
           </tr>
           <tr class="show express_adapter authorize success">
               <td class="test-id">47</td>
               <td class="test-title">express adapter authorize using query.serverUrl and an open server
                   
               </td>
-              <td class="test-duration">313</td>
+              <td class="test-duration">325</td>
           </tr>
           <tr class="show express_adapter authorize success">
               <td class="test-id">48</td>
               <td class="test-title">express adapter authorize using query.serverUrl and an protected server
                   
               </td>
-              <td class="test-duration">383</td>
+              <td class="test-duration">321</td>
           </tr>
           <tr class="show express_adapter authorize success">
               <td class="test-id">49</td>
               <td class="test-title">express adapter authorize using query.iss and query.launch and an open server
                   
               </td>
-              <td class="test-duration">307</td>
+              <td class="test-duration">279</td>
           </tr>
           <tr class="show express_adapter authorize success">
               <td class="test-id">50</td>
               <td class="test-title">express adapter authorize using query.iss and query.launch and protected server
                   
               </td>
-              <td class="test-duration">3276</td>
+              <td class="test-duration">336</td>
           </tr>
           <tr class="show express_adapter authorize success">
               <td class="test-id">51</td>
               <td class="test-title">express adapter authorize calls next if not enough arguments
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show express_adapter completeAuth success">
               <td class="test-id">52</td>
               <td class="test-title">express adapter completeAuth ends with error and error_description if provided
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">2</td>
           </tr>
           <tr class="show express_adapter completeAuth success">
               <td class="test-id">53</td>
               <td class="test-title">express adapter completeAuth handles internal errors
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show express_adapter completeAuth success">
               <td class="test-id">54</td>
               <td class="test-title">express adapter completeAuth handles errors
                   
               </td>
-              <td class="test-duration">1064</td>
+              <td class="test-duration">51</td>
           </tr>
           <tr class="show express_adapter completeAuth success">
               <td class="test-id">55</td>
@@ -1027,14 +1031,14 @@
               <td class="test-title">express adapter completeAuth works as expected
                   
               </td>
-              <td class="test-duration">583</td>
+              <td class="test-duration">564</td>
           </tr>
           <tr class="show express_adapter refreshAuth success">
               <td class="test-id">57</td>
               <td class="test-title">express adapter refreshAuth ends with error message if no client can be constructed
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show express_adapter refreshAuth success">
               <td class="test-id">58</td>
@@ -1055,56 +1059,56 @@
               <td class="test-title">hapi adapter getStorage can be set as option
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show hapi_adapter getStorage success">
               <td class="test-id">61</td>
               <td class="test-title">hapi adapter getStorage uses session storage by default
                   
               </td>
-              <td class="test-duration">2</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show hapi_adapter authorize success">
               <td class="test-id">62</td>
               <td class="test-title">hapi adapter authorize using options.serverUrl and an open server
                   
               </td>
-              <td class="test-duration">318</td>
+              <td class="test-duration">381</td>
           </tr>
           <tr class="show hapi_adapter authorize success">
               <td class="test-id">63</td>
               <td class="test-title">hapi adapter authorize using options.serverUrl and an protected server
                   
               </td>
-              <td class="test-duration">332</td>
+              <td class="test-duration">383</td>
           </tr>
           <tr class="show hapi_adapter authorize success">
               <td class="test-id">64</td>
               <td class="test-title">hapi adapter authorize using query.serverUrl and an open server
                   
               </td>
-              <td class="test-duration">321</td>
+              <td class="test-duration">263</td>
           </tr>
           <tr class="show hapi_adapter authorize success">
               <td class="test-id">65</td>
               <td class="test-title">hapi adapter authorize using query.serverUrl and an protected server
                   
               </td>
-              <td class="test-duration">341</td>
+              <td class="test-duration">360</td>
           </tr>
           <tr class="show hapi_adapter authorize success">
               <td class="test-id">66</td>
               <td class="test-title">hapi adapter authorize using query.iss and query.launch and an open server
                   
               </td>
-              <td class="test-duration">306</td>
+              <td class="test-duration">284</td>
           </tr>
           <tr class="show hapi_adapter authorize success">
               <td class="test-id">67</td>
               <td class="test-title">hapi adapter authorize using query.iss and query.launch and protected server
                   
               </td>
-              <td class="test-duration">336</td>
+              <td class="test-duration">342</td>
           </tr>
           <tr class="show hapi_adapter authorize success">
               <td class="test-id">68</td>
@@ -1118,7 +1122,7 @@
               <td class="test-title">hapi adapter completeAuth ends with error and error_description if provided
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show hapi_adapter completeAuth success">
               <td class="test-id">70</td>
@@ -1132,21 +1136,21 @@
               <td class="test-title">hapi adapter completeAuth calls next if not enough arguments provided
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show hapi_adapter completeAuth success">
               <td class="test-id">72</td>
               <td class="test-title">hapi adapter completeAuth works as expected
                   
               </td>
-              <td class="test-duration">729</td>
+              <td class="test-duration">617</td>
           </tr>
           <tr class="show hapi_adapter refreshAuth success">
               <td class="test-id">73</td>
               <td class="test-title">hapi adapter refreshAuth ends with error message if no client can be constructed
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show hapi_adapter refreshAuth success">
               <td class="test-id">74</td>
@@ -1160,21 +1164,21 @@
               <td class="test-title">lib getPath returns the first arg if no path
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib getPath success">
               <td class="test-id">76</td>
               <td class="test-title">lib getPath returns the first arg for empty path
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show lib getPath success">
               <td class="test-id">77</td>
               <td class="test-title">lib getPath works as expected
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib printf success">
               <td class="test-id">78</td>
@@ -1188,7 +1192,7 @@
               <td class="test-title">lib getErrorText works as expected
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib HttpError constructor success">
               <td class="test-id">80</td>
@@ -1209,14 +1213,14 @@
               <td class="test-title">lib HttpError constructor The httpCode can be set
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib HttpError constructor success">
               <td class="test-id">83</td>
               <td class="test-title">lib HttpError constructor Variable substitution works
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show lib getSecurityExtensions success">
               <td class="test-id">84</td>
@@ -1230,49 +1234,49 @@
               <td class="test-title">lib getSecurityExtensions Works with HSPC
                   
               </td>
-              <td class="test-duration">1076</td>
+              <td class="test-duration">4321</td>
           </tr>
           <tr class="show lib getSecurityExtensions success">
               <td class="test-id">86</td>
               <td class="test-title">lib getSecurityExtensions Works with R3 - Protected
                   
               </td>
-              <td class="test-duration">315</td>
+              <td class="test-duration">1631</td>
           </tr>
           <tr class="show lib getSecurityExtensions success">
               <td class="test-id">87</td>
               <td class="test-title">lib getSecurityExtensions Works with R3 - Open
                   
               </td>
-              <td class="test-duration">366</td>
+              <td class="test-duration">858</td>
           </tr>
           <tr class="show lib resolveUrl success">
               <td class="test-id">88</td>
               <td class="test-title">lib resolveUrl works as expected
                   
               </td>
-              <td class="test-duration">4</td>
+              <td class="test-duration">3</td>
           </tr>
           <tr class="show lib buildAuthorizeUrl success">
               <td class="test-id">89</td>
               <td class="test-title">lib buildAuthorizeUrl Rejects if no serverUrl can be found
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">2</td>
           </tr>
           <tr class="show lib buildAuthorizeUrl success">
               <td class="test-id">90</td>
               <td class="test-title">lib buildAuthorizeUrl Works with open servers
                   
               </td>
-              <td class="test-duration">4</td>
+              <td class="test-duration">5</td>
           </tr>
           <tr class="show lib buildAuthorizeUrl success">
               <td class="test-id">91</td>
               <td class="test-title">lib buildAuthorizeUrl Works with query.fhirServiceUrl parameter
                   
               </td>
-              <td class="test-duration">3</td>
+              <td class="test-duration">4</td>
           </tr>
           <tr class="show lib buildAuthorizeUrl success">
               <td class="test-id">92</td>
@@ -1286,42 +1290,42 @@
               <td class="test-title">lib buildAuthorizeUrl requires &#x27;launch&#x27; param if &#x27;iss&#x27; is used
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib buildAuthorizeUrl success">
               <td class="test-id">94</td>
               <td class="test-title">lib buildAuthorizeUrl clears previous state
                   
               </td>
-              <td class="test-duration">4</td>
+              <td class="test-duration">7</td>
           </tr>
           <tr class="show lib buildAuthorizeUrl success">
               <td class="test-id">95</td>
               <td class="test-title">lib buildAuthorizeUrl Works with clientSecret
                   
               </td>
-              <td class="test-duration">3</td>
+              <td class="test-duration">2</td>
           </tr>
           <tr class="show lib buildAuthorizeUrl success">
               <td class="test-id">96</td>
               <td class="test-title">lib buildAuthorizeUrl Works with protected servers
                   
               </td>
-              <td class="test-duration">323</td>
+              <td class="test-duration">358</td>
           </tr>
           <tr class="show lib buildAuthorizeUrl success">
               <td class="test-id">97</td>
               <td class="test-title">lib buildAuthorizeUrl Works with protected servers standalone
                   
               </td>
-              <td class="test-duration">323</td>
+              <td class="test-duration">402</td>
           </tr>
           <tr class="show lib authorize success">
               <td class="test-id">98</td>
               <td class="test-title">lib authorize works as expected
                   
               </td>
-              <td class="test-duration">1948</td>
+              <td class="test-duration">332</td>
           </tr>
           <tr class="show lib buildTokenRequest success">
               <td class="test-id">99</td>
@@ -1335,7 +1339,7 @@
               <td class="test-title">lib buildTokenRequest rejects if there is no redirectUri in state
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib buildTokenRequest success">
               <td class="test-id">101</td>
@@ -1356,14 +1360,14 @@
               <td class="test-title">lib buildTokenRequest works as expected
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show lib buildTokenRequest success">
               <td class="test-id">104</td>
               <td class="test-title">lib buildTokenRequest works with clientSecret
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib handleTokenError success">
               <td class="test-id">105</td>
@@ -1384,7 +1388,7 @@
               <td class="test-title">lib handleTokenError catches &#x27;error&#x27; property in response payloads
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib handleTokenError success">
               <td class="test-id">108</td>
@@ -1405,28 +1409,28 @@
               <td class="test-title">lib completeAuth handles errors
                   
               </td>
-              <td class="test-duration">2235</td>
+              <td class="test-duration">54</td>
           </tr>
           <tr class="show lib completeAuth success">
               <td class="test-id">111</td>
               <td class="test-title">lib completeAuth works as expected
                   
               </td>
-              <td class="test-duration">754</td>
+              <td class="test-duration">482</td>
           </tr>
           <tr class="show lib getBundleURL success">
               <td class="test-id">112</td>
               <td class="test-title">lib getBundleURL returns null if there are no links
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib getBundleURL success">
               <td class="test-id">113</td>
               <td class="test-title">lib getBundleURL returns null if there is no next link
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           </tbody>
       </table>
@@ -1435,8 +1439,8 @@
         <h1>Code Coverage Report</h1>
         <div class="stats high">
             <div class="percentage">100%</div>
-            <div class="sloc">549</div>
-            <div class="hits">549</div>
+            <div class="sloc">554</div>
+            <div class="hits">554</div>
             <div class="misses">0</div>
         </div>
         <div id="filters">
@@ -1444,6 +1448,1250 @@
           <label for="show-generated">Show generated files</label>
         </div>
         <div id="files">
+            <div class="file ">
+                <h2 id="adapters/express.js">adapters/express.js </h2>
+                <div class="stats high">
+                    <div class="percentage">100%</div>
+                    <div class="sloc">49</div>
+                    <div class="hits">49</div>
+                    <div class="misses">0</div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Line</th>
+                            <th>Lint</th>
+                            <th>Hits</th>
+                            <th>Source</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="adapters/express.js__1" class="hit">
+                          <td class="line" data-tooltip>1</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">const smart &#x3D; require(&quot;../lib&quot;);</td>
+                          
+                        </tr>            <tr id="adapters/express.js__2" class="hit">
+                          <td class="line" data-tooltip>2</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/express.js__3" class="hit">
+                          <td class="line" data-tooltip>3</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/express.js__4" class="hit">
+                          <td class="line" data-tooltip>4</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">module.exports &#x3D; function(options) {</td>
+                          
+                        </tr>            <tr id="adapters/express.js__5" class="hit">
+                          <td class="line" data-tooltip>5</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">    const cfg &#x3D; { getStorage: smart.getSessionStorage, ...options };</td>
+                          
+                        </tr>            <tr id="adapters/express.js__6" class="hit">
+                          <td class="line" data-tooltip>6</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/express.js__7" class="hit">
+                          <td class="line" data-tooltip>7</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">    // Return the Express-specific high-level API</td>
+                          
+                        </tr>            <tr id="adapters/express.js__8" class="hit">
+                          <td class="line" data-tooltip>8</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>17</td>
+                          <td class="source">    return {</td>
+                          
+                        </tr>            <tr id="adapters/express.js__9" class="hit">
+                          <td class="line" data-tooltip>9</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/express.js__10" class="hit">
+                          <td class="line" data-tooltip>10</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        /**</td>
+                          
+                        </tr>            <tr id="adapters/express.js__11" class="hit">
+                          <td class="line" data-tooltip>11</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * Given a request object this function will return a Promise that will</td>
+                          
+                        </tr>            <tr id="adapters/express.js__12" class="hit">
+                          <td class="line" data-tooltip>12</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * eventually be resolved with a Fhir Client object or with &#x60;null&#x60; if</td>
+                          
+                        </tr>            <tr id="adapters/express.js__13" class="hit">
+                          <td class="line" data-tooltip>13</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * there is a problem. It will lookup the storage for stored SMART state.</td>
+                          
+                        </tr>            <tr id="adapters/express.js__14" class="hit">
+                          <td class="line" data-tooltip>14</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * If such state is found, it will create and return a Fhir Client</td>
+                          
+                        </tr>            <tr id="adapters/express.js__15" class="hit">
+                          <td class="line" data-tooltip>15</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * instance that knows how to use that (automatically authorize any</td>
+                          
+                        </tr>            <tr id="adapters/express.js__16" class="hit">
+                          <td class="line" data-tooltip>16</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * requests made with &#x60;client.request&#x60;, use clientSecret and refresh</td>
+                          
+                        </tr>            <tr id="adapters/express.js__17" class="hit">
+                          <td class="line" data-tooltip>17</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * tokens etc.).</td>
+                          
+                        </tr>            <tr id="adapters/express.js__18" class="hit">
+                          <td class="line" data-tooltip>18</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Object} request</td>
+                          
+                        </tr>            <tr id="adapters/express.js__19" class="hit">
+                          <td class="line" data-tooltip>19</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @returns {Promise&lt;Client|null&gt;}</td>
+                          
+                        </tr>            <tr id="adapters/express.js__20" class="hit">
+                          <td class="line" data-tooltip>20</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         */</td>
+                          
+                        </tr>            <tr id="adapters/express.js__21" class="hit">
+                          <td class="line" data-tooltip>21</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        async getClient(request) {</td>
+                          
+                        </tr>            <tr id="adapters/express.js__22" class="hit">
+                          <td class="line" data-tooltip>22</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            const storage &#x3D; cfg.getStorage(request);</td>
+                          
+                        </tr>            <tr id="adapters/express.js__23" class="hit">
+                          <td class="line" data-tooltip>23</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>7</td>
+                          <td class="source">            const id &#x3D; await storage.get(&quot;smartId&quot;);</td>
+                          
+                        </tr>            <tr id="adapters/express.js__24" class="hit">
+                          <td class="line" data-tooltip>24</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>7</td>
+                          <td class="source">            if (id) {</td>
+                          
+                        </tr>            <tr id="adapters/express.js__25" class="hit">
+                          <td class="line" data-tooltip>25</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>5</td>
+                          <td class="source">                const state &#x3D; await storage.get(id);</td>
+                          
+                        </tr>            <tr id="adapters/express.js__26" class="hit">
+                          <td class="line" data-tooltip>26</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>5</td>
+                          <td class="source">                if (state) {</td>
+                          
+                        </tr>            <tr id="adapters/express.js__27" class="hit">
+                          <td class="line" data-tooltip>27</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>4</td>
+                          <td class="source">                    return new smart.Client(state);</td>
+                          
+                        </tr>            <tr id="adapters/express.js__28" class="hit">
+                          <td class="line" data-tooltip>28</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                }</td>
+                          
+                        </tr>            <tr id="adapters/express.js__29" class="hit">
+                          <td class="line" data-tooltip>29</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            }</td>
+                          
+                        </tr>            <tr id="adapters/express.js__30" class="hit">
+                          <td class="line" data-tooltip>30</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>3</td>
+                          <td class="source">            return null;</td>
+                          
+                        </tr>            <tr id="adapters/express.js__31" class="hit">
+                          <td class="line" data-tooltip>31</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        },</td>
+                          
+                        </tr>            <tr id="adapters/express.js__32" class="hit">
+                          <td class="line" data-tooltip>32</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/express.js__33" class="hit">
+                          <td class="line" data-tooltip>33</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        /**</td>
+                          
+                        </tr>            <tr id="adapters/express.js__34" class="hit">
+                          <td class="line" data-tooltip>34</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * If the fhir server base can be determined (from query.iss or</td>
+                          
+                        </tr>            <tr id="adapters/express.js__35" class="hit">
+                          <td class="line" data-tooltip>35</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * query.fhirServiceUrl or options.serverUrl), then the user will be</td>
+                          
+                        </tr>            <tr id="adapters/express.js__36" class="hit">
+                          <td class="line" data-tooltip>36</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * redirected to the authorization endpoint (or to your redirectUri if</td>
+                          
+                        </tr>            <tr id="adapters/express.js__37" class="hit">
+                          <td class="line" data-tooltip>37</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * it happens to be an open server). Otherwise, the &#x60;next&#x60; callback</td>
+                          
+                        </tr>            <tr id="adapters/express.js__38" class="hit">
+                          <td class="line" data-tooltip>38</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * will be called.</td>
+                          
+                        </tr>            <tr id="adapters/express.js__39" class="hit">
+                          <td class="line" data-tooltip>39</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Object} req</td>
+                          
+                        </tr>            <tr id="adapters/express.js__40" class="hit">
+                          <td class="line" data-tooltip>40</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Object} res</td>
+                          
+                        </tr>            <tr id="adapters/express.js__41" class="hit">
+                          <td class="line" data-tooltip>41</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Function} next</td>
+                          
+                        </tr>            <tr id="adapters/express.js__42" class="hit">
+                          <td class="line" data-tooltip>42</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         */</td>
+                          
+                        </tr>            <tr id="adapters/express.js__43" class="hit">
+                          <td class="line" data-tooltip>43</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        authorize(req, res, next) {</td>
+                          
+                        </tr>            <tr id="adapters/express.js__44" class="hit">
+                          <td class="line" data-tooltip>44</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            let { launch, iss, fhirServiceUrl } &#x3D; req.query;</td>
+                          
+                        </tr>            <tr id="adapters/express.js__45" class="hit">
+                          <td class="line" data-tooltip>45</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>8</td>
+                          <td class="source">            if ((launch &amp;&amp; iss) || fhirServiceUrl || cfg.serverUrl) {</td>
+                          
+                        </tr>            <tr id="adapters/express.js__46" class="hit">
+                          <td class="line" data-tooltip>46</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>7</td>
+                          <td class="source">                return smart.authorize(req, res, cfg, cfg.getStorage(req));</td>
+                          
+                        </tr>            <tr id="adapters/express.js__47" class="hit">
+                          <td class="line" data-tooltip>47</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            }</td>
+                          
+                        </tr>            <tr id="adapters/express.js__48" class="hit">
+                          <td class="line" data-tooltip>48</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">            next();</td>
+                          
+                        </tr>            <tr id="adapters/express.js__49" class="hit">
+                          <td class="line" data-tooltip>49</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        },</td>
+                          
+                        </tr>            <tr id="adapters/express.js__50" class="hit">
+                          <td class="line" data-tooltip>50</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/express.js__51" class="hit">
+                          <td class="line" data-tooltip>51</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        /**</td>
+                          
+                        </tr>            <tr id="adapters/express.js__52" class="hit">
+                          <td class="line" data-tooltip>52</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * The &#x60;authorize&#x60; function above will redirect the browser to the</td>
+                          
+                        </tr>            <tr id="adapters/express.js__53" class="hit">
+                          <td class="line" data-tooltip>53</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * authorization endpoint of the SMART server. Depending on the requested</td>
+                          
+                        </tr>            <tr id="adapters/express.js__54" class="hit">
+                          <td class="line" data-tooltip>54</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * scopes, the user might be asked to select a patient or practitioner,</td>
+                          
+                        </tr>            <tr id="adapters/express.js__55" class="hit">
+                          <td class="line" data-tooltip>55</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * authorize the app and so on. Eventually, the user will be redirected</td>
+                          
+                        </tr>            <tr id="adapters/express.js__56" class="hit">
+                          <td class="line" data-tooltip>56</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * back to your site at your &#x60;options.redirectUri&#x60;. At that point you</td>
+                          
+                        </tr>            <tr id="adapters/express.js__57" class="hit">
+                          <td class="line" data-tooltip>57</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * should have received a code that needs to be exchanged for an access</td>
+                          
+                        </tr>            <tr id="adapters/express.js__58" class="hit">
+                          <td class="line" data-tooltip>58</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * token.</td>
+                          
+                        </tr>            <tr id="adapters/express.js__59" class="hit">
+                          <td class="line" data-tooltip>59</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Object} req</td>
+                          
+                        </tr>            <tr id="adapters/express.js__60" class="hit">
+                          <td class="line" data-tooltip>60</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Object} res</td>
+                          
+                        </tr>            <tr id="adapters/express.js__61" class="hit">
+                          <td class="line" data-tooltip>61</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Function} next</td>
+                          
+                        </tr>            <tr id="adapters/express.js__62" class="hit">
+                          <td class="line" data-tooltip>62</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         */</td>
+                          
+                        </tr>            <tr id="adapters/express.js__63" class="hit">
+                          <td class="line" data-tooltip>63</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        completeAuth(req, res, next) {</td>
+                          
+                        </tr>            <tr id="adapters/express.js__64" class="hit">
+                          <td class="line" data-tooltip>64</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            let { code, state, error, error_description } &#x3D; req.query;</td>
+                          
+                        </tr>            <tr id="adapters/express.js__65" class="hit">
+                          <td class="line" data-tooltip>65</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>6</td>
+                          <td class="source">            if (error) {</td>
+                          
+                        </tr>            <tr id="adapters/express.js__66" class="hit">
+                          <td class="line" data-tooltip>66</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">                let msg &#x3D; error + (error_description ? &quot;:\n&quot; + error_description : &quot;&quot;);</td>
+                          
+                        </tr>            <tr id="adapters/express.js__67" class="hit">
+                          <td class="line" data-tooltip>67</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">                return res.end(msg);</td>
+                          
+                        </tr>            <tr id="adapters/express.js__68" class="hit">
+                          <td class="line" data-tooltip>68</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            }</td>
+                          
+                        </tr>            <tr id="adapters/express.js__69" class="hit">
+                          <td class="line" data-tooltip>69</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>4</td>
+                          <td class="source">            if (code &amp;&amp; state) {</td>
+                          
+                        </tr>            <tr id="adapters/express.js__70" class="hit">
+                          <td class="line" data-tooltip>70</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>3</td>
+                          <td class="source">                return smart.completeAuth(req, cfg.getStorage(req))</td>
+                          
+                        </tr>            <tr id="adapters/express.js__71" class="hit">
+                          <td class="line" data-tooltip>71</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                    .then(</td>
+                          
+                        </tr>            <tr id="adapters/express.js__72" class="hit">
+                          <td class="line" data-tooltip>72</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                        () &#x3D;&gt; res.redirect(cfg.redirectUri),</td>
+                          
+                        </tr>            <tr id="adapters/express.js__73" class="hit">
+                          <td class="line" data-tooltip>73</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                        e &#x3D;&gt; {</td>
+                          
+                        </tr>            <tr id="adapters/express.js__74" class="hit">
+                          <td class="line" data-tooltip>74</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                            res.writeHead(e.httpCode || 500, { &#x27;Content-Type&#x27;: &#x27;text/plain&#x27; });</td>
+                          
+                        </tr>            <tr id="adapters/express.js__75" class="hit">
+                          <td class="line" data-tooltip>75</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">                            res.end(e.message, &quot;utf8&quot;);</td>
+                          
+                        </tr>            <tr id="adapters/express.js__76" class="hit">
+                          <td class="line" data-tooltip>76</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                        }</td>
+                          
+                        </tr>            <tr id="adapters/express.js__77" class="hit">
+                          <td class="line" data-tooltip>77</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                    );</td>
+                          
+                        </tr>            <tr id="adapters/express.js__78" class="hit">
+                          <td class="line" data-tooltip>78</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            }</td>
+                          
+                        </tr>            <tr id="adapters/express.js__79" class="hit">
+                          <td class="line" data-tooltip>79</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">            next();</td>
+                          
+                        </tr>            <tr id="adapters/express.js__80" class="hit">
+                          <td class="line" data-tooltip>80</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        },</td>
+                          
+                        </tr>            <tr id="adapters/express.js__81" class="hit">
+                          <td class="line" data-tooltip>81</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/express.js__82" class="hit">
+                          <td class="line" data-tooltip>82</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        /**</td>
+                          
+                        </tr>            <tr id="adapters/express.js__83" class="hit">
+                          <td class="line" data-tooltip>83</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * You don&#x27;t typically need to use this because if you have a refresh</td>
+                          
+                        </tr>            <tr id="adapters/express.js__84" class="hit">
+                          <td class="line" data-tooltip>84</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * token (which you should if your scope includes &#x60;offline_access&#x60;),</td>
+                          
+                        </tr>            <tr id="adapters/express.js__85" class="hit">
+                          <td class="line" data-tooltip>85</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * then the request method will automatically use it when your access</td>
+                          
+                        </tr>            <tr id="adapters/express.js__86" class="hit">
+                          <td class="line" data-tooltip>86</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * token expires.</td>
+                          
+                        </tr>            <tr id="adapters/express.js__87" class="hit">
+                          <td class="line" data-tooltip>87</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Object} req</td>
+                          
+                        </tr>            <tr id="adapters/express.js__88" class="hit">
+                          <td class="line" data-tooltip>88</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Object} res</td>
+                          
+                        </tr>            <tr id="adapters/express.js__89" class="hit">
+                          <td class="line" data-tooltip>89</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Function} next</td>
+                          
+                        </tr>            <tr id="adapters/express.js__90" class="hit">
+                          <td class="line" data-tooltip>90</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         */</td>
+                          
+                        </tr>            <tr id="adapters/express.js__91" class="hit">
+                          <td class="line" data-tooltip>91</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        async refreshAuth(req, res, next) {</td>
+                          
+                        </tr>            <tr id="adapters/express.js__92" class="hit">
+                          <td class="line" data-tooltip>92</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            const client &#x3D; await this.getClient(req);</td>
+                          
+                        </tr>            <tr id="adapters/express.js__93" class="hit">
+                          <td class="line" data-tooltip>93</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/express.js__94" class="hit">
+                          <td class="line" data-tooltip>94</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            // Perhaps the server was restarted or lost it&#x27;s session for some other reason</td>
+                          
+                        </tr>            <tr id="adapters/express.js__95" class="hit">
+                          <td class="line" data-tooltip>95</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>3</td>
+                          <td class="source">            if (!client) {</td>
+                          
+                        </tr>            <tr id="adapters/express.js__96" class="hit">
+                          <td class="line" data-tooltip>96</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">                return res.end(&quot;No smart state found in session. Please re-authorize your app.&quot;)</td>
+                          
+                        </tr>            <tr id="adapters/express.js__97" class="hit">
+                          <td class="line" data-tooltip>97</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            }</td>
+                          
+                        </tr>            <tr id="adapters/express.js__98" class="hit">
+                          <td class="line" data-tooltip>98</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/express.js__99" class="hit">
+                          <td class="line" data-tooltip>99</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">            return client.refresh().then(() &#x3D;&gt; next(), error &#x3D;&gt; res.end(error.message));</td>
+                          
+                        </tr>            <tr id="adapters/express.js__100" class="hit">
+                          <td class="line" data-tooltip>100</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        }</td>
+                          
+                        </tr>            <tr id="adapters/express.js__101" class="hit">
+                          <td class="line" data-tooltip>101</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">    }</td>
+                          
+                        </tr>            <tr id="adapters/express.js__102" class="hit">
+                          <td class="line" data-tooltip>102</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">};</td>
+                          
+                        </tr>            <tr id="adapters/express.js__103" class="hit">
+                          <td class="line" data-tooltip>103</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>        </tbody>
+                </table>
+            </div>
+            <div class="file ">
+                <h2 id="adapters/hapi.js">adapters/hapi.js </h2>
+                <div class="stats high">
+                    <div class="percentage">100%</div>
+                    <div class="sloc">43</div>
+                    <div class="hits">43</div>
+                    <div class="misses">0</div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Line</th>
+                            <th>Lint</th>
+                            <th>Hits</th>
+                            <th>Source</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="adapters/hapi.js__1" class="hit">
+                          <td class="line" data-tooltip>1</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">const smart  &#x3D; require(&quot;../lib&quot;);</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__2" class="hit">
+                          <td class="line" data-tooltip>2</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__3" class="hit">
+                          <td class="line" data-tooltip>3</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__4" class="hit">
+                          <td class="line" data-tooltip>4</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">module.exports &#x3D; function(options) {</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__5" class="hit">
+                          <td class="line" data-tooltip>5</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">    const cfg &#x3D; { getStorage: smart.getSessionStorage, ...options };</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__6" class="hit">
+                          <td class="line" data-tooltip>6</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__7" class="hit">
+                          <td class="line" data-tooltip>7</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">    // Return the HAPI-specific high-level API</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__8" class="hit">
+                          <td class="line" data-tooltip>8</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>16</td>
+                          <td class="source">    return {</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__9" class="hit">
+                          <td class="line" data-tooltip>9</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__10" class="hit">
+                          <td class="line" data-tooltip>10</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        /**</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__11" class="hit">
+                          <td class="line" data-tooltip>11</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * Given a request object this function will return a Promise that will</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__12" class="hit">
+                          <td class="line" data-tooltip>12</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * eventually be resolved with a Fhir Client object or with &#x60;null&#x60; if</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__13" class="hit">
+                          <td class="line" data-tooltip>13</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * there is a problem. It will lookup the storage for stored SMART state.</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__14" class="hit">
+                          <td class="line" data-tooltip>14</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * If such state is found, it will create and return a Fhir Client</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__15" class="hit">
+                          <td class="line" data-tooltip>15</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * instance that knows how to use that (automatically authorize any</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__16" class="hit">
+                          <td class="line" data-tooltip>16</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * requests made with &#x60;client.request&#x60;, use clientSecret and refresh</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__17" class="hit">
+                          <td class="line" data-tooltip>17</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * tokens etc.).</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__18" class="hit">
+                          <td class="line" data-tooltip>18</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Object} request</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__19" class="hit">
+                          <td class="line" data-tooltip>19</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @returns {Promise&lt;Client|null&gt;}</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__20" class="hit">
+                          <td class="line" data-tooltip>20</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         */</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__21" class="hit">
+                          <td class="line" data-tooltip>21</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        async getClient(request) {</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__22" class="hit">
+                          <td class="line" data-tooltip>22</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            const storage &#x3D; cfg.getStorage(request);</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__23" class="hit">
+                          <td class="line" data-tooltip>23</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>7</td>
+                          <td class="source">            const id &#x3D; await storage.get(&quot;smartId&quot;);</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__24" class="hit">
+                          <td class="line" data-tooltip>24</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>7</td>
+                          <td class="source">            if (id) {</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__25" class="hit">
+                          <td class="line" data-tooltip>25</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>5</td>
+                          <td class="source">                const state &#x3D; await storage.get(id);</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__26" class="hit">
+                          <td class="line" data-tooltip>26</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>5</td>
+                          <td class="source">                if (state) {</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__27" class="hit">
+                          <td class="line" data-tooltip>27</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>4</td>
+                          <td class="source">                    return new smart.Client(state);</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__28" class="hit">
+                          <td class="line" data-tooltip>28</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                }</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__29" class="hit">
+                          <td class="line" data-tooltip>29</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            }</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__30" class="hit">
+                          <td class="line" data-tooltip>30</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>3</td>
+                          <td class="source">            return null;</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__31" class="hit">
+                          <td class="line" data-tooltip>31</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        },</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__32" class="hit">
+                          <td class="line" data-tooltip>32</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__33" class="hit">
+                          <td class="line" data-tooltip>33</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        /**</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__34" class="hit">
+                          <td class="line" data-tooltip>34</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * If the fhir server base can be determined (from query.iss or</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__35" class="hit">
+                          <td class="line" data-tooltip>35</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * query.fhirServiceUrl or options.serverUrl), then the user will be</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__36" class="hit">
+                          <td class="line" data-tooltip>36</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * redirected to the authorization endpoint (or to your redirectUri if</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__37" class="hit">
+                          <td class="line" data-tooltip>37</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * it happens to be an open server). Otherwise, the &#x60;next&#x60; callback</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__38" class="hit">
+                          <td class="line" data-tooltip>38</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * will be called.</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__39" class="hit">
+                          <td class="line" data-tooltip>39</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Object} req</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__40" class="hit">
+                          <td class="line" data-tooltip>40</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Object} h</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__41" class="hit">
+                          <td class="line" data-tooltip>41</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @returns {Promise&lt;any&gt;|Symbol}</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__42" class="hit">
+                          <td class="line" data-tooltip>42</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         */</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__43" class="hit">
+                          <td class="line" data-tooltip>43</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        authorize(req, h) {</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__44" class="hit">
+                          <td class="line" data-tooltip>44</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            let { launch, iss, fhirServiceUrl } &#x3D; req.query;</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__45" class="hit">
+                          <td class="line" data-tooltip>45</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>8</td>
+                          <td class="source">            if ((launch &amp;&amp; iss) || fhirServiceUrl || cfg.serverUrl) {</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__46" class="hit">
+                          <td class="line" data-tooltip>46</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>7</td>
+                          <td class="source">                return smart.buildAuthorizeUrl(req.raw.req, cfg, cfg.getStorage(req))</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__47" class="hit">
+                          <td class="line" data-tooltip>47</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                    .then(url &#x3D;&gt; h.redirect(url));</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__48" class="hit">
+                          <td class="line" data-tooltip>48</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            }</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__49" class="hit">
+                          <td class="line" data-tooltip>49</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">            return h.continue;</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__50" class="hit">
+                          <td class="line" data-tooltip>50</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        },</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__51" class="hit">
+                          <td class="line" data-tooltip>51</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__52" class="hit">
+                          <td class="line" data-tooltip>52</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        /**</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__53" class="hit">
+                          <td class="line" data-tooltip>53</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * The &#x60;authorize&#x60; function above will redirect the browser to the</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__54" class="hit">
+                          <td class="line" data-tooltip>54</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * authorization endpoint of the SMART server. Depending on the requested</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__55" class="hit">
+                          <td class="line" data-tooltip>55</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * scopes, the user might be asked to select a patient or practitioner,</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__56" class="hit">
+                          <td class="line" data-tooltip>56</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * authorize the app and so on. Eventually, the user will be redirected</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__57" class="hit">
+                          <td class="line" data-tooltip>57</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * back to your site at your &#x60;options.redirectUri&#x60;. At that point you</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__58" class="hit">
+                          <td class="line" data-tooltip>58</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * should have received a code that needs to be exchanged for an access</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__59" class="hit">
+                          <td class="line" data-tooltip>59</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * token.</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__60" class="hit">
+                          <td class="line" data-tooltip>60</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Object} req</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__61" class="hit">
+                          <td class="line" data-tooltip>61</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Object} h</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__62" class="hit">
+                          <td class="line" data-tooltip>62</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @returns {Promise&lt;any&gt;|Symbol}</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__63" class="hit">
+                          <td class="line" data-tooltip>63</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         */</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__64" class="hit">
+                          <td class="line" data-tooltip>64</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        completeAuth(req, h) {</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__65" class="hit">
+                          <td class="line" data-tooltip>65</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            let { code, state, error, error_description } &#x3D; req.query;</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__66" class="hit">
+                          <td class="line" data-tooltip>66</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>5</td>
+                          <td class="source">            if (error) {</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__67" class="hit">
+                          <td class="line" data-tooltip>67</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">                throw new Error(error + (error_description ? &quot;:\n&quot; + error_description : &quot;&quot;));</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__68" class="hit">
+                          <td class="line" data-tooltip>68</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            }</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__69" class="hit">
+                          <td class="line" data-tooltip>69</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>3</td>
+                          <td class="source">            if (code &amp;&amp; state) {</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__70" class="hit">
+                          <td class="line" data-tooltip>70</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">                return smart.completeAuth(req.raw.req, cfg.getStorage(req))</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__71" class="hit">
+                          <td class="line" data-tooltip>71</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                    .then(() &#x3D;&gt; h.redirect(cfg.redirectUri));</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__72" class="hit">
+                          <td class="line" data-tooltip>72</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            }</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__73" class="hit">
+                          <td class="line" data-tooltip>73</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">            return h.continue;</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__74" class="hit">
+                          <td class="line" data-tooltip>74</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        },</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__75" class="hit">
+                          <td class="line" data-tooltip>75</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__76" class="hit">
+                          <td class="line" data-tooltip>76</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        /**</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__77" class="hit">
+                          <td class="line" data-tooltip>77</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * You don&#x27;t typically need to use this because if you have a refresh</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__78" class="hit">
+                          <td class="line" data-tooltip>78</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * token (which you should if your scope includes &#x60;offline_access&#x60;),</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__79" class="hit">
+                          <td class="line" data-tooltip>79</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * then the request method will automatically use it when your access</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__80" class="hit">
+                          <td class="line" data-tooltip>80</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * token expires.</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__81" class="hit">
+                          <td class="line" data-tooltip>81</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Object} request</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__82" class="hit">
+                          <td class="line" data-tooltip>82</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         * @param {Object} h</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__83" class="hit">
+                          <td class="line" data-tooltip>83</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">         */</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__84" class="hit">
+                          <td class="line" data-tooltip>84</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        async refreshAuth(request, h) {</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__85" class="hit">
+                          <td class="line" data-tooltip>85</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            const client &#x3D; await this.getClient(request);</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__86" class="hit">
+                          <td class="line" data-tooltip>86</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__87" class="hit">
+                          <td class="line" data-tooltip>87</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            // Perhaps the server was restarted or lost it&#x27;s session for some other reason</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__88" class="hit">
+                          <td class="line" data-tooltip>88</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>3</td>
+                          <td class="source">            if (!client) {</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__89" class="hit">
+                          <td class="line" data-tooltip>89</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">                throw new Error(&quot;No smart state found in session. Please re-authorize your app.&quot;);</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__90" class="hit">
+                          <td class="line" data-tooltip>90</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            }</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__91" class="hit">
+                          <td class="line" data-tooltip>91</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__92" class="hit">
+                          <td class="line" data-tooltip>92</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">            return client.refresh().then(() &#x3D;&gt; h.continue, error &#x3D;&gt; { throw error });</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__93" class="hit">
+                          <td class="line" data-tooltip>93</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        }</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__94" class="hit">
+                          <td class="line" data-tooltip>94</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">    };</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__95" class="hit">
+                          <td class="line" data-tooltip>95</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">}</td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__96" class="hit">
+                          <td class="line" data-tooltip>96</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>            <tr id="adapters/hapi.js__97" class="hit">
+                          <td class="line" data-tooltip>97</td>
+                          <td class="lint empty"></td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"></td>
+                          
+                        </tr>        </tbody>
+                </table>
+            </div>
             <div class="file ">
                 <h2 id="lib/client.js">lib/client.js </h2>
                 <div class="stats high">
@@ -3223,11 +4471,11 @@
                 </table>
             </div>
             <div class="file ">
-                <h2 id="lib/express.js">lib/express.js </h2>
+                <h2 id="lib/index.js">lib/index.js </h2>
                 <div class="stats high">
                     <div class="percentage">100%</div>
-                    <div class="sloc">49</div>
-                    <div class="hits">49</div>
+                    <div class="sloc">5</div>
+                    <div class="hits">5</div>
                     <div class="misses">0</div>
                 </div>
                 <table>
@@ -3241,1224 +4489,38 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr id="lib/express.js__1" class="hit">
+                        <tr id="lib/index.js__1" class="hit">
                           <td class="line" data-tooltip>1</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip>1</td>
-                          <td class="source">const smart &#x3D; require(&quot;./lib&quot;);</td>
+                          <td class="source">Object.assign(</td>
                           
-                        </tr>            <tr id="lib/express.js__2" class="hit">
+                        </tr>            <tr id="lib/index.js__2" class="hit">
                           <td class="line" data-tooltip>2</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
+                          <td class="source">    exports,</td>
                           
-                        </tr>            <tr id="lib/express.js__3" class="hit">
+                        </tr>            <tr id="lib/index.js__3" class="hit">
                           <td class="line" data-tooltip>3</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
+                          <td class="source">    require(&quot;./lib&quot;),</td>
                           
-                        </tr>            <tr id="lib/express.js__4" class="hit">
+                        </tr>            <tr id="lib/index.js__4" class="hit">
                           <td class="line" data-tooltip>4</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">module.exports &#x3D; function(options) {</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">    { Client: require(&quot;./client&quot;).default }</td>
                           
-                        </tr>            <tr id="lib/express.js__5" class="hit">
+                        </tr>            <tr id="lib/index.js__5" class="hit">
                           <td class="line" data-tooltip>5</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">    const cfg &#x3D; { getStorage: smart.getSessionStorage, ...options };</td>
+                          <td class="source">);</td>
                           
-                        </tr>            <tr id="lib/express.js__6" class="hit">
+                        </tr>            <tr id="lib/index.js__6" class="hit">
                           <td class="line" data-tooltip>6</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/express.js__7" class="hit">
-                          <td class="line" data-tooltip>7</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">    // Return the Express-specific high-level API</td>
-                          
-                        </tr>            <tr id="lib/express.js__8" class="hit">
-                          <td class="line" data-tooltip>8</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>17</td>
-                          <td class="source">    return {</td>
-                          
-                        </tr>            <tr id="lib/express.js__9" class="hit">
-                          <td class="line" data-tooltip>9</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/express.js__10" class="hit">
-                          <td class="line" data-tooltip>10</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        /**</td>
-                          
-                        </tr>            <tr id="lib/express.js__11" class="hit">
-                          <td class="line" data-tooltip>11</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * Given a request object this function will return a Promise that will</td>
-                          
-                        </tr>            <tr id="lib/express.js__12" class="hit">
-                          <td class="line" data-tooltip>12</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * eventually be resolved with a Fhir Client object or with &#x60;null&#x60; if</td>
-                          
-                        </tr>            <tr id="lib/express.js__13" class="hit">
-                          <td class="line" data-tooltip>13</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * there is a problem. It will lookup the storage for stored SMART state.</td>
-                          
-                        </tr>            <tr id="lib/express.js__14" class="hit">
-                          <td class="line" data-tooltip>14</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * If such state is found, it will create and return a Fhir Client</td>
-                          
-                        </tr>            <tr id="lib/express.js__15" class="hit">
-                          <td class="line" data-tooltip>15</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * instance that knows how to use that (automatically authorize any</td>
-                          
-                        </tr>            <tr id="lib/express.js__16" class="hit">
-                          <td class="line" data-tooltip>16</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * requests made with &#x60;client.request&#x60;, use clientSecret and refresh</td>
-                          
-                        </tr>            <tr id="lib/express.js__17" class="hit">
-                          <td class="line" data-tooltip>17</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * tokens etc.).</td>
-                          
-                        </tr>            <tr id="lib/express.js__18" class="hit">
-                          <td class="line" data-tooltip>18</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Object} request</td>
-                          
-                        </tr>            <tr id="lib/express.js__19" class="hit">
-                          <td class="line" data-tooltip>19</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @returns {Promise&lt;Client|null&gt;}</td>
-                          
-                        </tr>            <tr id="lib/express.js__20" class="hit">
-                          <td class="line" data-tooltip>20</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         */</td>
-                          
-                        </tr>            <tr id="lib/express.js__21" class="hit">
-                          <td class="line" data-tooltip>21</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        async getClient(request) {</td>
-                          
-                        </tr>            <tr id="lib/express.js__22" class="hit">
-                          <td class="line" data-tooltip>22</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            const storage &#x3D; cfg.getStorage(request);</td>
-                          
-                        </tr>            <tr id="lib/express.js__23" class="hit">
-                          <td class="line" data-tooltip>23</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>7</td>
-                          <td class="source">            const id &#x3D; await storage.get(&quot;smartId&quot;);</td>
-                          
-                        </tr>            <tr id="lib/express.js__24" class="hit">
-                          <td class="line" data-tooltip>24</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>7</td>
-                          <td class="source">            if (id) {</td>
-                          
-                        </tr>            <tr id="lib/express.js__25" class="hit">
-                          <td class="line" data-tooltip>25</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>5</td>
-                          <td class="source">                const state &#x3D; await storage.get(id);</td>
-                          
-                        </tr>            <tr id="lib/express.js__26" class="hit">
-                          <td class="line" data-tooltip>26</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>5</td>
-                          <td class="source">                if (state) {</td>
-                          
-                        </tr>            <tr id="lib/express.js__27" class="hit">
-                          <td class="line" data-tooltip>27</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>4</td>
-                          <td class="source">                    return new smart.Client(state);</td>
-                          
-                        </tr>            <tr id="lib/express.js__28" class="hit">
-                          <td class="line" data-tooltip>28</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                }</td>
-                          
-                        </tr>            <tr id="lib/express.js__29" class="hit">
-                          <td class="line" data-tooltip>29</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
-                          
-                        </tr>            <tr id="lib/express.js__30" class="hit">
-                          <td class="line" data-tooltip>30</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>3</td>
-                          <td class="source">            return null;</td>
-                          
-                        </tr>            <tr id="lib/express.js__31" class="hit">
-                          <td class="line" data-tooltip>31</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        },</td>
-                          
-                        </tr>            <tr id="lib/express.js__32" class="hit">
-                          <td class="line" data-tooltip>32</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/express.js__33" class="hit">
-                          <td class="line" data-tooltip>33</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        /**</td>
-                          
-                        </tr>            <tr id="lib/express.js__34" class="hit">
-                          <td class="line" data-tooltip>34</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * If the fhir server base can be determined (from query.iss or</td>
-                          
-                        </tr>            <tr id="lib/express.js__35" class="hit">
-                          <td class="line" data-tooltip>35</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * query.fhirServiceUrl or options.serverUrl), then the user will be</td>
-                          
-                        </tr>            <tr id="lib/express.js__36" class="hit">
-                          <td class="line" data-tooltip>36</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * redirected to the authorization endpoint (or to your redirectUri if</td>
-                          
-                        </tr>            <tr id="lib/express.js__37" class="hit">
-                          <td class="line" data-tooltip>37</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * it happens to be an open server). Otherwise, the &#x60;next&#x60; callback</td>
-                          
-                        </tr>            <tr id="lib/express.js__38" class="hit">
-                          <td class="line" data-tooltip>38</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * will be called.</td>
-                          
-                        </tr>            <tr id="lib/express.js__39" class="hit">
-                          <td class="line" data-tooltip>39</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Object} req</td>
-                          
-                        </tr>            <tr id="lib/express.js__40" class="hit">
-                          <td class="line" data-tooltip>40</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Object} res</td>
-                          
-                        </tr>            <tr id="lib/express.js__41" class="hit">
-                          <td class="line" data-tooltip>41</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Function} next</td>
-                          
-                        </tr>            <tr id="lib/express.js__42" class="hit">
-                          <td class="line" data-tooltip>42</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         */</td>
-                          
-                        </tr>            <tr id="lib/express.js__43" class="hit">
-                          <td class="line" data-tooltip>43</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        authorize(req, res, next) {</td>
-                          
-                        </tr>            <tr id="lib/express.js__44" class="hit">
-                          <td class="line" data-tooltip>44</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            let { launch, iss, fhirServiceUrl } &#x3D; req.query;</td>
-                          
-                        </tr>            <tr id="lib/express.js__45" class="hit">
-                          <td class="line" data-tooltip>45</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>8</td>
-                          <td class="source">            if ((launch &amp;&amp; iss) || fhirServiceUrl || cfg.serverUrl) {</td>
-                          
-                        </tr>            <tr id="lib/express.js__46" class="hit">
-                          <td class="line" data-tooltip>46</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>7</td>
-                          <td class="source">                return smart.authorize(req, res, cfg, cfg.getStorage(req));</td>
-                          
-                        </tr>            <tr id="lib/express.js__47" class="hit">
-                          <td class="line" data-tooltip>47</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
-                          
-                        </tr>            <tr id="lib/express.js__48" class="hit">
-                          <td class="line" data-tooltip>48</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">            next();</td>
-                          
-                        </tr>            <tr id="lib/express.js__49" class="hit">
-                          <td class="line" data-tooltip>49</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        },</td>
-                          
-                        </tr>            <tr id="lib/express.js__50" class="hit">
-                          <td class="line" data-tooltip>50</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/express.js__51" class="hit">
-                          <td class="line" data-tooltip>51</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        /**</td>
-                          
-                        </tr>            <tr id="lib/express.js__52" class="hit">
-                          <td class="line" data-tooltip>52</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * The &#x60;authorize&#x60; function above will redirect the browser to the</td>
-                          
-                        </tr>            <tr id="lib/express.js__53" class="hit">
-                          <td class="line" data-tooltip>53</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * authorization endpoint of the SMART server. Depending on the requested</td>
-                          
-                        </tr>            <tr id="lib/express.js__54" class="hit">
-                          <td class="line" data-tooltip>54</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * scopes, the user might be asked to select a patient or practitioner,</td>
-                          
-                        </tr>            <tr id="lib/express.js__55" class="hit">
-                          <td class="line" data-tooltip>55</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * authorize the app and so on. Eventually, the user will be redirected</td>
-                          
-                        </tr>            <tr id="lib/express.js__56" class="hit">
-                          <td class="line" data-tooltip>56</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * back to your site at your &#x60;options.redirectUri&#x60;. At that point you</td>
-                          
-                        </tr>            <tr id="lib/express.js__57" class="hit">
-                          <td class="line" data-tooltip>57</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * should have received a code that needs to be exchanged for an access</td>
-                          
-                        </tr>            <tr id="lib/express.js__58" class="hit">
-                          <td class="line" data-tooltip>58</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * token.</td>
-                          
-                        </tr>            <tr id="lib/express.js__59" class="hit">
-                          <td class="line" data-tooltip>59</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Object} req</td>
-                          
-                        </tr>            <tr id="lib/express.js__60" class="hit">
-                          <td class="line" data-tooltip>60</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Object} res</td>
-                          
-                        </tr>            <tr id="lib/express.js__61" class="hit">
-                          <td class="line" data-tooltip>61</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Function} next</td>
-                          
-                        </tr>            <tr id="lib/express.js__62" class="hit">
-                          <td class="line" data-tooltip>62</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         */</td>
-                          
-                        </tr>            <tr id="lib/express.js__63" class="hit">
-                          <td class="line" data-tooltip>63</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        completeAuth(req, res, next) {</td>
-                          
-                        </tr>            <tr id="lib/express.js__64" class="hit">
-                          <td class="line" data-tooltip>64</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            let { code, state, error, error_description } &#x3D; req.query;</td>
-                          
-                        </tr>            <tr id="lib/express.js__65" class="hit">
-                          <td class="line" data-tooltip>65</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>6</td>
-                          <td class="source">            if (error) {</td>
-                          
-                        </tr>            <tr id="lib/express.js__66" class="hit">
-                          <td class="line" data-tooltip>66</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">                let msg &#x3D; error + (error_description ? &quot;:\n&quot; + error_description : &quot;&quot;);</td>
-                          
-                        </tr>            <tr id="lib/express.js__67" class="hit">
-                          <td class="line" data-tooltip>67</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">                return res.end(msg);</td>
-                          
-                        </tr>            <tr id="lib/express.js__68" class="hit">
-                          <td class="line" data-tooltip>68</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
-                          
-                        </tr>            <tr id="lib/express.js__69" class="hit">
-                          <td class="line" data-tooltip>69</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>4</td>
-                          <td class="source">            if (code &amp;&amp; state) {</td>
-                          
-                        </tr>            <tr id="lib/express.js__70" class="hit">
-                          <td class="line" data-tooltip>70</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>3</td>
-                          <td class="source">                return smart.completeAuth(req, cfg.getStorage(req))</td>
-                          
-                        </tr>            <tr id="lib/express.js__71" class="hit">
-                          <td class="line" data-tooltip>71</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                    .then(</td>
-                          
-                        </tr>            <tr id="lib/express.js__72" class="hit">
-                          <td class="line" data-tooltip>72</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                        () &#x3D;&gt; res.redirect(cfg.redirectUri),</td>
-                          
-                        </tr>            <tr id="lib/express.js__73" class="hit">
-                          <td class="line" data-tooltip>73</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                        e &#x3D;&gt; {</td>
-                          
-                        </tr>            <tr id="lib/express.js__74" class="hit">
-                          <td class="line" data-tooltip>74</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                            res.writeHead(e.httpCode || 500, { &#x27;Content-Type&#x27;: &#x27;text/plain&#x27; });</td>
-                          
-                        </tr>            <tr id="lib/express.js__75" class="hit">
-                          <td class="line" data-tooltip>75</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">                            res.end(e.message, &quot;utf8&quot;);</td>
-                          
-                        </tr>            <tr id="lib/express.js__76" class="hit">
-                          <td class="line" data-tooltip>76</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                        }</td>
-                          
-                        </tr>            <tr id="lib/express.js__77" class="hit">
-                          <td class="line" data-tooltip>77</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                    );</td>
-                          
-                        </tr>            <tr id="lib/express.js__78" class="hit">
-                          <td class="line" data-tooltip>78</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
-                          
-                        </tr>            <tr id="lib/express.js__79" class="hit">
-                          <td class="line" data-tooltip>79</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">            next();</td>
-                          
-                        </tr>            <tr id="lib/express.js__80" class="hit">
-                          <td class="line" data-tooltip>80</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        },</td>
-                          
-                        </tr>            <tr id="lib/express.js__81" class="hit">
-                          <td class="line" data-tooltip>81</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/express.js__82" class="hit">
-                          <td class="line" data-tooltip>82</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        /**</td>
-                          
-                        </tr>            <tr id="lib/express.js__83" class="hit">
-                          <td class="line" data-tooltip>83</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * You don&#x27;t typically need to use this because if you have a refresh</td>
-                          
-                        </tr>            <tr id="lib/express.js__84" class="hit">
-                          <td class="line" data-tooltip>84</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * token (which you should if your scope includes &#x60;offline_access&#x60;),</td>
-                          
-                        </tr>            <tr id="lib/express.js__85" class="hit">
-                          <td class="line" data-tooltip>85</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * then the request method will automatically use it when your access</td>
-                          
-                        </tr>            <tr id="lib/express.js__86" class="hit">
-                          <td class="line" data-tooltip>86</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * token expires.</td>
-                          
-                        </tr>            <tr id="lib/express.js__87" class="hit">
-                          <td class="line" data-tooltip>87</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Object} req</td>
-                          
-                        </tr>            <tr id="lib/express.js__88" class="hit">
-                          <td class="line" data-tooltip>88</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Object} res</td>
-                          
-                        </tr>            <tr id="lib/express.js__89" class="hit">
-                          <td class="line" data-tooltip>89</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Function} next</td>
-                          
-                        </tr>            <tr id="lib/express.js__90" class="hit">
-                          <td class="line" data-tooltip>90</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         */</td>
-                          
-                        </tr>            <tr id="lib/express.js__91" class="hit">
-                          <td class="line" data-tooltip>91</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        async refreshAuth(req, res, next) {</td>
-                          
-                        </tr>            <tr id="lib/express.js__92" class="hit">
-                          <td class="line" data-tooltip>92</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            const client &#x3D; await this.getClient(req);</td>
-                          
-                        </tr>            <tr id="lib/express.js__93" class="hit">
-                          <td class="line" data-tooltip>93</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/express.js__94" class="hit">
-                          <td class="line" data-tooltip>94</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            // Perhaps the server was restarted or lost it&#x27;s session for some other reason</td>
-                          
-                        </tr>            <tr id="lib/express.js__95" class="hit">
-                          <td class="line" data-tooltip>95</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>3</td>
-                          <td class="source">            if (!client) {</td>
-                          
-                        </tr>            <tr id="lib/express.js__96" class="hit">
-                          <td class="line" data-tooltip>96</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">                return res.end(&quot;No smart state found in session. Please re-authorize your app.&quot;)</td>
-                          
-                        </tr>            <tr id="lib/express.js__97" class="hit">
-                          <td class="line" data-tooltip>97</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
-                          
-                        </tr>            <tr id="lib/express.js__98" class="hit">
-                          <td class="line" data-tooltip>98</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/express.js__99" class="hit">
-                          <td class="line" data-tooltip>99</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">            return client.refresh().then(() &#x3D;&gt; next(), error &#x3D;&gt; res.end(error.message));</td>
-                          
-                        </tr>            <tr id="lib/express.js__100" class="hit">
-                          <td class="line" data-tooltip>100</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        }</td>
-                          
-                        </tr>            <tr id="lib/express.js__101" class="hit">
-                          <td class="line" data-tooltip>101</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">    }</td>
-                          
-                        </tr>            <tr id="lib/express.js__102" class="hit">
-                          <td class="line" data-tooltip>102</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">};</td>
-                          
-                        </tr>            <tr id="lib/express.js__103" class="hit">
-                          <td class="line" data-tooltip>103</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>        </tbody>
-                </table>
-            </div>
-            <div class="file ">
-                <h2 id="lib/hapi.js">lib/hapi.js </h2>
-                <div class="stats high">
-                    <div class="percentage">100%</div>
-                    <div class="sloc">43</div>
-                    <div class="hits">43</div>
-                    <div class="misses">0</div>
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Line</th>
-                            <th>Lint</th>
-                            <th>Hits</th>
-                            <th>Source</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id="lib/hapi.js__1" class="hit">
-                          <td class="line" data-tooltip>1</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">const smart  &#x3D; require(&quot;./lib&quot;);</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__2" class="hit">
-                          <td class="line" data-tooltip>2</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/hapi.js__3" class="hit">
-                          <td class="line" data-tooltip>3</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/hapi.js__4" class="hit">
-                          <td class="line" data-tooltip>4</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">module.exports &#x3D; function(options) {</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__5" class="hit">
-                          <td class="line" data-tooltip>5</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">    const cfg &#x3D; { getStorage: smart.getSessionStorage, ...options };</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__6" class="hit">
-                          <td class="line" data-tooltip>6</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/hapi.js__7" class="hit">
-                          <td class="line" data-tooltip>7</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">    // Return the HAPI-specific high-level API</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__8" class="hit">
-                          <td class="line" data-tooltip>8</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>16</td>
-                          <td class="source">    return {</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__9" class="hit">
-                          <td class="line" data-tooltip>9</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/hapi.js__10" class="hit">
-                          <td class="line" data-tooltip>10</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        /**</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__11" class="hit">
-                          <td class="line" data-tooltip>11</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * Given a request object this function will return a Promise that will</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__12" class="hit">
-                          <td class="line" data-tooltip>12</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * eventually be resolved with a Fhir Client object or with &#x60;null&#x60; if</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__13" class="hit">
-                          <td class="line" data-tooltip>13</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * there is a problem. It will lookup the storage for stored SMART state.</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__14" class="hit">
-                          <td class="line" data-tooltip>14</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * If such state is found, it will create and return a Fhir Client</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__15" class="hit">
-                          <td class="line" data-tooltip>15</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * instance that knows how to use that (automatically authorize any</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__16" class="hit">
-                          <td class="line" data-tooltip>16</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * requests made with &#x60;client.request&#x60;, use clientSecret and refresh</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__17" class="hit">
-                          <td class="line" data-tooltip>17</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * tokens etc.).</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__18" class="hit">
-                          <td class="line" data-tooltip>18</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Object} request</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__19" class="hit">
-                          <td class="line" data-tooltip>19</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @returns {Promise&lt;Client|null&gt;}</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__20" class="hit">
-                          <td class="line" data-tooltip>20</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         */</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__21" class="hit">
-                          <td class="line" data-tooltip>21</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        async getClient(request) {</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__22" class="hit">
-                          <td class="line" data-tooltip>22</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            const storage &#x3D; cfg.getStorage(request);</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__23" class="hit">
-                          <td class="line" data-tooltip>23</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>7</td>
-                          <td class="source">            const id &#x3D; await storage.get(&quot;smartId&quot;);</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__24" class="hit">
-                          <td class="line" data-tooltip>24</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>7</td>
-                          <td class="source">            if (id) {</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__25" class="hit">
-                          <td class="line" data-tooltip>25</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>5</td>
-                          <td class="source">                const state &#x3D; await storage.get(id);</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__26" class="hit">
-                          <td class="line" data-tooltip>26</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>5</td>
-                          <td class="source">                if (state) {</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__27" class="hit">
-                          <td class="line" data-tooltip>27</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>4</td>
-                          <td class="source">                    return new smart.Client(state);</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__28" class="hit">
-                          <td class="line" data-tooltip>28</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                }</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__29" class="hit">
-                          <td class="line" data-tooltip>29</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__30" class="hit">
-                          <td class="line" data-tooltip>30</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>3</td>
-                          <td class="source">            return null;</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__31" class="hit">
-                          <td class="line" data-tooltip>31</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        },</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__32" class="hit">
-                          <td class="line" data-tooltip>32</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/hapi.js__33" class="hit">
-                          <td class="line" data-tooltip>33</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        /**</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__34" class="hit">
-                          <td class="line" data-tooltip>34</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * If the fhir server base can be determined (from query.iss or</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__35" class="hit">
-                          <td class="line" data-tooltip>35</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * query.fhirServiceUrl or options.serverUrl), then the user will be</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__36" class="hit">
-                          <td class="line" data-tooltip>36</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * redirected to the authorization endpoint (or to your redirectUri if</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__37" class="hit">
-                          <td class="line" data-tooltip>37</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * it happens to be an open server). Otherwise, the &#x60;next&#x60; callback</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__38" class="hit">
-                          <td class="line" data-tooltip>38</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * will be called.</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__39" class="hit">
-                          <td class="line" data-tooltip>39</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Object} req</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__40" class="hit">
-                          <td class="line" data-tooltip>40</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Object} h</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__41" class="hit">
-                          <td class="line" data-tooltip>41</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @returns {Promise&lt;any&gt;|Symbol}</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__42" class="hit">
-                          <td class="line" data-tooltip>42</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         */</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__43" class="hit">
-                          <td class="line" data-tooltip>43</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        authorize(req, h) {</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__44" class="hit">
-                          <td class="line" data-tooltip>44</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            let { launch, iss, fhirServiceUrl } &#x3D; req.query;</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__45" class="hit">
-                          <td class="line" data-tooltip>45</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>8</td>
-                          <td class="source">            if ((launch &amp;&amp; iss) || fhirServiceUrl || cfg.serverUrl) {</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__46" class="hit">
-                          <td class="line" data-tooltip>46</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>7</td>
-                          <td class="source">                return smart.buildAuthorizeUrl(req.raw.req, cfg, cfg.getStorage(req))</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__47" class="hit">
-                          <td class="line" data-tooltip>47</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                    .then(url &#x3D;&gt; h.redirect(url));</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__48" class="hit">
-                          <td class="line" data-tooltip>48</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__49" class="hit">
-                          <td class="line" data-tooltip>49</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">            return h.continue;</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__50" class="hit">
-                          <td class="line" data-tooltip>50</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        },</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__51" class="hit">
-                          <td class="line" data-tooltip>51</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/hapi.js__52" class="hit">
-                          <td class="line" data-tooltip>52</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        /**</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__53" class="hit">
-                          <td class="line" data-tooltip>53</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * The &#x60;authorize&#x60; function above will redirect the browser to the</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__54" class="hit">
-                          <td class="line" data-tooltip>54</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * authorization endpoint of the SMART server. Depending on the requested</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__55" class="hit">
-                          <td class="line" data-tooltip>55</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * scopes, the user might be asked to select a patient or practitioner,</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__56" class="hit">
-                          <td class="line" data-tooltip>56</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * authorize the app and so on. Eventually, the user will be redirected</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__57" class="hit">
-                          <td class="line" data-tooltip>57</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * back to your site at your &#x60;options.redirectUri&#x60;. At that point you</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__58" class="hit">
-                          <td class="line" data-tooltip>58</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * should have received a code that needs to be exchanged for an access</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__59" class="hit">
-                          <td class="line" data-tooltip>59</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * token.</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__60" class="hit">
-                          <td class="line" data-tooltip>60</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Object} req</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__61" class="hit">
-                          <td class="line" data-tooltip>61</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Object} h</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__62" class="hit">
-                          <td class="line" data-tooltip>62</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @returns {Promise&lt;any&gt;|Symbol}</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__63" class="hit">
-                          <td class="line" data-tooltip>63</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         */</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__64" class="hit">
-                          <td class="line" data-tooltip>64</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        completeAuth(req, h) {</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__65" class="hit">
-                          <td class="line" data-tooltip>65</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            let { code, state, error, error_description } &#x3D; req.query;</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__66" class="hit">
-                          <td class="line" data-tooltip>66</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>5</td>
-                          <td class="source">            if (error) {</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__67" class="hit">
-                          <td class="line" data-tooltip>67</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">                throw new Error(error + (error_description ? &quot;:\n&quot; + error_description : &quot;&quot;));</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__68" class="hit">
-                          <td class="line" data-tooltip>68</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__69" class="hit">
-                          <td class="line" data-tooltip>69</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>3</td>
-                          <td class="source">            if (code &amp;&amp; state) {</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__70" class="hit">
-                          <td class="line" data-tooltip>70</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">                return smart.completeAuth(req.raw.req, cfg.getStorage(req))</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__71" class="hit">
-                          <td class="line" data-tooltip>71</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                    .then(() &#x3D;&gt; h.redirect(cfg.redirectUri));</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__72" class="hit">
-                          <td class="line" data-tooltip>72</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__73" class="hit">
-                          <td class="line" data-tooltip>73</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">            return h.continue;</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__74" class="hit">
-                          <td class="line" data-tooltip>74</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        },</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__75" class="hit">
-                          <td class="line" data-tooltip>75</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/hapi.js__76" class="hit">
-                          <td class="line" data-tooltip>76</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        /**</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__77" class="hit">
-                          <td class="line" data-tooltip>77</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * You don&#x27;t typically need to use this because if you have a refresh</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__78" class="hit">
-                          <td class="line" data-tooltip>78</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * token (which you should if your scope includes &#x60;offline_access&#x60;),</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__79" class="hit">
-                          <td class="line" data-tooltip>79</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * then the request method will automatically use it when your access</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__80" class="hit">
-                          <td class="line" data-tooltip>80</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * token expires.</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__81" class="hit">
-                          <td class="line" data-tooltip>81</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Object} request</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__82" class="hit">
-                          <td class="line" data-tooltip>82</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         * @param {Object} h</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__83" class="hit">
-                          <td class="line" data-tooltip>83</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">         */</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__84" class="hit">
-                          <td class="line" data-tooltip>84</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        async refreshAuth(request, h) {</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__85" class="hit">
-                          <td class="line" data-tooltip>85</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            const client &#x3D; await this.getClient(request);</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__86" class="hit">
-                          <td class="line" data-tooltip>86</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/hapi.js__87" class="hit">
-                          <td class="line" data-tooltip>87</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            // Perhaps the server was restarted or lost it&#x27;s session for some other reason</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__88" class="hit">
-                          <td class="line" data-tooltip>88</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>3</td>
-                          <td class="source">            if (!client) {</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__89" class="hit">
-                          <td class="line" data-tooltip>89</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">                throw new Error(&quot;No smart state found in session. Please re-authorize your app.&quot;);</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__90" class="hit">
-                          <td class="line" data-tooltip>90</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__91" class="hit">
-                          <td class="line" data-tooltip>91</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/hapi.js__92" class="hit">
-                          <td class="line" data-tooltip>92</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">            return client.refresh().then(() &#x3D;&gt; h.continue, error &#x3D;&gt; { throw error });</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__93" class="hit">
-                          <td class="line" data-tooltip>93</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        }</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__94" class="hit">
-                          <td class="line" data-tooltip>94</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">    };</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__95" class="hit">
-                          <td class="line" data-tooltip>95</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">}</td>
-                          
-                        </tr>            <tr id="lib/hapi.js__96" class="hit">
-                          <td class="line" data-tooltip>96</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source"></td>
-                          
-                        </tr>            <tr id="lib/hapi.js__97" class="hit">
-                          <td class="line" data-tooltip>97</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
                           <td class="source"></td>

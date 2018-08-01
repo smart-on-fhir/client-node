@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "express": "^4.16.3",
-    "express-session": "^1.15.6"
+    "express-session": "^1.15.6",
+    "smart-client": "^1.0.0"
   }
 }

@@ -4,7 +4,7 @@
  */
 const Hapi  = require("hapi");
 const fs    = require("fs");
-const smart = require("../../lib/hapi")({
+const smart = require("smart-client/adapters/hapi")({
     scope      : "openid profile offline_access",
     clientId   : "31488081-2a0f-467d-8888-ef53a3d5fe24",
     redirectUri: "/"

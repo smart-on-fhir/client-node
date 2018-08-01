@@ -85,7 +85,7 @@ describe("lib", () => {
         })
     });
 
-    describe("getSecurityExtensions", () => {
+    describe("getSecurityExtensions", { timeout: 15000 }, () => {
         it ("Works without arguments", async() => {
             const extensions = await lib.getSecurityExtensions();
             expect(extensions).to.equal({

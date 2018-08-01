@@ -3,7 +3,7 @@ const { it, describe } = exports.lab = require("lab").script();
 // const app = require("../examples/express-patients-list");
 const axios = require("axios");
 const Url = require("url");
-const createAdapter = require("../lib/express");
+const createAdapter = require("../adapters/express");
 
 function getDummyStorage(initialState = {}) {
     const __SESSION = { ...initialState };

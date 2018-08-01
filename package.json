@@ -1,8 +1,8 @@
 {
-  "name": "smart-client-node",
-  "version": "1.0.0",
+  "name": "smart-client",
+  "version": "1.1.0",
   "description": "SMART client for NodeJS",
-  "main": "index.js",
+  "main": "lib/index.js",
   "directories": {
     "doc": "docs",
     "lib": "lib"
@@ -20,9 +20,9 @@
     "type": "git",
     "url": "git+https://github.com/smart-on-fhir/client-node.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["smart", "fhir", "health", "hl7", "client"],
+  "author": "Vladimir Ignatov <vlad.ignatov@gmail.com>",
+  "license": "APACHE2",
   "bugs": {
     "url": "https://github.com/smart-on-fhir/client-node/issues"
   },
