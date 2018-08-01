@@ -11,7 +11,7 @@ This is typically used as handler for your launchUri:
 const express = require("express");
 const session = require("express-session");
 const app = express();
-const smart = require("../lib/express")({
+const smart = require("smart-client/adapters/express")({
     scope      : "openid profile offline_access",
     redirectUri: "/",
     clientId   : "my-client-id"

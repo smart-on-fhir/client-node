@@ -12,7 +12,7 @@ details.
 This is typically used as handler for your `launchUri`:
 ```js
 const Hapi = require("hapi");
-const smart = require("../lib/hapi")({
+const smart = require("smart-client/adapters/hapi")({
     scope      : "openid profile offline_access",
     redirectUri: "/",
     clientId   : "my-client-id"

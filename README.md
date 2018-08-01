@@ -8,9 +8,9 @@ In this mode you create a framework-specific API that is easier to use. Currentl
 we have adapters for Express and HAPI. Pull requests are welcome for other frameworks.
 Here is how to use that:
 ```js
-const smart = require("../lib/express")(options);
+const smart = require("smart-client/adapters/express")(options);
 // or
-const smart = require("../lib/hapi")(options);
+const smart = require("smart-client/adapters/hapi")(options);
 ```
 Then just use the `smart.authorize` or other methods as described in their manuals:
 - [Express](docs/express.md)
@@ -31,7 +31,7 @@ https://launch.smarthealthit.org), your `launchUri` endpoint will be called
 with `launch` and `iss` parameters. Than you can use this function to initiate
 the launch sequence. An **express** example might look like this:
 ```js
-const smart = require("../lib");
+const smart = require("smart-client");
 // ...
 app.get("/launch", (req, res) => smart.authorize(req, res, options, storage));
 ```
@@ -45,7 +45,7 @@ user will be redirected back to your site at your `options.redirectUri`. At that
 point you should have received a code that needs to be exchanged for an access
 token. To do so, you can use the `completeAuth` function like so (express example):
 ```js
-const smart = require("../lib");
+const smart = require("smart-client");
 // ...
 app.get("/redirect", (req, res) => {
     smart.completeAuth(req, storage)
@@ -67,7 +67,7 @@ The following options are supported:
 
 Use these options while creating a SMART api:
 ```js
-const smart = require("../lib/express")({
+const smart = require("smart-client/adapters/express")({
     scope      : "openid profile offline_access",
     redirectUri: "/",
     clientId   : "my-client-id"
@@ -76,7 +76,7 @@ const smart = require("../lib/express")({
 ```
 or you just pass them to functions if you prefer the low-level api:
 ```js
-const smart = require("../lib");
+const smart = require("smart-client");
 const options = {
     scope      : "openid profile offline_access",
     redirectUri: "/",
@@ -94,3 +94,9 @@ This library is written in typescript and the framework adapters are written in 
     - `npm run start:express` - will run the express example on http://localhost:3000. You will have to do `cd examples/express && npm i` when you run this for the first time.
     - `npm run start:hapi` - will run the HAPI example on http://localhost:3000. You will have to do `cd examples/hapi && npm i` when you run this for the first time.
 - `npm run build` or `npm test` if you want to build or test on demand instead of in watch mode.
+
+#### Debugging
+This library uses the `debug` module to log specific SMART information. In development mode you might want to enable that before starting a server like so:
+```sh
+DEBUG=smart npm run start:express
+```
