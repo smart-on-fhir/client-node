@@ -1,5 +1,5 @@
 {
-  "name": "client-node",
+  "name": "smart-client-node",
   "version": "1.0.0",
   "description": "SMART client for NodeJS",
   "main": "index.js",
