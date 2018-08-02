@@ -414,7 +414,7 @@ describe("express adapter", () => {
         });
     });
 
-    describe("completeAuth", () => {
+    describe("completeAuth", { timeout: 5000 }, () => {
 
         it ("ends with error and error_description if provided", async () => {
             let nextCalls = 0;
@@ -644,7 +644,7 @@ describe("express adapter", () => {
         });
     });
 
-    describe("refreshAuth", () => {
+    describe("refreshAuth", { timeout: 5000 }, () => {
         it ("ends with error message if no client can be constructed", async () => {
             let nextCalls = 0;
 

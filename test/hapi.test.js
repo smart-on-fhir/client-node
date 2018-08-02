@@ -62,7 +62,7 @@ describe("hapi adapter", () => {
         });
     });
 
-    describe("authorize", () => {
+    describe("authorize", { timeout: 5000 }, () => {
         it("using options.serverUrl and an open server", async () => {
             let result = {};
 
@@ -301,7 +301,7 @@ describe("hapi adapter", () => {
         });
     });
 
-    describe("completeAuth", () => {
+    describe("completeAuth", { timeout: 5000 }, () => {
 
         it ("ends with error and error_description if provided", async () => {
             let adapter = createAdapter({
@@ -390,7 +390,7 @@ describe("hapi adapter", () => {
         });
     });
 
-    describe("refreshAuth", () => {
+    describe("refreshAuth", { timeout: 5000 }, () => {
         it ("ends with error message if no client can be constructed", () => {
             return createAdapter({ redirectUri: "/" }).refreshAuth({session: {}})
             .then(

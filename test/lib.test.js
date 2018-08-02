@@ -325,7 +325,7 @@ describe("lib", () => {
         });
     });
 
-    describe("authorize", () => {
+    describe("authorize", { timeout: 5000 }, () => {
         it ("works as expected", () => {
             const storage = getDummyStorage();
             const request = {
@@ -487,7 +487,7 @@ describe("lib", () => {
         });
     });
 
-    describe("completeAuth", () => {
+    describe("completeAuth", { timeout: 5000 }, () => {
         it ("handles errors", { timeout: 5000 }, () => {
             const storage = getDummyStorage({
                 abc: {
