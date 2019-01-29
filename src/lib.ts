@@ -117,7 +117,7 @@ export function resolveUrl(req: IncomingMessage, url: string): string {
 }
 
 /**
- * Given a fhir bundle fins it's link having the given rel attribute.
+ * Given a fhir bundle finds it's link having the given rel attribute.
  * @param {Object} bundle FHIR JSON Bundle object
  * @param {String} rel The rel attribute to look for: prev|next|self... (see
  * http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1)
