@@ -5,7 +5,7 @@ import * as qs     from "querystring";
 import * as _debug from "debug";
 import errors      from "./errors";
 import Client      from "./client";
-import { SMART }   from "../";
+import { SMART }   from "../types";
 import { IncomingMessage, ServerResponse } from "http";
 
 const debug = _debug("smart");

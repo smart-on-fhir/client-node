@@ -544,7 +544,7 @@
             <a href="#adapters/hapi.js"><span class="dirname">adapters/</span><span class="basename">hapi.js</span></a>
         </li>
         <li class="">
-            <span class="cov high">100</span>
+            <span class="cov high">99.00</span>
             <a href="#lib/client.js"><span class="dirname">lib/</span><span class="basename">client.js</span></a>
         </li>
         <li class="">
@@ -556,18 +556,18 @@
             <a href="#lib/index.js"><span class="dirname">lib/</span><span class="basename">index.js</span></a>
         </li>
         <li class="">
-            <span class="cov high">100</span>
+            <span class="cov high">99.16</span>
             <a href="#lib/lib.js"><span class="dirname">lib/</span><span class="basename">lib.js</span></a>
         </li>
         <li><a href="#linting">Linting Report</a></li>
     </div>
     <div id="tests">
       <h1>Test Report</h1>
-      <div class="stats high">
-          <div class="failures">0</div>
+      <div class="stats terrible">
+          <div class="failures">6</div>
           <div class="skipped">0</div>
           <div class="test-count">113</div>
-          <div class="duration">21872</div>
+          <div class="duration">21338</div>
       </div>
       <div id="filters">
           <input type="checkbox" checked="" onchange="filter(this)" value="success" id="show-success">
@@ -646,56 +646,56 @@
               <td class="test-title">Client constructor throws if no state is given
                   
               </td>
-              <td class="test-duration">4</td>
+              <td class="test-duration">3</td>
           </tr>
           <tr class="show Client request success">
               <td class="test-id">2</td>
               <td class="test-title">Client request the url defaults to the serverUrl
                   
               </td>
-              <td class="test-duration">200</td>
+              <td class="test-duration">252</td>
           </tr>
           <tr class="show Client request success">
               <td class="test-id">3</td>
               <td class="test-title">Client request accepts url string
                   
               </td>
-              <td class="test-duration">293</td>
+              <td class="test-duration">380</td>
           </tr>
           <tr class="show Client request success">
               <td class="test-id">4</td>
               <td class="test-title">Client request accepts options object
                   
               </td>
-              <td class="test-duration">250</td>
+              <td class="test-duration">381</td>
           </tr>
           <tr class="show Client request success">
               <td class="test-id">5</td>
               <td class="test-title">Client request handles OperationOutcome errors
                   
               </td>
-              <td class="test-duration">84</td>
+              <td class="test-duration">127</td>
           </tr>
           <tr class="show Client request success">
               <td class="test-id">6</td>
               <td class="test-title">Client request handles other errors
                   
               </td>
-              <td class="test-duration">3</td>
+              <td class="test-duration">14</td>
           </tr>
           <tr class="show Client request success">
               <td class="test-id">7</td>
               <td class="test-title">Client request rejects invalid access tokens
                   
               </td>
-              <td class="test-duration">123</td>
+              <td class="test-duration">139</td>
           </tr>
           <tr class="show Client request success">
               <td class="test-id">8</td>
               <td class="test-title">Client request tries to use the refresh token on 401
                   
               </td>
-              <td class="test-duration">128</td>
+              <td class="test-duration">186</td>
           </tr>
           <tr class="show Client refresh success">
               <td class="test-id">9</td>
@@ -716,7 +716,7 @@
               <td class="test-title">Client refresh deletes invalid refresh tokens
                   
               </td>
-              <td class="test-duration">64</td>
+              <td class="test-duration">92</td>
           </tr>
           <tr class="show Client refresh success">
               <td class="test-id">12</td>
@@ -730,21 +730,21 @@
               <td class="test-title">Client refresh works as expected
                   
               </td>
-              <td class="test-duration">2145</td>
+              <td class="test-duration">766</td>
           </tr>
           <tr class="show Client getPatientId success">
               <td class="test-id">14</td>
               <td class="test-title">Client getPatientId works as expected with launch/patient scope
                   
               </td>
-              <td class="test-duration">2808</td>
+              <td class="test-duration">618</td>
           </tr>
           <tr class="show Client getPatientId success">
               <td class="test-id">15</td>
               <td class="test-title">Client getPatientId returns null if no launch or launch/patient scope is requested
                   
               </td>
-              <td class="test-duration">423</td>
+              <td class="test-duration">594</td>
           </tr>
           <tr class="show Client getPatientId success">
               <td class="test-id">16</td>
@@ -765,7 +765,7 @@
               <td class="test-title">Client getPatientId returns null if if the client is authorized but has no patient
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show Client getEncounterId success">
               <td class="test-id">19</td>
@@ -774,10 +774,14 @@
               </td>
               <td class="test-duration">0</td>
           </tr>
-          <tr class="show Client getEncounterId success">
+          <tr class="show Client getEncounterId failure">
               <td class="test-id">20</td>
               <td class="test-title">Client getEncounterId returns null if if the encounter is not available
-                  
+                  <div class="stack">TypeError: Cannot read property &#x27;match&#x27; of undefined
+        at Client.getEncounterId (/Users/nick/Documents/GitHub/client-node/lib/client.js:147:218)
+        at /Users/nick/Documents/GitHub/client-node/test/client.test.js:349:54
+        at Immediate.&lt;anonymous&gt; (/Users/nick/Documents/GitHub/client-node/node_modules/lab/lib/runner.js:597:31)
+        at processImmediate (internal/timers.js:439:21)</div>
               </td>
               <td class="test-duration">1</td>
           </tr>
@@ -809,12 +813,16 @@
               </td>
               <td class="test-duration">0</td>
           </tr>
-          <tr class="show Client getIdToken success">
+          <tr class="show Client getIdToken failure">
               <td class="test-id">25</td>
               <td class="test-title">Client getIdToken returns null if if the profile is not available
-                  
+                  <div class="stack">TypeError: Cannot read property &#x27;match&#x27; of undefined
+        at Client.getIdToken (/Users/nick/Documents/GitHub/client-node/lib/client.js:186:219)
+        at /Users/nick/Documents/GitHub/client-node/test/client.test.js:367:54
+        at Immediate.&lt;anonymous&gt; (/Users/nick/Documents/GitHub/client-node/node_modules/lab/lib/runner.js:597:31)
+        at processImmediate (internal/timers.js:439:21)</div>
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show Client getIdToken success">
               <td class="test-id">26</td>
@@ -828,14 +836,14 @@
               <td class="test-title">Client getIdToken returns null if if the client is authorized but has no id_token
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show Client getIdToken success">
               <td class="test-id">28</td>
               <td class="test-title">Client getIdToken returns null if if the client is authorized but has no openid scope
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show Client getIdToken success">
               <td class="test-id">29</td>
@@ -858,10 +866,15 @@
               </td>
               <td class="test-duration">0</td>
           </tr>
-          <tr class="show Client getUserProfile success">
+          <tr class="show Client getUserProfile failure">
               <td class="test-id">32</td>
               <td class="test-title">Client getUserProfile returns null if if the profile is not available
-                  
+                  <div class="stack">TypeError: Cannot read property &#x27;match&#x27; of undefined
+        at Client.getIdToken (/Users/nick/Documents/GitHub/client-node/lib/client.js:186:219)
+        at Client.getUserProfile (/Users/nick/Documents/GitHub/client-node/lib/client.js:217:133)
+        at /Users/nick/Documents/GitHub/client-node/test/client.test.js:395:54
+        at Immediate.&lt;anonymous&gt; (/Users/nick/Documents/GitHub/client-node/node_modules/lab/lib/runner.js:597:31)
+        at processImmediate (internal/timers.js:439:21)</div>
               </td>
               <td class="test-duration">0</td>
           </tr>
@@ -870,19 +883,25 @@
               <td class="test-title">Client getUserProfile works as expected
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show Client getUserId success">
               <td class="test-id">34</td>
               <td class="test-title">Client getUserId returns null if if the client is not authorized
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
-          <tr class="show Client getUserId success">
+          <tr class="show Client getUserId failure">
               <td class="test-id">35</td>
               <td class="test-title">Client getUserId returns null if if the profile is not available
-                  
+                  <div class="stack">TypeError: Cannot read property &#x27;match&#x27; of undefined
+        at Client.getIdToken (/Users/nick/Documents/GitHub/client-node/lib/client.js:186:219)
+        at Client.getUserProfile (/Users/nick/Documents/GitHub/client-node/lib/client.js:217:133)
+        at Client.getUserId (/Users/nick/Documents/GitHub/client-node/lib/client.js:227:133)
+        at /Users/nick/Documents/GitHub/client-node/test/client.test.js:411:54
+        at Immediate.&lt;anonymous&gt; (/Users/nick/Documents/GitHub/client-node/node_modules/lab/lib/runner.js:597:31)
+        at processImmediate (internal/timers.js:439:21)</div>
               </td>
               <td class="test-duration">0</td>
           </tr>
@@ -898,12 +917,18 @@
               <td class="test-title">Client getUserType returns null if if the client is not authorized
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
-          <tr class="show Client getUserType success">
+          <tr class="show Client getUserType failure">
               <td class="test-id">38</td>
               <td class="test-title">Client getUserType returns null if if the profile is not available
-                  
+                  <div class="stack">TypeError: Cannot read property &#x27;match&#x27; of undefined
+        at Client.getIdToken (/Users/nick/Documents/GitHub/client-node/lib/client.js:186:219)
+        at Client.getUserProfile (/Users/nick/Documents/GitHub/client-node/lib/client.js:217:133)
+        at Client.getUserType (/Users/nick/Documents/GitHub/client-node/lib/client.js:238:133)
+        at /Users/nick/Documents/GitHub/client-node/test/client.test.js:427:54
+        at Immediate.&lt;anonymous&gt; (/Users/nick/Documents/GitHub/client-node/node_modules/lab/lib/runner.js:597:31)
+        at processImmediate (internal/timers.js:439:21)</div>
               </td>
               <td class="test-duration">0</td>
           </tr>
@@ -919,14 +944,14 @@
               <td class="test-title">Client getPages works as expected
                   
               </td>
-              <td class="test-duration">1086</td>
+              <td class="test-duration">1647</td>
           </tr>
           <tr class="show Client getPages success">
               <td class="test-id">41</td>
               <td class="test-title">Client getPages works with zero results
                   
               </td>
-              <td class="test-duration">594</td>
+              <td class="test-duration">920</td>
           </tr>
           <tr class="show express_adapter getStorage success">
               <td class="test-id">42</td>
@@ -940,7 +965,7 @@
               <td class="test-title">express adapter getStorage can be set as option
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show express_adapter getStorage success">
               <td class="test-id">44</td>
@@ -954,112 +979,112 @@
               <td class="test-title">express adapter authorize using options.serverUrl and an open server
                   
               </td>
-              <td class="test-duration">301</td>
+              <td class="test-duration">580</td>
           </tr>
           <tr class="show express_adapter authorize success">
               <td class="test-id">46</td>
               <td class="test-title">express adapter authorize using options.serverUrl and an protected server
                   
               </td>
-              <td class="test-duration">402</td>
+              <td class="test-duration">448</td>
           </tr>
           <tr class="show express_adapter authorize success">
               <td class="test-id">47</td>
               <td class="test-title">express adapter authorize using query.serverUrl and an open server
                   
               </td>
-              <td class="test-duration">319</td>
+              <td class="test-duration">555</td>
           </tr>
           <tr class="show express_adapter authorize success">
               <td class="test-id">48</td>
               <td class="test-title">express adapter authorize using query.serverUrl and an protected server
                   
               </td>
-              <td class="test-duration">369</td>
+              <td class="test-duration">410</td>
           </tr>
           <tr class="show express_adapter authorize success">
               <td class="test-id">49</td>
               <td class="test-title">express adapter authorize using query.iss and query.launch and an open server
                   
               </td>
-              <td class="test-duration">311</td>
+              <td class="test-duration">557</td>
           </tr>
           <tr class="show express_adapter authorize success">
               <td class="test-id">50</td>
               <td class="test-title">express adapter authorize using query.iss and query.launch and protected server
                   
               </td>
-              <td class="test-duration">496</td>
+              <td class="test-duration">392</td>
           </tr>
           <tr class="show express_adapter authorize success">
               <td class="test-id">51</td>
               <td class="test-title">express adapter authorize calls next if not enough arguments
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show express_adapter completeAuth success">
               <td class="test-id">52</td>
               <td class="test-title">express adapter completeAuth ends with error and error_description if provided
                   
               </td>
-              <td class="test-duration">0</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show express_adapter completeAuth success">
               <td class="test-id">53</td>
               <td class="test-title">express adapter completeAuth handles internal errors
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show express_adapter completeAuth success">
               <td class="test-id">54</td>
               <td class="test-title">express adapter completeAuth handles errors
                   
               </td>
-              <td class="test-duration">66</td>
+              <td class="test-duration">99</td>
           </tr>
           <tr class="show express_adapter completeAuth success">
               <td class="test-id">55</td>
               <td class="test-title">express adapter completeAuth calls next if not enough arguments provided
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show express_adapter completeAuth success">
               <td class="test-id">56</td>
               <td class="test-title">express adapter completeAuth works as expected
                   
               </td>
-              <td class="test-duration">611</td>
+              <td class="test-duration">651</td>
           </tr>
           <tr class="show express_adapter refreshAuth success">
               <td class="test-id">57</td>
               <td class="test-title">express adapter refreshAuth ends with error message if no client can be constructed
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show express_adapter refreshAuth success">
               <td class="test-id">58</td>
               <td class="test-title">express adapter refreshAuth handles errors
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show hapi_adapter getStorage success">
               <td class="test-id">59</td>
               <td class="test-title">hapi adapter getStorage returns null if session is empty
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show hapi_adapter getStorage success">
               <td class="test-id">60</td>
               <td class="test-title">hapi adapter getStorage can be set as option
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show hapi_adapter getStorage success">
               <td class="test-id">61</td>
@@ -1073,42 +1098,42 @@
               <td class="test-title">hapi adapter authorize using options.serverUrl and an open server
                   
               </td>
-              <td class="test-duration">386</td>
+              <td class="test-duration">550</td>
           </tr>
           <tr class="show hapi_adapter authorize success">
               <td class="test-id">63</td>
               <td class="test-title">hapi adapter authorize using options.serverUrl and an protected server
                   
               </td>
-              <td class="test-duration">892</td>
+              <td class="test-duration">394</td>
           </tr>
           <tr class="show hapi_adapter authorize success">
               <td class="test-id">64</td>
               <td class="test-title">hapi adapter authorize using query.serverUrl and an open server
                   
               </td>
-              <td class="test-duration">3783</td>
+              <td class="test-duration">584</td>
           </tr>
           <tr class="show hapi_adapter authorize success">
               <td class="test-id">65</td>
               <td class="test-title">hapi adapter authorize using query.serverUrl and an protected server
                   
               </td>
-              <td class="test-duration">362</td>
+              <td class="test-duration">369</td>
           </tr>
           <tr class="show hapi_adapter authorize success">
               <td class="test-id">66</td>
               <td class="test-title">hapi adapter authorize using query.iss and query.launch and an open server
                   
               </td>
-              <td class="test-duration">324</td>
+              <td class="test-duration">581</td>
           </tr>
           <tr class="show hapi_adapter authorize success">
               <td class="test-id">67</td>
               <td class="test-title">hapi adapter authorize using query.iss and query.launch and protected server
                   
               </td>
-              <td class="test-duration">551</td>
+              <td class="test-duration">371</td>
           </tr>
           <tr class="show hapi_adapter authorize success">
               <td class="test-id">68</td>
@@ -1143,7 +1168,7 @@
               <td class="test-title">hapi adapter completeAuth works as expected
                   
               </td>
-              <td class="test-duration">632</td>
+              <td class="test-duration">700</td>
           </tr>
           <tr class="show hapi_adapter refreshAuth success">
               <td class="test-id">73</td>
@@ -1157,7 +1182,7 @@
               <td class="test-title">hapi adapter refreshAuth handles errors
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib getPath success">
               <td class="test-id">75</td>
@@ -1192,7 +1217,7 @@
               <td class="test-title">lib getErrorText works as expected
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib HttpError constructor success">
               <td class="test-id">80</td>
@@ -1213,14 +1238,14 @@
               <td class="test-title">lib HttpError constructor The httpCode can be set
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib HttpError constructor success">
               <td class="test-id">83</td>
               <td class="test-title">lib HttpError constructor Variable substitution works
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib getSecurityExtensions success">
               <td class="test-id">84</td>
@@ -1229,33 +1254,36 @@
               </td>
               <td class="test-duration">3</td>
           </tr>
-          <tr class="show lib getSecurityExtensions success">
+          <tr class="show lib getSecurityExtensions failure">
               <td class="test-id">85</td>
               <td class="test-title">lib getSecurityExtensions Works with HSPC
-                  
+                  <div class="stack">Error: Timed out (5000ms) - lib getSecurityExtensions Works with HSPC
+        at Timeout.&lt;anonymous&gt; (/Users/nick/Documents/GitHub/client-node/node_modules/lab/lib/runner.js:451:23)
+        at listOnTimeout (internal/timers.js:531:17)
+        at processTimers (internal/timers.js:475:7)</div>
               </td>
-              <td class="test-duration">1053</td>
+              <td class="test-duration">5004</td>
           </tr>
           <tr class="show lib getSecurityExtensions success">
               <td class="test-id">86</td>
               <td class="test-title">lib getSecurityExtensions Works with R3 - Protected
                   
               </td>
-              <td class="test-duration">374</td>
+              <td class="test-duration">398</td>
           </tr>
           <tr class="show lib getSecurityExtensions success">
               <td class="test-id">87</td>
               <td class="test-title">lib getSecurityExtensions Works with R3 - Open
                   
               </td>
-              <td class="test-duration">370</td>
+              <td class="test-duration">627</td>
           </tr>
           <tr class="show lib resolveUrl success">
               <td class="test-id">88</td>
               <td class="test-title">lib resolveUrl works as expected
                   
               </td>
-              <td class="test-duration">4</td>
+              <td class="test-duration">3</td>
           </tr>
           <tr class="show lib buildAuthorizeUrl success">
               <td class="test-id">89</td>
@@ -1290,14 +1318,14 @@
               <td class="test-title">lib buildAuthorizeUrl requires &#x27;launch&#x27; param if &#x27;iss&#x27; is used
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib buildAuthorizeUrl success">
               <td class="test-id">94</td>
               <td class="test-title">lib buildAuthorizeUrl clears previous state
                   
               </td>
-              <td class="test-duration">4</td>
+              <td class="test-duration">2</td>
           </tr>
           <tr class="show lib buildAuthorizeUrl success">
               <td class="test-id">95</td>
@@ -1311,35 +1339,35 @@
               <td class="test-title">lib buildAuthorizeUrl Works with protected servers
                   
               </td>
-              <td class="test-duration">342</td>
+              <td class="test-duration">419</td>
           </tr>
           <tr class="show lib buildAuthorizeUrl success">
               <td class="test-id">97</td>
               <td class="test-title">lib buildAuthorizeUrl Works with protected servers standalone
                   
               </td>
-              <td class="test-duration">376</td>
+              <td class="test-duration">415</td>
           </tr>
           <tr class="show lib authorize success">
               <td class="test-id">98</td>
               <td class="test-title">lib authorize works as expected
                   
               </td>
-              <td class="test-duration">522</td>
+              <td class="test-duration">375</td>
           </tr>
           <tr class="show lib buildTokenRequest success">
               <td class="test-id">99</td>
               <td class="test-title">lib buildTokenRequest rejects if no state is found
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib buildTokenRequest success">
               <td class="test-id">100</td>
               <td class="test-title">lib buildTokenRequest rejects if there is no redirectUri in state
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib buildTokenRequest success">
               <td class="test-id">101</td>
@@ -1353,14 +1381,14 @@
               <td class="test-title">lib buildTokenRequest rejects if there is no clientId in state
                   
               </td>
-              <td class="test-duration">2</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib buildTokenRequest success">
               <td class="test-id">103</td>
               <td class="test-title">lib buildTokenRequest works as expected
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib buildTokenRequest success">
               <td class="test-id">104</td>
@@ -1374,7 +1402,7 @@
               <td class="test-title">lib handleTokenError works as expected
                   
               </td>
-              <td class="test-duration">2</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib handleTokenError success">
               <td class="test-id">106</td>
@@ -1388,42 +1416,42 @@
               <td class="test-title">lib handleTokenError catches &#x27;error&#x27; property in response payloads
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib handleTokenError success">
               <td class="test-id">108</td>
               <td class="test-title">lib handleTokenError catches &#x27;error_description&#x27; property in response payloads
                   
               </td>
-              <td class="test-duration">2</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib handleTokenError success">
               <td class="test-id">109</td>
               <td class="test-title">lib handleTokenError catches errors from string payloads
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib completeAuth success">
               <td class="test-id">110</td>
               <td class="test-title">lib completeAuth handles errors
                   
               </td>
-              <td class="test-duration">69</td>
+              <td class="test-duration">94</td>
           </tr>
           <tr class="show lib completeAuth success">
               <td class="test-id">111</td>
               <td class="test-title">lib completeAuth works as expected
                   
               </td>
-              <td class="test-duration">682</td>
+              <td class="test-duration">602</td>
           </tr>
           <tr class="show lib getBundleURL success">
               <td class="test-id">112</td>
               <td class="test-title">lib getBundleURL returns null if there are no links
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show lib getBundleURL success">
               <td class="test-id">113</td>
@@ -1438,10 +1466,10 @@
     </div>    <div id="coverage">
         <h1>Code Coverage Report</h1>
         <div class="stats high">
-            <div class="percentage">100%</div>
-            <div class="sloc">554</div>
-            <div class="hits">554</div>
-            <div class="misses">0</div>
+            <div class="percentage">99.28%</div>
+            <div class="sloc">552</div>
+            <div class="hits">548</div>
+            <div class="misses">4</div>
         </div>
         <div id="filters">
           <input type="checkbox" checked="" onchange="filter(this)" value="generated" id="show-generated">
@@ -2695,10 +2723,10 @@
             <div class="file ">
                 <h2 id="lib/client.js">lib/client.js </h2>
                 <div class="stats high">
-                    <div class="percentage">100%</div>
-                    <div class="sloc">203</div>
-                    <div class="hits">203</div>
-                    <div class="misses">0</div>
+                    <div class="percentage">99.00%</div>
+                    <div class="sloc">201</div>
+                    <div class="hits">199</div>
+                    <div class="misses">2</div>
                 </div>
                 <table>
                     <thead>
@@ -3363,7 +3391,7 @@
                           <td class="line" data-tooltip>109</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip>2</td>
-                          <td class="source">                if (!this.state.scope || !this.state.scope.match(/\blaunch(\/patient)?\b/)) {</td>
+                          <td class="source">                if (!this.state.scope.match(/\blaunch(\/patient)?\b/)) {</td>
                           
                         </tr>            <tr id="lib/client.js__110" class="hit">
                           <td class="line" data-tooltip>110</td>
@@ -3587,17 +3615,17 @@
                           <td class="hits" data-tooltip>3</td>
                           <td class="source">            if (!tokenResponse.encounter) {</td>
                           
-                        </tr>            <tr id="lib/client.js__147" class="hit">
+                        </tr>            <tr id="lib/client.js__147" class="chunks">
                           <td class="line" data-tooltip>147</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">                if (!this.state.scope || !this.state.scope.match(/\blaunch(\/encounter)?\b/)) {</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source"><div>                if (</div><div class="miss false" data-tooltip>!this.state.scope.match(/\blaunch(\/encounter)?\b/)</div><div>) {</div></td>
                           
-                        </tr>            <tr id="lib/client.js__148" class="hit">
+                        </tr>            <tr id="lib/client.js__148" class="miss">
                           <td class="line" data-tooltip>148</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">                    debug(&quot;You are trying to get the ID of the selected encounter &quot; +</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source" data-tooltip>                    debug(&quot;You are trying to get the ID of the selected encounter &quot; +</td>
                           
                         </tr>            <tr id="lib/client.js__149" class="hit">
                           <td class="line" data-tooltip>149</td>
@@ -3656,7 +3684,7 @@
                         </tr>            <tr id="lib/client.js__158" class="hit">
                           <td class="line" data-tooltip>158</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
+                          <td class="hits" data-tooltip>1</td>
                           <td class="source">                return null;</td>
                           
                         </tr>            <tr id="lib/client.js__159" class="hit">
@@ -3825,514 +3853,502 @@
                           <td class="line" data-tooltip>186</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip>7</td>
-                          <td class="source">                if (!this.state.scope ||</td>
+                          <td class="source">                if (!this.state.scope.match(/\bopenid\b/) || !this.state.scope.match(/\bconnect\b/)) {</td>
                           
                         </tr>            <tr id="lib/client.js__187" class="hit">
                           <td class="line" data-tooltip>187</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                    !this.state.scope.match(/\bopenid\b/) ||</td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">                    debug(&quot;You are trying to get the id_token but you are not &quot; +</td>
                           
                         </tr>            <tr id="lib/client.js__188" class="hit">
                           <td class="line" data-tooltip>188</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                    !this.state.scope.match(/\bconnect\b/)) {</td>
+                          <td class="source">                        &quot;using the right scopes. Please add &#x27;openid&#x27; and &#x27;connect&#x27; &quot; +</td>
                           
                         </tr>            <tr id="lib/client.js__189" class="hit">
                           <td class="line" data-tooltip>189</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>6</td>
-                          <td class="source">                    debug(&quot;You are trying to get the id_token but you are not &quot; +</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                        &quot;to the scopes you request and try again.&quot;);</td>
                           
                         </tr>            <tr id="lib/client.js__190" class="hit">
                           <td class="line" data-tooltip>190</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                        &quot;using the right scopes. Please add &#x27;openid&#x27; and &#x27;connect&#x27; &quot; +</td>
+                          <td class="source">                }</td>
                           
                         </tr>            <tr id="lib/client.js__191" class="hit">
                           <td class="line" data-tooltip>191</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                        &quot;to the scopes you request and try again.&quot;);</td>
+                          <td class="source">                else {</td>
                           
                         </tr>            <tr id="lib/client.js__192" class="hit">
                           <td class="line" data-tooltip>192</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                }</td>
+                          <td class="source">                    // The server should have returned the id_token!</td>
                           
                         </tr>            <tr id="lib/client.js__193" class="hit">
                           <td class="line" data-tooltip>193</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                else {</td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">                    debug(&quot;The id_token is not available. Please check if your &quot; +</td>
                           
                         </tr>            <tr id="lib/client.js__194" class="hit">
                           <td class="line" data-tooltip>194</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                    // The server should have returned the id_token!</td>
+                          <td class="source">                        &quot;server supports that.&quot;);</td>
                           
                         </tr>            <tr id="lib/client.js__195" class="hit">
                           <td class="line" data-tooltip>195</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">                    debug(&quot;The id_token is not available. Please check if your &quot; +</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                }</td>
                           
                         </tr>            <tr id="lib/client.js__196" class="hit">
                           <td class="line" data-tooltip>196</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                        &quot;server supports that.&quot;);</td>
+                          <td class="hits" data-tooltip>3</td>
+                          <td class="source">                return null;</td>
                           
                         </tr>            <tr id="lib/client.js__197" class="hit">
                           <td class="line" data-tooltip>197</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                }</td>
+                          <td class="source">            }</td>
                           
                         </tr>            <tr id="lib/client.js__198" class="hit">
                           <td class="line" data-tooltip>198</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>7</td>
-                          <td class="source">                return null;</td>
+                          <td class="hits" data-tooltip>4</td>
+                          <td class="source">            return jwt.decode(idToken);</td>
                           
                         </tr>            <tr id="lib/client.js__199" class="hit">
                           <td class="line" data-tooltip>199</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
+                          <td class="source">        }</td>
                           
                         </tr>            <tr id="lib/client.js__200" class="hit">
                           <td class="line" data-tooltip>200</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>4</td>
-                          <td class="source">            return jwt.decode(idToken);</td>
+                          <td class="hits" data-tooltip>5</td>
+                          <td class="source">        if (this.state.authorizeUri) {</td>
                           
                         </tr>            <tr id="lib/client.js__201" class="hit">
                           <td class="line" data-tooltip>201</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        }</td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">            debug(&quot;You are trying to get the id_token &quot; +</td>
                           
                         </tr>            <tr id="lib/client.js__202" class="hit">
                           <td class="line" data-tooltip>202</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>5</td>
-                          <td class="source">        if (this.state.authorizeUri) {</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                &quot;but your app is not authorized yet.&quot;);</td>
                           
                         </tr>            <tr id="lib/client.js__203" class="hit">
                           <td class="line" data-tooltip>203</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">            debug(&quot;You are trying to get the id_token &quot; +</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        }</td>
                           
                         </tr>            <tr id="lib/client.js__204" class="hit">
                           <td class="line" data-tooltip>204</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                &quot;but your app is not authorized yet.&quot;);</td>
+                          <td class="source">        else {</td>
                           
                         </tr>            <tr id="lib/client.js__205" class="hit">
                           <td class="line" data-tooltip>205</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        }</td>
+                          <td class="hits" data-tooltip>4</td>
+                          <td class="source">            debug(&quot;You are trying to get the id_token but your app needs to be &quot; +</td>
                           
                         </tr>            <tr id="lib/client.js__206" class="hit">
                           <td class="line" data-tooltip>206</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">        else {</td>
+                          <td class="source">                &quot;authorized first. Please don&#x27;t use open fhir servers if you &quot; +</td>
                           
                         </tr>            <tr id="lib/client.js__207" class="hit">
                           <td class="line" data-tooltip>207</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>4</td>
-                          <td class="source">            debug(&quot;You are trying to get the id_token but your app needs to be &quot; +</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                &quot;need to access launch context items like the id_token.&quot;);</td>
                           
                         </tr>            <tr id="lib/client.js__208" class="hit">
                           <td class="line" data-tooltip>208</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                &quot;authorized first. Please don&#x27;t use open fhir servers if you &quot; +</td>
+                          <td class="source">        }</td>
                           
                         </tr>            <tr id="lib/client.js__209" class="hit">
                           <td class="line" data-tooltip>209</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                &quot;need to access launch context items like the id_token.&quot;);</td>
+                          <td class="hits" data-tooltip>5</td>
+                          <td class="source">        return null;</td>
                           
                         </tr>            <tr id="lib/client.js__210" class="hit">
                           <td class="line" data-tooltip>210</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">        }</td>
+                          <td class="source">    }</td>
                           
                         </tr>            <tr id="lib/client.js__211" class="hit">
                           <td class="line" data-tooltip>211</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>5</td>
-                          <td class="source">        return null;</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">    /**</td>
                           
                         </tr>            <tr id="lib/client.js__212" class="hit">
                           <td class="line" data-tooltip>212</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">    }</td>
+                          <td class="source">     * Returns the profile of the logged_in user (if any). This is a string</td>
                           
                         </tr>            <tr id="lib/client.js__213" class="hit">
                           <td class="line" data-tooltip>213</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">    /**</td>
+                          <td class="source">     * having the following shape &quot;{user type}/{user id}&quot;. For example:</td>
                           
                         </tr>            <tr id="lib/client.js__214" class="hit">
                           <td class="line" data-tooltip>214</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     * Returns the profile of the logged_in user (if any). This is a string</td>
+                          <td class="source">     * &quot;Practitioner/abc&quot; or &quot;Patient/xyz&quot;.</td>
                           
                         </tr>            <tr id="lib/client.js__215" class="hit">
                           <td class="line" data-tooltip>215</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     * having the following shape &quot;{user type}/{user id}&quot;. For example:</td>
+                          <td class="source">     */</td>
                           
                         </tr>            <tr id="lib/client.js__216" class="hit">
                           <td class="line" data-tooltip>216</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     * &quot;Practitioner/abc&quot; or &quot;Patient/xyz&quot;.</td>
+                          <td class="source">    getUserProfile() {</td>
                           
                         </tr>            <tr id="lib/client.js__217" class="hit">
                           <td class="line" data-tooltip>217</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     */</td>
+                          <td class="source">        const idToken &#x3D; this.getIdToken();</td>
                           
                         </tr>            <tr id="lib/client.js__218" class="hit">
                           <td class="line" data-tooltip>218</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">    getUserProfile() {</td>
+                          <td class="hits" data-tooltip>6</td>
+                          <td class="source">        if (idToken) {</td>
                           
                         </tr>            <tr id="lib/client.js__219" class="hit">
                           <td class="line" data-tooltip>219</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        const idToken &#x3D; this.getIdToken();</td>
+                          <td class="hits" data-tooltip>3</td>
+                          <td class="source">            return idToken.profile;</td>
                           
                         </tr>            <tr id="lib/client.js__220" class="hit">
                           <td class="line" data-tooltip>220</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>9</td>
-                          <td class="source">        if (idToken) {</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        }</td>
                           
                         </tr>            <tr id="lib/client.js__221" class="hit">
                           <td class="line" data-tooltip>221</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip>3</td>
-                          <td class="source">            return idToken.profile;</td>
+                          <td class="source">        return null;</td>
                           
                         </tr>            <tr id="lib/client.js__222" class="hit">
                           <td class="line" data-tooltip>222</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">        }</td>
+                          <td class="source">    }</td>
                           
                         </tr>            <tr id="lib/client.js__223" class="hit">
                           <td class="line" data-tooltip>223</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>6</td>
-                          <td class="source">        return null;</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">    /**</td>
                           
                         </tr>            <tr id="lib/client.js__224" class="hit">
                           <td class="line" data-tooltip>224</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">    }</td>
+                          <td class="source">     * Returns the user ID or null.</td>
                           
                         </tr>            <tr id="lib/client.js__225" class="hit">
                           <td class="line" data-tooltip>225</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">    /**</td>
+                          <td class="source">     */</td>
                           
                         </tr>            <tr id="lib/client.js__226" class="hit">
                           <td class="line" data-tooltip>226</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     * Returns the user ID or null.</td>
+                          <td class="source">    getUserId() {</td>
                           
                         </tr>            <tr id="lib/client.js__227" class="hit">
                           <td class="line" data-tooltip>227</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     */</td>
+                          <td class="source">        const profile &#x3D; this.getUserProfile();</td>
                           
                         </tr>            <tr id="lib/client.js__228" class="hit">
                           <td class="line" data-tooltip>228</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">    getUserId() {</td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">        if (profile) {</td>
                           
                         </tr>            <tr id="lib/client.js__229" class="hit">
                           <td class="line" data-tooltip>229</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        const profile &#x3D; this.getUserProfile();</td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">            return profile.split(&quot;/&quot;)[1];</td>
                           
                         </tr>            <tr id="lib/client.js__230" class="hit">
                           <td class="line" data-tooltip>230</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>3</td>
-                          <td class="source">        if (profile) {</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        }</td>
                           
                         </tr>            <tr id="lib/client.js__231" class="hit">
                           <td class="line" data-tooltip>231</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip>1</td>
-                          <td class="source">            return profile.split(&quot;/&quot;)[1];</td>
+                          <td class="source">        return null;</td>
                           
                         </tr>            <tr id="lib/client.js__232" class="hit">
                           <td class="line" data-tooltip>232</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">        }</td>
+                          <td class="source">    }</td>
                           
                         </tr>            <tr id="lib/client.js__233" class="hit">
                           <td class="line" data-tooltip>233</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">        return null;</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">    /**</td>
                           
                         </tr>            <tr id="lib/client.js__234" class="hit">
                           <td class="line" data-tooltip>234</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">    }</td>
+                          <td class="source">     * Returns the type of the logged-in user or null. The result can be</td>
                           
                         </tr>            <tr id="lib/client.js__235" class="hit">
                           <td class="line" data-tooltip>235</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">    /**</td>
+                          <td class="source">     * &quot;Practitioner&quot;, &quot;Patient&quot; or &quot;RelatedPerson&quot;.</td>
                           
                         </tr>            <tr id="lib/client.js__236" class="hit">
                           <td class="line" data-tooltip>236</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     * Returns the type of the logged-in user or null. The result can be</td>
+                          <td class="source">     */</td>
                           
                         </tr>            <tr id="lib/client.js__237" class="hit">
                           <td class="line" data-tooltip>237</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     * &quot;Practitioner&quot;, &quot;Patient&quot; or &quot;RelatedPerson&quot;.</td>
+                          <td class="source">    getUserType() {</td>
                           
                         </tr>            <tr id="lib/client.js__238" class="hit">
                           <td class="line" data-tooltip>238</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     */</td>
+                          <td class="source">        const profile &#x3D; this.getUserProfile();</td>
                           
                         </tr>            <tr id="lib/client.js__239" class="hit">
                           <td class="line" data-tooltip>239</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">    getUserType() {</td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">        if (profile) {</td>
                           
                         </tr>            <tr id="lib/client.js__240" class="hit">
                           <td class="line" data-tooltip>240</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        const profile &#x3D; this.getUserProfile();</td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">            return profile.split(&quot;/&quot;)[0];</td>
                           
                         </tr>            <tr id="lib/client.js__241" class="hit">
                           <td class="line" data-tooltip>241</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>3</td>
-                          <td class="source">        if (profile) {</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        }</td>
                           
                         </tr>            <tr id="lib/client.js__242" class="hit">
                           <td class="line" data-tooltip>242</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip>1</td>
-                          <td class="source">            return profile.split(&quot;/&quot;)[0];</td>
+                          <td class="source">        return null;</td>
                           
                         </tr>            <tr id="lib/client.js__243" class="hit">
                           <td class="line" data-tooltip>243</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">        }</td>
+                          <td class="source">    }</td>
                           
                         </tr>            <tr id="lib/client.js__244" class="hit">
                           <td class="line" data-tooltip>244</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">        return null;</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">    /**</td>
                           
                         </tr>            <tr id="lib/client.js__245" class="hit">
                           <td class="line" data-tooltip>245</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">    }</td>
+                          <td class="source">     * Gets multiple bundle entries from multiple pages and returns an array</td>
                           
                         </tr>            <tr id="lib/client.js__246" class="hit">
                           <td class="line" data-tooltip>246</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">    /**</td>
+                          <td class="source">     * with all their entries. This can be used to walk a server and download</td>
                           
                         </tr>            <tr id="lib/client.js__247" class="hit">
                           <td class="line" data-tooltip>247</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     * Gets multiple bundle entries from multiple pages and returns an array</td>
+                          <td class="source">     * all the resources from certain type for example</td>
                           
                         </tr>            <tr id="lib/client.js__248" class="hit">
                           <td class="line" data-tooltip>248</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     * with all their entries. This can be used to walk a server and download</td>
+                          <td class="source">     * @param options Request options</td>
                           
                         </tr>            <tr id="lib/client.js__249" class="hit">
                           <td class="line" data-tooltip>249</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     * all the resources from certain type for example</td>
+                          <td class="source">     * @param maxPages Max number of pages to fetch. Defaults to 100.</td>
                           
                         </tr>            <tr id="lib/client.js__250" class="hit">
                           <td class="line" data-tooltip>250</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     * @param options Request options</td>
+                          <td class="source">     */</td>
                           
                         </tr>            <tr id="lib/client.js__251" class="hit">
                           <td class="line" data-tooltip>251</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     * @param maxPages Max number of pages to fetch. Defaults to 100.</td>
+                          <td class="source">    getPages(options, maxPages &#x3D; 100, result &#x3D; []) {</td>
                           
                         </tr>            <tr id="lib/client.js__252" class="hit">
                           <td class="line" data-tooltip>252</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">     */</td>
+                          <td class="source">        if (typeof options &#x3D;&#x3D; &quot;string&quot;) {</td>
                           
                         </tr>            <tr id="lib/client.js__253" class="hit">
                           <td class="line" data-tooltip>253</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">    getPages(options, maxPages &#x3D; 100, result &#x3D; []) {</td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">            options &#x3D; { url: options };</td>
                           
                         </tr>            <tr id="lib/client.js__254" class="hit">
                           <td class="line" data-tooltip>254</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">        if (typeof options &#x3D;&#x3D; &quot;string&quot;) {</td>
+                          <td class="source">        }</td>
                           
                         </tr>            <tr id="lib/client.js__255" class="hit">
                           <td class="line" data-tooltip>255</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">            options &#x3D; { url: options };</td>
+                          <td class="hits" data-tooltip>3</td>
+                          <td class="source">        return this.request(options).then(res &#x3D;&gt; {</td>
                           
                         </tr>            <tr id="lib/client.js__256" class="hit">
                           <td class="line" data-tooltip>256</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">        }</td>
+                          <td class="source">            const bundle &#x3D; res.data;</td>
                           
                         </tr>            <tr id="lib/client.js__257" class="hit">
                           <td class="line" data-tooltip>257</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip>3</td>
-                          <td class="source">        return this.request(options).then(res &#x3D;&gt; {</td>
+                          <td class="source">            result.push.apply(result, bundle.entry || []);</td>
                           
                         </tr>            <tr id="lib/client.js__258" class="hit">
                           <td class="line" data-tooltip>258</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            const bundle &#x3D; res.data;</td>
+                          <td class="hits" data-tooltip>3</td>
+                          <td class="source">            if (--maxPages) {</td>
                           
                         </tr>            <tr id="lib/client.js__259" class="hit">
                           <td class="line" data-tooltip>259</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>3</td>
-                          <td class="source">            result.push(...(bundle.entry || []));</td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">                const nextUrl &#x3D; lib_1.getBundleURL(bundle, &quot;next&quot;);</td>
                           
                         </tr>            <tr id="lib/client.js__260" class="hit">
                           <td class="line" data-tooltip>260</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>3</td>
-                          <td class="source">            if (--maxPages) {</td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">                if (nextUrl) {</td>
                           
                         </tr>            <tr id="lib/client.js__261" class="hit">
                           <td class="line" data-tooltip>261</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">                const nextUrl &#x3D; lib_1.getBundleURL(bundle, &quot;next&quot;);</td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">                    return this.getPages(Object.assign({}, options, { url: nextUrl }), maxPages, result);</td>
                           
                         </tr>            <tr id="lib/client.js__262" class="hit">
                           <td class="line" data-tooltip>262</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">                if (nextUrl) {</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                }</td>
                           
                         </tr>            <tr id="lib/client.js__263" class="hit">
                           <td class="line" data-tooltip>263</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">                    return this.getPages(Object.assign({}, options, { url: nextUrl }), maxPages, result);</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            }</td>
                           
                         </tr>            <tr id="lib/client.js__264" class="hit">
                           <td class="line" data-tooltip>264</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                }</td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">            return result;</td>
                           
                         </tr>            <tr id="lib/client.js__265" class="hit">
                           <td class="line" data-tooltip>265</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
+                          <td class="source">        });</td>
                           
                         </tr>            <tr id="lib/client.js__266" class="hit">
                           <td class="line" data-tooltip>266</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">            return result;</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">    }</td>
                           
                         </tr>            <tr id="lib/client.js__267" class="hit">
                           <td class="line" data-tooltip>267</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">        });</td>
+                          <td class="source">}</td>
                           
                         </tr>            <tr id="lib/client.js__268" class="hit">
                           <td class="line" data-tooltip>268</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">    }</td>
-                          
-                        </tr>            <tr id="lib/client.js__269" class="hit">
-                          <td class="line" data-tooltip>269</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">}</td>
-                          
-                        </tr>            <tr id="lib/client.js__270" class="hit">
-                          <td class="line" data-tooltip>270</td>
-                          <td class="lint empty"></td>
                           <td class="hits" data-tooltip>1</td>
                           <td class="source">exports.default &#x3D; Client;</td>
                           
-                        </tr>            <tr id="lib/client.js__271" class="hit">
-                          <td class="line" data-tooltip>271</td>
+                        </tr>            <tr id="lib/client.js__269" class="hit">
+                          <td class="line" data-tooltip>269</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
                           <td class="source"></td>
@@ -4531,10 +4547,10 @@
             <div class="file ">
                 <h2 id="lib/lib.js">lib/lib.js </h2>
                 <div class="stats high">
-                    <div class="percentage">100%</div>
+                    <div class="percentage">99.16%</div>
                     <div class="sloc">237</div>
-                    <div class="hits">237</div>
-                    <div class="misses">0</div>
+                    <div class="hits">235</div>
+                    <div class="misses">2</div>
                 </div>
                 <table>
                     <thead>
@@ -4676,13 +4692,13 @@
                         </tr>            <tr id="lib/lib.js__22" class="hit">
                           <td class="line" data-tooltip>22</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>70</td>
+                          <td class="hits" data-tooltip>69</td>
                           <td class="source">    path &#x3D; path.trim();</td>
                           
                         </tr>            <tr id="lib/lib.js__23" class="hit">
                           <td class="line" data-tooltip>23</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>70</td>
+                          <td class="hits" data-tooltip>69</td>
                           <td class="source">    if (!path) {</td>
                           
                         </tr>            <tr id="lib/lib.js__24" class="hit">
@@ -4700,7 +4716,7 @@
                         </tr>            <tr id="lib/lib.js__26" class="hit">
                           <td class="line" data-tooltip>26</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>68</td>
+                          <td class="hits" data-tooltip>67</td>
                           <td class="source">    return path.split(&quot;.&quot;).reduce((out, key) &#x3D;&gt; out ? out[key] : undefined, obj);</td>
                           
                         </tr>            <tr id="lib/lib.js__27" class="hit">
@@ -5000,13 +5016,13 @@
                         </tr>            <tr id="lib/lib.js__76" class="hit">
                           <td class="line" data-tooltip>76</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>32</td>
+                          <td class="hits" data-tooltip>31</td>
                           <td class="source">    const nsUri &#x3D; &quot;http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris&quot;;</td>
                           
                         </tr>            <tr id="lib/lib.js__77" class="hit">
                           <td class="line" data-tooltip>77</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>32</td>
+                          <td class="hits" data-tooltip>31</td>
                           <td class="source">    const extensions &#x3D; (getPath(metadata, &quot;data.rest.0.security.extension&quot;) || [])</td>
                           
                         </tr>            <tr id="lib/lib.js__78" class="hit">
@@ -5024,7 +5040,7 @@
                         </tr>            <tr id="lib/lib.js__80" class="hit">
                           <td class="line" data-tooltip>80</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>32</td>
+                          <td class="hits" data-tooltip>31</td>
                           <td class="source">    const out &#x3D; {</td>
                           
                         </tr>            <tr id="lib/lib.js__81" class="hit">
@@ -5054,26 +5070,26 @@
                         </tr>            <tr id="lib/lib.js__85" class="hit">
                           <td class="line" data-tooltip>85</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>32</td>
+                          <td class="hits" data-tooltip>31</td>
                           <td class="source">    if (extensions) {</td>
                           
                         </tr>            <tr id="lib/lib.js__86" class="hit">
                           <td class="line" data-tooltip>86</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>19</td>
+                          <td class="hits" data-tooltip>18</td>
                           <td class="source">        extensions.forEach((ext) &#x3D;&gt; {</td>
                           
-                        </tr>            <tr id="lib/lib.js__87" class="hit">
+                        </tr>            <tr id="lib/lib.js__87" class="chunks">
                           <td class="line" data-tooltip>87</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">            if (ext.url &#x3D;&#x3D;&#x3D; &quot;register&quot;) {</td>
+                          <td class="source"><div>            if (</div><div class="miss false" data-tooltip>ext.url &#x3D;&#x3D;&#x3D; &quot;register&quot;</div><div>) {</div></td>
                           
-                        </tr>            <tr id="lib/lib.js__88" class="hit">
+                        </tr>            <tr id="lib/lib.js__88" class="miss">
                           <td class="line" data-tooltip>88</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">                out.registrationUri &#x3D; ext.valueUri;</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source" data-tooltip>                out.registrationUri &#x3D; ext.valueUri;</td>
                           
                         </tr>            <tr id="lib/lib.js__89" class="hit">
                           <td class="line" data-tooltip>89</td>
@@ -5084,13 +5100,13 @@
                         </tr>            <tr id="lib/lib.js__90" class="hit">
                           <td class="line" data-tooltip>90</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>39</td>
+                          <td class="hits" data-tooltip>36</td>
                           <td class="source">            if (ext.url &#x3D;&#x3D;&#x3D; &quot;authorize&quot;) {</td>
                           
                         </tr>            <tr id="lib/lib.js__91" class="hit">
                           <td class="line" data-tooltip>91</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>19</td>
+                          <td class="hits" data-tooltip>18</td>
                           <td class="source">                out.authorizeUri &#x3D; ext.valueUri;</td>
                           
                         </tr>            <tr id="lib/lib.js__92" class="hit">
@@ -5102,13 +5118,13 @@
                         </tr>            <tr id="lib/lib.js__93" class="hit">
                           <td class="line" data-tooltip>93</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>39</td>
+                          <td class="hits" data-tooltip>36</td>
                           <td class="source">            if (ext.url &#x3D;&#x3D;&#x3D; &quot;token&quot;) {</td>
                           
                         </tr>            <tr id="lib/lib.js__94" class="hit">
                           <td class="line" data-tooltip>94</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>19</td>
+                          <td class="hits" data-tooltip>18</td>
                           <td class="source">                out.tokenUri &#x3D; ext.valueUri;</td>
                           
                         </tr>            <tr id="lib/lib.js__95" class="hit">
@@ -5132,7 +5148,7 @@
                         </tr>            <tr id="lib/lib.js__98" class="hit">
                           <td class="line" data-tooltip>98</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>32</td>
+                          <td class="hits" data-tooltip>31</td>
                           <td class="source">    return out;</td>
                           
                         </tr>            <tr id="lib/lib.js__99" class="hit">
@@ -5217,7 +5233,7 @@
                           <td class="line" data-tooltip>112</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source"> * Given a fhir bundle fins it&#x27;s link having the given rel attribute.</td>
+                          <td class="source"> * Given a fhir bundle finds it&#x27;s link having the given rel attribute.</td>
                           
                         </tr>            <tr id="lib/lib.js__113" class="hit">
                           <td class="line" data-tooltip>113</td>
