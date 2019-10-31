@@ -8,7 +8,6 @@
     "outDir": "./lib",
     "rootDir": "./src",
     "removeComments": false,
-    "strict": true,
-    "types": ["./types/index.d.ts", "./lib/*.d.ts"]
+    "strict": true
   }
 }

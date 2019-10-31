@@ -1,6 +1,6 @@
 /// <reference types="node" />
 import Client from "./client";
-import { SMART } from "../";
+import { SMART } from "../types";
 import { IncomingMessage, ServerResponse } from "http";
 export { Client };
 /**

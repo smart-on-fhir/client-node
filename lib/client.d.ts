@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from "axios";
-import { SMART } from "..";
+import { SMART } from "../types";
 /**
  * A SMART Client instance will simplify some tasks for you. It will authorize
  * requests automatically, use refresh tokens, handle errors and so on.
