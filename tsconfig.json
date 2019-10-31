@@ -2,10 +2,13 @@
   "compilerOptions": {
     "target": "ES2018",
     "module": "commonjs",
-    "lib": ["es2015"],
+    "lib": [
+      "es2015"
+    ],
     "outDir": "./lib",
     "rootDir": "./src",
     "removeComments": false,
-    "strict": true
+    "strict": true,
+    "types": ["./types/index.d.ts", "./lib/*.d.ts"]
   }
 }

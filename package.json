@@ -10,7 +10,7 @@
   "scripts": {
     "test": "lab -c -r console -o stdout -r html -o test/coverage.html -r lcov -o test/lcov.info -v",
     "test:watch": "nodemon -x 'npm test'",
-    "build": "tsc",
+    "build": "tsc --declaration",
     "build:watch": "tsc --watch",
     "start": "node examples/node",
     "start:express": "node examples/express",
@@ -20,7 +20,13 @@
     "type": "git",
     "url": "git+https://github.com/smart-on-fhir/client-node.git"
   },
-  "keywords": ["smart", "fhir", "health", "hl7", "client"],
+  "keywords": [
+    "smart",
+    "fhir",
+    "health",
+    "hl7",
+    "client"
+  ],
   "author": "Vladimir Ignatov <vlad.ignatov@gmail.com>",
   "license": "APACHE2",
   "bugs": {
