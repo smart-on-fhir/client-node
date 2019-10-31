@@ -3,7 +3,7 @@ import request, { AxiosRequestConfig }         from "axios";
 import * as querystring                        from "querystring";
 import * as _debug                             from "debug";
 import * as jwt                                from "jsonwebtoken";
-import { SMART }                               from "..";
+import { SMART }                               from "../types";
 import { getPath, getErrorText, getBundleURL } from "./lib";
 
 const debug = _debug("smart");
